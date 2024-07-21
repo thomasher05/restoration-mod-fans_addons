@@ -1,27 +1,64 @@
-# Restoration Mod
+# What's this?
 
-Restoration Mod is a multi-functional mod that restores an older version of Payday 2's HUD, as well as offers a Total Game Overhaul aimed at restoring the good parts of old Payday 2 
-while implementing the good parts of new Payday 2 seamlessly along with some new, fully custom content, and a few other small cosmetic features.
+(rushing this because my dumbass forgot to save and pressed the previous page by mistake)
 
-All of the functions of the HUD are toggleable, but the Overhaul is all or nothing. The way it is designed makes it virtually impossible to disable any part of it without severe balance issues.
+This is a couple of edits to Restoration Mod fitted for my liking.
 
-Mods required for Restoration to function
+# Changes:
 
-SuperBLT: https://superblt.znix.xyz
+Vanilla units spawn across most factions.
 
-Beardlib: https://modworkshop.net/mod/14924
+Bravo Shield uses the `bravo` voicelines.
 
-Other Restoration Links
+Increased the volume of some voicelines.
 
-Mod Workshop download (links to Gold branch): https://modworkshop.net/mod/428
+Medics, Medic-dozers, and OMNIA LPFs can heal eachother.
 
-Restoration Mod discord: https://discord.gg/YmQkDyY
+fbi_1, and big dave spawn natrually.
 
-Restoration Mod soundtrack: https://soundcloud.com/vxwolf/sets/restoration-mod-soundtrack
+Added descriptions for the Serious Sam Minigun and  Chiappa Triple Threat
 
-Restoration Steam Group (For changelog): https://steamcommunity.com/groups/restorationmod
+Half assed custom weapon support for Third Eye Railgun, UTS-15, and VxWolf's HK G11.
 
-This github is open to the public, and you are free to submit issue reports or pull requests, where they may find their way into the `dev` branch.
+SPAS-15 fires 12 shells instead of 9.
+
+Package data for Russia and Murkywater properlly load.
+
+Titan Cloakers spawn on mayhem and above.
+
+NewCopper's Assets somehow
+
+Zip .22 has a 1% chance to fail
+
+# Voicelines:
+
+ASU: Coach (L4D2)
+
+Autumm: Robot Spy (Team Fortress 2)
+
+Bravo DMR: GSG9 (Counter Strike)
+
+Bravo Elite: Mercenary (Open Fortress)
+
+Murkywater Bravo Elite: Anarchist (Counter Strike)
+
+Cop Female: Female Spy (Team Fortress 2)
+
+Grenadier: Annihilator (Typical Colors 2)
+
+Heavy Gunner: Alliance (Unit: Classified)
+
+Spring: Robot Heavy (Team Fortress 2)
+
+Biker Bulldozer: Brute (Typical Colors 2)
+
+Titan Bulldozer: Arsonist (Typical Colors 2)
+
+Titan Shield: Robot Pyro (Team Fortress 2)
+
+Titan Sniper: Marskman (Typical Colors 2)
+
+Titan Cloaker: Flanker (Typical Colors 2)
 
 # Credits
 
