@@ -1,13 +1,20 @@
-local difficulty = Global.game_settings and Global.game_settings.difficulty or "normal"
-local difficulty_index = tweak_data:difficulty_to_index(difficulty)
+local difficulty = tweak_data:difficulty_to_index(Global.game_settings and Global.game_settings.difficulty or "normal")
 
-	if difficulty_index <= 5 then
+	if difficulty <= 5 then
 		ponr_value = 660	
-	elseif difficulty_index == 6 or difficulty_index == 7 then
+	elseif difficulty == 6 or difficulty == 7 then
 		ponr_value = 630
 	else
 		ponr_value = 600	
 	end
+local fbi_access = {
+	pre_func = function (self)
+			if not self._values.SO_access_original then
+				self._values.SO_access_original = self._values.SO_access
+				self._values.SO_access = managers.navigation:convert_access_filter_to_number({"fbi"})
+			end
+		end
+}	
 
 return {
 	--Pro Job PONR 
@@ -18,6 +25,17 @@ return {
 	[101175] = {
 		values = {
 			enabled = false
+		}
+	},
+	--Allow only enemies with fbi access to interrupt Mike
+	[101451] = fbi_access,
+	[101536] = fbi_access,
+	[103072] = {
+		values = {
+            sound_event = "l2n_a15"
+		},
+		on_executed = {
+			{id = 103020, delay = 4.85}
 		}
 	},
 	--Loopable heli 
