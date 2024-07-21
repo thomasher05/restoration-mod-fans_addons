@@ -117,4 +117,4 @@ GullwingDoor: Korean localisation
 
 Additional Testers: Derma, ShortonComedyGamer, K4_Kydure, Finale
 
-AND YOU, THE RESMOD GAMERS!
+and eveyone for putting up with this bullshit
