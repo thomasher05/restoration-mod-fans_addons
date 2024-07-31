@@ -20743,6 +20743,50 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			}
 			self.thirdeye.timers = deep_clone(self.tti.timers)
 		end
+
+		if self.cagnali then	--Crime Boss Scudomnion
+			--Moved to primary
+			self.cagnali.use_data.selection_index = 2	
+			self.cagnali.categories = {"smg"}
+			self.cagnali.recategorize = {"light_smg"}
+			self.cagnali.damage_type = "machine_gun"
+			self.cagnali.CLIP_AMMO_MAX = 35
+			self.cagnali.AMMO_MAX = 175
+			self.cagnali.fire_mode_data.fire_rate = 0.092
+			self.cagnali.kick = self.stat_info.kick_tables.left_recoil
+			self.cagnali.ads_speed = 0.3
+			self.cagnali.stats_modifiers = nil
+			self.cagnali.panic_suppression_chance = 0.05
+			self.cagnali.supported = true
+			self.cagnali.timers.reload_not_empty = 2.29
+			self.cagnali.timers.reload_exit_not_empty = 0.86
+			self.cagnali.timers.reload_empty = 2.84
+			self.cagnali.timers.reload_exit_empty = 0.77
+			self.cagnali.has_description = true
+			self.cagnali.weapon_hold = "cagnali"
+			self.cagnali.desc_id = "bm_w_cagnali_desc"
+			self.cagnali.shell_ejection = "effects/payday2/particles/weapons/shells/shell_empty"
+			self.cagnali.damage_falloff = {
+				start_dist = 1100,
+				end_dist = 3400,
+				min_mult = 0.4
+			}
+			self.cagnali.stats = {
+				damage = 32,
+				spread = 65,
+				recoil = 80,
+				spread_moving = 5,
+				zoom = 1,
+				concealment = 24,
+				suppression = 9,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 200,
+				value = 12,
+				reload = 20
+			}
+		end
+
 	--[[     CAP/WEAPONLIB REQUIRING THINGS     ]]	
 		-- Currently low priority. If it REQUIRES Weaponlib (some Weaponlib weapons just need CAP's functionality, those are fine) then it's a no-go for now
 		

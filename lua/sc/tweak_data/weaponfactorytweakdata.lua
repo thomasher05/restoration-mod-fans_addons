@@ -37900,6 +37900,11 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		self.parts.wpn_fps_ass_mdr_308_barrel_sniper.custom_stats = deep_clone(barrels.long_b2_stats)
 	end
 
+	if self.parts.wpn_fps_smg_cagnali_stock_fold then
+		self.parts.wpn_fps_smg_cagnali_stock_fold.supported = true
+		self.parts.wpn_fps_smg_cagnali_stock_fold.stats = { value = 4, recoil = -4, concealment = 3 }
+	end
+	
 	if self.parts.wpn_fps_pis_usp_knife_rambo then --PlayBONK and >:3's Off-hand Knives
 		attachment_list = {
 			"wpn_fps_pis_usp_knife_freedom"

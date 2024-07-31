@@ -2591,6 +2591,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					["bm_w_ksp45_desc_sc"] = "3-round burst submachine gun. High damage with moderate range. Burst fire spread is less efficient at long range.",
 					--LC10
 					["bm_w_lc10_desc_sc"] = "Full-auto submachine gun. Well rounded with excellent damage range and good accuracy. Moderate damage with an impressive muzzle velocity and a high fire rate.",
+					--Scudomnion
+					["bm_w_cagnali_desc"] = "Manufactured by Cagnali Industries for use with the C.I.A.R.S.S.E.A.. OMNIA has taken note of this weapon's existence and are trying to improve where Dr. Lucia Cagnali failed.",
 			
 			--[[ MGs ]]
 				--Bootleg/HK416c
