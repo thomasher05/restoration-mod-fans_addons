@@ -16,7 +16,7 @@ Medics, Medic-dozers, and OMNIA LPFs can heal eachother.
 
 fbi_1, and big dave spawn natrually.
 
-Added descriptions for the Serious Sam Minigun and  Chiappa Triple Threat
+Added descriptions for the Serious Sam Minigun and Chiappa Triple Threat
 
 Half assed custom weapon support for Third Eye Railgun, UTS-15, VxWolf's HK G11, and the Crime Boss: Rockay City Scudomnion.
 
@@ -29,6 +29,8 @@ Titan Cloakers spawn on mayhem and above.
 NewCopper's Assets somehow
 
 Zip .22 has a 1% chance to fail
+
+A new mutator
 
 # Voicelines:
 
