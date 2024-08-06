@@ -57,7 +57,8 @@ function MutatorsManager:init()
 		MutatorOnlyTitans:new(self),
 		MutatorVanillaPoliceCall:new(self),
 		--MutatorFactionsReplacer:new(self),
-		MutatorBirthday:new(self)
+		MutatorBirthday:new(self),
+		MutatorNoAmmoPickups:new(self)
 	}
 	self._active_mutators = {}
 	local activate = Global.mutators and Global.mutators.active_on_load

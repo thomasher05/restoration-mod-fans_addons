@@ -5040,6 +5040,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills", function(loc)
 		["menu_mutator_captain_asu_buff_toggle"] = "Include Captains",
 		["mutator_asu_buff_desc"] = "ASUs can now buff most Special Units.",
 		["mutator_asu_buff_longdesc"] = "ASUs can now buff most Special Units (except Cloakers).",
+
+		["mutator_no_ammo_pickups"] = "Ludicrous Mode",
+		["mutator_no_ammo_pickups_desc"] = "Enemies drop less ammo.",
+		["mutator_no_ammo_pickups_longdesc"] = "All Enemies drop less ammo.",
 		
 		["mutator_bo_flashbang"] = "Your Opinion - My Choice",
 		["menu_mutator_flashbang_cooking_time"] = "Fuse Time (in seconds)",
