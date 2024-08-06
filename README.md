@@ -18,7 +18,7 @@ fbi_1, and big dave spawn natrually.
 
 Added descriptions for the Serious Sam Minigun and  Chiappa Triple Threat
 
-Half assed custom weapon support for Third Eye Railgun, UTS-15, and VxWolf's HK G11.
+Half assed custom weapon support for Third Eye Railgun, UTS-15, VxWolf's HK G11, and the Crime Boss: Rockay City Scudomnion.
 
 SPAS-15 fires 12 shells instead of 9.
 
