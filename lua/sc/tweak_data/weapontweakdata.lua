@@ -4485,7 +4485,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 
 	--self:_init_new_weapon_sync(weapon_data)
 	--self:_init_new_weapon_sync_crew()
-	local tact_rel = {'deagle','colt_1911','usp','p226','g22c','glock_17','glock_18c','b92fs','ppk','mp9','new_mp5','mp7','p90','olympic','akmsu','akm','akm_gold','ak74','m16','amcar','new_m4','ak5','s552','g36','aug','saiga','new_m14','scar','fal','rpk','msr','r93','m95','famas','galil','g3','scorpion','benelli','serbu','r870','ksg','g26','spas12','l85a2','vhs','hs2000','tec9','asval','sub2000','polymer','wa2000','model70','sparrow','m37','sr2','pl14','tecci','hajk','boot','packrat','schakal','desertfox','tti','siltstone','flint','coal','lemming','breech','basset','shrew','corgi','shepheard','komodo','legacy','beer','czech','stech','r700','holt','maxim9','fmg9','china','scout','qbu88','m1897','sko12','victor','hcar','awp','supernova','m590','m45','pm9','baka','type54','m1911','vityaz','groza','contraband','shak12','winchester1874','sbl','arbiter'}
+	local tact_rel = {'deagle','colt_1911','usp','p226','g22c','glock_17','glock_18c','b92fs','ppk','mp9','new_mp5','mp7','p90','olympic','akmsu','akm','akm_gold','ak74','m16','amcar','new_m4','ak5','s552','g36','aug','saiga','new_m14','scar','fal','rpk','msr','r93','m95','famas','galil','g3','scorpion','benelli','serbu','r870','ksg','g26','spas12','l85a2','vhs','hs2000','tec9','asval','sub2000','polymer','wa2000','model70','sparrow','m37','sr2','pl14','tecci','hajk','boot','packrat','schakal','desertfox','tti','siltstone','flint','coal','lemming','x_breech','breech','basset','shrew','corgi','shepheard','komodo','legacy','beer','czech','stech','r700','holt','maxim9','fmg9','china','scout','qbu88','m1897','sko12','victor','hcar','awp','supernova','m590','m45','pm9','baka','type54','m1911','vityaz','groza','contraband','shak12','winchester1874','sbl','arbiter'}
 	for i, wep_id in ipairs(tact_rel) do
 		self[wep_id].tactical_reload = 1
 		self[wep_id].has_description = false
@@ -5082,6 +5082,40 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.x_czech.timers.reload_exit_empty = 0.55
 						self.x_czech.timers.reload_exit_not_empty = 0.65
 
+						--Akimbo PPK
+						self.x_ppk.has_description = true
+						self.x_ppk.desc_id = "bm_ppk_sc_desc"					
+						self.x_ppk.AMMO_MAX = 150
+						self.x_ppk.CLIP_AMMO_MAX = 14
+						self.x_ppk.fire_mode_data.fire_rate = 0.0821917
+						self.x_ppk.kick = self.stat_info.kick_tables.right_recoil
+						self.x_ppk.supported = true
+						self.x_ppk.ads_speed = 0.100
+						self.x_ppk.damage_falloff = {
+							start_dist = 1200,
+							end_dist = 2900,
+							min_mult = 0.2083
+						}
+						self.x_ppk.stats = {
+							damage = 24,
+							spread = 44,
+							recoil = 83,
+							spread_moving = 9,
+							zoom = 1,
+							concealment = 32,
+							suppression = 11,
+							alert_size = 2,
+							extra_ammo = 101,
+							total_ammo_mod = 200,
+							value = 1,
+							reload = 20
+						}
+						self.x_ppk.stats_modifiers = nil
+						self.x_ppk.panic_suppression_chance = 0.05
+						self.x_ppk.reload_speed_multiplier = 1.5
+						self.x_ppk.timers.reload_exit_not_empty = 0.55
+						self.x_ppk.timers.reload_exit_empty = 0.65
+
 					--Akimbo Chimano Compact
 						self.jowi.has_description = true
 						self.jowi.desc_id = "bm_x_jowi_sc_desc"
@@ -5248,6 +5282,39 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.x_pl14.panic_suppression_chance = 0.05
 						self.x_pl14.timers.reload_exit_empty = 0.55
 						self.x_pl14.timers.reload_exit_not_empty = 0.65
+
+						--Akimbo M13
+						self.x_legacy.has_description = true
+						self.x_legacy.desc_id = "bm_legacy_sc_desc"				
+						self.x_legacy.fire_mode_data.fire_rate = 0.0857142
+						self.x_legacy.CLIP_AMMO_MAX = 13 * 2
+						self.x_legacy.AMMO_MAX = 75 * 2
+						self.x_legacy.kick = self.stat_info.kick_tables.left_recoil
+						self.x_legacy.supported = true
+						self.x_legacy.ads_speed = 0.140
+						self.x_legacy.damage_falloff = {
+							start_dist = 1300,
+							end_dist = 3300,
+							min_mult = 0.25
+						}
+						self.x_legacy.stats = {
+							damage = 24,
+							spread = 44,
+							recoil = 81,
+							spread_moving = 9,
+							zoom = 1,
+							concealment = 31,
+							suppression = 11,
+							alert_size = 2,
+							extra_ammo = 101,
+							total_ammo_mod = 200,
+							value = 1,
+							reload = 20
+						}
+						self.x_legacy.stats_modifiers = nil
+						self.x_legacy.panic_suppression_chance = 0.05
+						self.x_legacy.timers.reload_exit_empty = 0.55
+						self.x_legacy.timers.reload_exit_not_empty = 0.65
 
 					--Akimbo Holt 9mm
 						self.x_holt.has_description = true
@@ -7647,6 +7714,45 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.x_mp5.timers.reload_not_empty = 1.7
 						self.x_mp5.timers.reload_exit_empty = 0.75
 						self.x_mp5.timers.reload_exit_not_empty = 1.1
+
+						--Akimbo M11/9
+						self.x_cobray.CLIP_AMMO_MAX = 32 * 2
+						self.x_cobray.AMMO_MAX = 90 * 2
+						self.x_cobray.kick = self.stat_info.kick_tables.even_recoil
+						self.x_cobray.fire_mode_data.fire_rate = 0.06
+						self.x_cobray.CAN_TOGGLE_FIREMODE = true
+						self.x_cobray.supported = true
+						self.x_cobray.ads_speed = 0.200
+						self.x_cobray.damage_falloff = {
+							start_dist = 1100,
+							end_dist = 4000,
+							min_mult = 0.3
+						}
+						self.x_cobray.stats = {
+							damage = 20,
+							spread = 50,
+							recoil = 67,
+							spread_moving = 1,
+							zoom = 1,
+							concealment = 29,
+							suppression = 11,
+							alert_size = 2,
+							extra_ammo = 101,
+							total_ammo_mod = 200,
+							value = 1,
+							reload = 20
+						}
+						self.x_cobray.stats_modifiers = nil
+						self.x_cobray.sounds.spin_start = "wp_mac10_lever_pull"
+						self.x_cobray.spin_up_shoot = true
+						self.x_cobray.spin_up_t = 0.05
+						self.x_cobray.spin_down_t = 0.0000000001
+						self.x_cobray.panic_suppression_chance = 0.05
+						self.x_cobray.reload_speed_multiplier = 0.8
+						self.x_cobray.timers.reload_not_empty = 2.1
+						self.x_cobray.timers.reload_exit_not_empty = 1.5
+						self.x_cobray.timers.reload_empty = 3
+						self.x_cobray.timers.reload_exit_empty = 0.9
 
 				--SECONDARIES
 
@@ -19455,12 +19561,15 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.mx63.stats_modifiers = nil
 				self.mx63.panic_suppression_chance = 0.05
-				self.mx63.reload_speed_multiplier = 0.9
 				self.mx63.sounds.spin_start = "wp_m249_lever_release"
 				self.mx63.spin_up_shoot = true
 				self.mx63.spin_up_t = 0.1
 				self.mx63.spin_down_t = 0.00000001
-				self.mx63.timers = deep_clone(self.m249.timers)
+				self.mx63.reload_speed_multiplier = 0.8
+				self.mx63.timers.reload_empty = 5.04
+				self.mx63.timers.reload_exit_empty = 0.72
+				self.mx63.timers.reload_not_empty = 4.18
+				self.mx63.timers.reload_exit_not_empty = 1
 			end
 
 		--Predator Pack
@@ -20156,14 +20265,14 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.x_pm.lock_slide = true
 				self.x_pm.fire_mode_data.fire_rate = 0.0882352
 				self.x_pm.tactical_reload = 1
-				self.x_pm.CLIP_AMMO_MAX = 8
-				self.x_pm.AMMO_MAX = 75
+				self.x_pm.CLIP_AMMO_MAX = 16
+				self.x_pm.AMMO_MAX = 150
 				self.x_pm.kick = self.stat_info.kick_tables.even_recoil
 				self.x_pm.supported = true
 				self.x_pm.ads_speed = 0.120
 				self.x_pm.damage_falloff = {
-					start_dist = 1500,
-					end_dist = 3500,
+					start_dist = 1000,
+					end_dist = 3000,
 					min_mult = 0.2083
 				}
 				self.x_pm.stats = {
@@ -20953,10 +21062,6 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 		--DISABLED--
 			self.x_m1928.use_data.selection_index = 5
 	
-		--Akimbo Jacket's Piece
-		--DISABLED--
-			self.x_cobray.use_data.selection_index = 5
-	
 		--Akimbo Tatonka
 		--DISABLED - ALREADY A PRIMARY
 			self.x_coal.use_data.selection_index = 5
@@ -20981,10 +21086,6 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 		--DISABLED--	
 			self.x_tec9.use_data.selection_index = 5
 	
-		--Akimbo Parabellum
-		--DISABLED--	
-			self.x_breech.use_data.selection_index = 5
-	
 		--akimbo Broomstick
 		--DISABLED - ALREADY A PRIMARY
 			self.x_c96.use_data.selection_index = 5
@@ -20993,10 +21094,6 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 		--DISABLED--	
 			self.x_hs2000.use_data.selection_index = 5
 	
-		--Akimbo Gruber Kurz
-		--DISABLED--	
-			self.x_ppk.use_data.selection_index = 5
-	
 		--Akimbo Swedish K
 		--DISABLED--
 			self.x_m45.use_data.selection_index = 5
@@ -21004,10 +21101,6 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 		--Akimbo Signature SMG
 		--DISABLED - ALREADY A PRIMARY
 			self.x_shepheard.use_data.selection_index = 5
-	
-		--Akimbo M13
-		--DISABLED--	
-			self.x_legacy.use_data.selection_index = 5
 	
 		--Akimbo Beretta Auto
 		--DISABLED - ALREADY A PRIMARY
