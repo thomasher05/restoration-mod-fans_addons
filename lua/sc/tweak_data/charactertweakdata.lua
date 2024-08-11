@@ -926,6 +926,8 @@ function CharacterTweakData:_init_heavy_swat(presets)
 	self.heavy_swat_sniper.spawn_sound_event_2 = "cloaker_spawn"
 	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
 		self.heavy_swat_sniper.custom_voicework = "tswat_ru"
+	elseif self:get_ai_group_type() == "zombie" then
+		self.heavy_swat_sniper.custom_voicework = "tsniper_hvh"
 	else
 		self.heavy_swat_sniper.custom_voicework = "tsniper"
 	end
@@ -2829,6 +2831,8 @@ function CharacterTweakData:_init_spooc(presets)
 	self.spooc_titan.cannot_attach_projectiles = true	
 	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
 		self.spooc_titan.custom_voicework = nil
+	elseif self:get_ai_group_type() == "zombie" then
+		self.spooc_titan.custom_voicework = "tspook_hvh"
 	else
 		self.spooc_titan.custom_voicework = "tspook"
 	end
