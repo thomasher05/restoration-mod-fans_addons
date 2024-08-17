@@ -64,6 +64,10 @@ Titan Sniper: Marskman (Typical Colors 2)
 
 Titan Cloaker: Flanker (Typical Colors 2)
 
+Warthog/Snowman: Understandable Pyro v2 (https://gamebanana.com/sounds/59101)
+
+Murkywater Cloaker: Myself
+
 # Credits
 
 Rhynne: Helped in development of the Restoration HUD and was the original project lead. Creating Major Heist Edits.

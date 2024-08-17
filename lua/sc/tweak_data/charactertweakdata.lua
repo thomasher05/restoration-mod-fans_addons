@@ -607,8 +607,8 @@ function CharacterTweakData:_init_medic(presets)
 	self.medic.no_arrest = true
 	if self:get_ai_group_type() == "murkywater" then
 	    self.medic.custom_voicework = "murky_medic"
-	else	
-	    self.medic.custom_voicework = nil
+	else
+		self.medic.custom_voicework = nil
 	end	
 	
 	self.medic.chatter = {
@@ -1781,11 +1781,7 @@ function CharacterTweakData:_init_snowman_boss(presets)
 	self.snowman_boss.speech_prefix_p1 = "snowman"
 	self.snowman_boss.speech_prefix_p2 = nil
 	self.snowman_boss.speech_prefix_count = nil
-	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
-		self.snowman_boss.custom_voicework = "tdozer_ru"
-	else
-		self.snowman_boss.custom_voicework = "tdozer"
-	end
+	self.snowman_boss.custom_voicework = "piggy_dozer"
 	self.snowman_boss.aoe_damage_data = {
 		verification_delay = 0.3,
 		activation_range = 300,
@@ -1815,11 +1811,7 @@ function CharacterTweakData:_init_piggydozer(presets)
 	self.piggydozer.speech_prefix_p1 = "fuckingpig"
 	self.piggydozer.speech_prefix_p2 = nil
 	self.piggydozer.speech_prefix_count = nil
-	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
-		self.piggydozer.custom_voicework = "tdozer_ru"
-	else
-		self.piggydozer.custom_voicework = "tdozer"
-	end
+	self.piggydozer.custom_voicework = "piggy_dozer"
 	self.piggydozer.aoe_damage_data = {
 		verification_delay = 0.3,
 		activation_range = 300,
@@ -2778,6 +2770,11 @@ function CharacterTweakData:_init_spooc(presets)
 	self.spooc.static_weapon_preset = true
 	self.spooc.no_asu = true
 	self.spooc.kick_damage = 8.0 --Amount of damage dealt when cloakers hick players.
+	if self:get_ai_group_type() == "murkywater" then
+		self.spooc.custom_voicework = "murky_spook"
+	else
+		self.spooc.custom_voicework = nil
+	end
 	self.spooc.spawn_sound_event_2 = "clk_c01x_plu"
 	self.spooc.spooc_sound_events = {
 		detect_stop = "cloaker_detect_stop",

@@ -20953,7 +20953,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.sideload.damage_type_single_ray = "sniper"
 			self.sideload.CLIP_AMMO_MAX = 14
 			self.sideload.BURST_FIRE = false
-			self.sideload.fire_mode_data.fire_rate = 0.74
+			self.sideload.fire_mode_data.fire_rate = 0.5
+			self.sideload.fire_rate_multiplier = 0.775
 			self.sideload.AMMO_MAX = 56
 			self.sideload.kick = self.stat_info.kick_tables.vertical_kick
 			self.sideload.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps"
@@ -20989,8 +20990,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.sideload.reload_fix_offset2 = 0.025
 			self.sideload.reload_fix_mult2 = 1.08
 			self.sideload.reload_speed_multiplier = 0.9
-			self.sideload.timers.shotgun_reload_exit_not_empty = 0.9
-			self.sideload.timers.shotgun_reload_exit_empty = 0.9
+			self.sideload.timers = deep_clone(self.ksg.timers)
 		end
 		
 		if self.temple then	--VxWolf HK G11 //this is gonna be fucking janky as all hell lmao -FaN Scout
