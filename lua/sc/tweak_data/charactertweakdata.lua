@@ -1009,6 +1009,8 @@ function CharacterTweakData:_init_fbi_swat(presets)
 	self.fbi_swat.static_melee_preset = true
 	self.fbi_swat.heal_cooldown = 1.25
 	self.fbi_swat.overheal_mult = 1.5
+	self.fbi_swat.weapon = deep_clone(self.presets.weapon.expert)
+	self.fbi_swat.melee_weapon_dmg_multiplier = 2
 	table.insert(self._enemy_list, "fbi_swat")
 	
 	self.fbi_swat_vet = deep_clone(self.fbi_swat)
