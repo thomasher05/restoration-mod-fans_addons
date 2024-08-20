@@ -259,13 +259,15 @@ logic_variants.boom.attack = MarshalLogicAttack
 logic_variants.hrt_titan = clone(security_variant)
 logic_variants.hrt_titan.attack = MarshalLogicAttack	
 logic_variants.omnia_lpf = clone(security_variant)
-logic_variants.omnia_lpf.attack = MarshalLogicAttack		
+logic_variants.omnia_lpf.attack = MarshalLogicAttack
+logic_variants.omnia_lpf_no_heal = clone(security_variant)
+logic_variants.omnia_lpf_no_heal.attack = MarshalLogicAttack
 logic_variants.city_swat_titan = clone(security_variant)
 logic_variants.city_swat_titan.attack = MarshalLogicAttack
 logic_variants.weekend_lmg = clone(security_variant)
-logic_variants.weekend_lmg.attack = MarshalLogicAttack		
+logic_variants.weekend_lmg.attack = MarshalLogicAttack
 logic_variants.taser_titan_reaper = clone(security_variant)
-logic_variants.taser_titan_reaper.attack = MarshalLogicAttack			
+logic_variants.taser_titan_reaper.attack = MarshalLogicAttack
 
 --Set up boss logics
 logic_variants.mobster_boss = logic_variants.triad_boss

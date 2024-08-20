@@ -731,6 +731,11 @@ function CharacterTweakData:_init_omnia_lpf(presets)
 	self.omnia_lpf.no_asu = true
 	self.omnia_lpf.marshal_logic = true
 	self.omnia_lpf.heal_cooldown = 10
+	
+	self.omnia_lpf_no_heal = deep_clone(self.omnia_lpf)
+	self.omnia_lpf_no_heal.do_omnia = false
+	self.omnia_lpf_no_heal.modify_health_on_tweak_change = false
+	self.omnia_lpf_no_heal.tmp_invulnerable_on_tweak_change = 0
 	table.insert(self._enemy_list, "omnia_lpf")
 end
 
@@ -1320,15 +1325,7 @@ function CharacterTweakData:_init_marshal_marksman(presets)
 	self.marshal_marksman.speech_prefix_p2 = nil
 	self.marshal_marksman.speech_prefix_count = nil
 	self.marshal_marksman.yellow_blood = false
-	if self:get_ai_group_type() == "russia" then
-		self.marshal_marksman.custom_voicework = "tswat_ru"
-	elseif self:get_ai_group_type() == "murkywater" then
-		self.marshal_marksman.custom_voicework = "bravo_elite_murky"	
-	elseif self:get_ai_group_type() == "federales" then
-		self.marshal_marksman.custom_voicework = "bravo_elite_mex"
-	else
-		self.marshal_marksman.custom_voicework = "bravo_dmr"
-	end		
+	self.marshal_marksman.custom_voicework = "marshal_marksman"
 
 	table.insert(self._enemy_list, "marshal_marksman")
 end

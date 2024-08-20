@@ -1,5 +1,5 @@
 if not ModCore then
-	restoration.log_shit("[ERROR] Unable to find ModCore from BeardLib! Is BeardLib installed correctly?")
+	restoration.log_shit("[ERROR] Dude come on you know this wont work without BeardLib ya dingus...")
 	return
 end
 

@@ -68,6 +68,8 @@ Warthog/Snowman: Understandable Pyro v2 (https://gamebanana.com/sounds/59101)
 
 Murkywater Cloaker: Myself
 
+Marshal Marksman: Sniper (Team Fortress 2)
+
 # Credits
 
 Rhynne: Helped in development of the Restoration HUD and was the original project lead. Creating Major Heist Edits.
