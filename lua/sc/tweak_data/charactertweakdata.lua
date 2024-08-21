@@ -1325,8 +1325,13 @@ function CharacterTweakData:_init_marshal_marksman(presets)
 	self.marshal_marksman.speech_prefix_p2 = nil
 	self.marshal_marksman.speech_prefix_count = nil
 	self.marshal_marksman.yellow_blood = false
-	self.marshal_marksman.custom_voicework = "marshal_marksman"
-
+	if self:get_ai_group_type() == "federales" then
+		self.marshal_marksman.custom_voicework = "marshal_marksman_bex"
+	elseif self:get_ai_group_type() == "russia" then
+		self.marshal_marksman.custom_voicework = "marshal_marksman_ru"
+	else
+		self.marshal_marksman.custom_voicework = "marshal_marksman"
+	end
 	table.insert(self._enemy_list, "marshal_marksman")
 end
 
@@ -3560,7 +3565,12 @@ function CharacterTweakData:_init_taser(presets)
 		self.taser_titan.spawn_sound_event = "tsr_elite"
 	end	
 	self.taser_titan.spawn_sound_event_2 = "cloaker_spawn"
-	self.taser_titan.custom_voicework = nil
+	-- Wait until lines are done
+--	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
+--		self.taser_titan.custom_voicework = nil
+--	else
+--		self.taser_titan.custom_voicework = "ttazer"
+--	end
 	self.taser_titan.surrender = nil
 	self.taser_titan.dodge = presets.dodge.elite
 	self.taser_titan.static_dodge_preset = true
