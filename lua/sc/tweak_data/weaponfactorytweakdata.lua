@@ -27921,6 +27921,86 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			}
 		end
 
+		if self.parts.wpn_fps_shot_vecho_stock_tac then --MW2022 Vepr-12
+
+			self.parts.wpn_fps_shot_vecho_receiver.custom_stats = {
+				hip_mult = 5
+			}
+
+			--Grips
+				--IVANOV
+				self.parts.wpn_fps_shot_vecho_grip_steady.supported = true
+				self.parts.wpn_fps_shot_vecho_grip_steady.has_description = false
+				self.parts.wpn_fps_shot_vecho_grip_steady.stats = {
+					value = 0,
+					spread = 1,
+					concealment = -1
+				}
+				self.parts.wpn_fps_shot_vecho_grip_steady.custom_stats = nil
+				--DEMO X2
+				self.parts.wpn_fps_shot_vecho_grip_ass.supported = true
+				self.parts.wpn_fps_shot_vecho_grip_ass.has_description = false
+				self.parts.wpn_fps_shot_vecho_grip_ass.stats = {
+					value = 0,
+					spread = -1,
+					recoil = 2
+				}
+				self.parts.wpn_fps_shot_vecho_grip_ass.custom_stats = nil
+				--True-Tac
+				self.parts.wpn_fps_shot_vecho_grip_tac.supported = true
+				self.parts.wpn_fps_shot_vecho_grip_tac.has_description = false
+				self.parts.wpn_fps_shot_vecho_grip_tac.stats = {
+					value = 0,
+					recoil = -2,
+					concealment = 1
+				}
+				self.parts.wpn_fps_shot_vecho_grip_tac.custom_stats = { ads_speed_mult = 0.975 }
+
+				--[[
+				self.parts.wpn_fps_ass_akilo_2022_grip_vecho.supported = true
+				self.parts.wpn_fps_ass_akilo_2022_grip_vecho.stats = {
+					value = 0,
+					recoil = 2,
+					concealment = -1
+				}
+				self.parts.wpn_fps_ass_akilo_2022_grip_vecho.custom_stats = nil
+				]]
+
+				self.parts.wpn_fps_shot_vecho_grip_vecho_snp.supported = true
+				self.parts.wpn_fps_shot_vecho_grip_vecho_snp.stats = {
+					value = 0,
+					recoil = 2,
+					spread = 1,
+					concealment = -2
+				}
+				self.parts.wpn_fps_shot_vecho_grip_vecho_snp.custom_stats = { ads_speed_mult = 1.05 }
+
+			--MAGS
+				self.parts.wpn_fps_shot_vecho_drum.supported = true
+				self.parts.wpn_fps_shot_vecho_drum.stats = {
+					value = 0,
+					extra_ammo = 17,
+					concealment = -6,
+					reload = -8
+				}
+				self.parts.wpn_fps_shot_vecho_drum.custom_stats = {
+					ads_speed_mult = 1.5
+				}
+
+			--BOLTS
+				self.parts.wpn_fps_shot_vecho_bolt_light.supported = true
+
+			for i, part_id in pairs(self.wpn_fps_shot_vecho.uses_parts) do
+				if self.parts[part_id] and self.parts[part_id].pcs and self.parts[part_id].type then
+					if ((self.parts[part_id].global_value and self.parts[part_id].global_value ~= "vecho_mod") or not self.parts[part_id].global_value) and 
+						(self.parts[part_id].type == "grip" or self.parts[part_id].type == "stock") then
+						self.wpn_fps_shot_vecho.uses_parts[i] = "resmod_dummy"
+					end
+				end
+			end
+			self.wpn_fps_shot_vecho_npc.uses_parts = deep_clone(self.wpn_fps_shot_vecho.uses_parts)
+		end
+
 		if self.parts.wpn_fps_ass_mcx_spear_am_default then --RJC9000 and PlayBONK's SIG MCX Spear
 			--no
 			self.parts.wpn_fps_ass_mcx_spear_am_default.supported = true
@@ -38009,6 +38089,37 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 	if self.parts.wpn_fps_smg_cagnali_stock_fold then
 		self.parts.wpn_fps_smg_cagnali_stock_fold.supported = true
 		self.parts.wpn_fps_smg_cagnali_stock_fold.stats = { value = 4, recoil = -4, concealment = 3 }
+	end
+
+	if self.parts.wpn_fps_sho_bp12_b_ext then
+		self.parts.wpn_fps_sho_bp12_b_ext.supported = true
+		self.parts.wpn_fps_sho_bp12_b_ext.stats = { recoil = 1, concealment = -2, spread = 2 }
+		self.parts.wpn_fps_sho_bp12_b_ext.custom_stats = { ads_speed_mult = 1.022 }
+
+		self.parts.wpn_fps_sho_bp12_b_short.supported = true
+		self.parts.wpn_fps_sho_bp12_b_short.stats = { recoil = -1, concealment = 2, spread = -1 }
+		self.parts.wpn_fps_sho_bp12_b_short.custom_stats = { ads_speed_mult = 0.88 }
+
+		self.parts.wpn_fps_sho_bp12_m_ext.supported = true
+		self.parts.wpn_fps_sho_bp12_m_ext.stats = { extra_ammo = 3, concealment = -2 }
+
+		self.parts.wpn_fps_sho_bp12_m_quick.supported = true
+		self.parts.wpn_fps_sho_bp12_m_quick.stats = { reload = 2, concealment = -1 }
+
+		self.parts.wpn_fps_sho_bp12_m_short.supported = true
+		self.parts.wpn_fps_sho_bp12_m_short.stats = { extra_ammo = -2, concealment = 2 }
+
+		self.parts.wpn_fps_sho_bp12_s_ext.supported = true
+		self.parts.wpn_fps_sho_bp12_s_ext.stats = { recoil = 1, concealment = -1}
+
+		self.wpn_fps_sho_bp12.override = self.wpn_fps_sho_bp12.override or {}
+		self.wpn_fps_sho_bp12.override.wpn_fps_upg_a_slug = deep_clone(shot_ammo.a_slug_semi_override)
+		self.wpn_fps_sho_bp12.override.wpn_fps_upg_a_custom = deep_clone(shot_ammo.a_custom_semi_override)
+		self.wpn_fps_sho_bp12.override.wpn_fps_upg_a_custom_free = deep_clone(shot_ammo.a_custom_semi_override)
+		self.wpn_fps_sho_bp12.override.wpn_fps_upg_a_explosive = deep_clone(shot_ammo.a_explosive_semi_override)
+		self.wpn_fps_sho_bp12.override.wpn_fps_upg_a_rip = deep_clone(shot_ammo.a_rip_semi_override)
+		self.wpn_fps_sho_bp12.override.wpn_fps_upg_a_piercing = deep_clone(shot_ammo.a_piercing_semi_override)
+		self.wpn_fps_sho_bp12.override.wpn_fps_upg_a_dragons_breath = deep_clone(shot_ammo.a_dragons_breath_semi_override)
 	end
 	
 	if self.parts.wpn_fps_pis_usp_knife_rambo then --PlayBONK and >:3's Off-hand Knives

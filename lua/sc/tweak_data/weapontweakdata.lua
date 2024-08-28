@@ -3647,7 +3647,7 @@ function WeaponTweakData:_init_stats()
 	self.stat_info.shotgun_spread_increase_ads = 5
 
 	--Multiplier for spread on weapons that are still hipfired even while aiming (goes against the steelsight spread mult)
-	self.stat_info.hipfire_only_spread_increase = 0.25 / self.stat_info.stance_spread_mults.steelsight
+	self.stat_info.hipfire_only_spread_increase = 0.75 / self.stat_info.stance_spread_mults.steelsight
 
 	self.stat_info.base_spread = 12.1 --How much spread area you have at 0 accuracy.
 	self.stat_info.spread_per_accuracy = -0.12 --How much each point of accuracy reduces spread area.
@@ -8657,7 +8657,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					}
 					self.kacchainsaw.stats = {
 						damage = 24,
-						spread = 43,
+						spread = 51,
 						recoil = 79,
 						spread_moving = 5,
 						zoom = 1,
@@ -8709,7 +8709,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					}
 					self.kacchainsaw_flamethrower.stats = {
 						damage = 24,
-						spread = 41,
+						spread = 51,
 						recoil = 95,
 						spread_moving = 6,
 						zoom = 1,
@@ -9183,7 +9183,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					}
 					self.m134.stats = {
 						damage = 30,
-						spread = 10,
+						spread = 21,
 						recoil = 75,
 						spread_moving = 5,
 						zoom = 1,
@@ -18782,6 +18782,90 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.ngsierra.timers.reload_exit_not_empty = 1.13
 			end
 
+			if self.vecho then
+				self.vecho.categories = { 
+					"shotgun",
+					"shotgun_auto" 
+				}
+				self.vecho.recategorize = { "light_shot" }
+				self.vecho.damage_type = "shotgun"
+				self.vecho.damage_type_single_ray = "sniper"
+				self.vecho.rays = 9
+				self.vecho.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
+				self.vecho.tactical_reload = 1
+				self.vecho.CLIP_AMMO_MAX = 8
+				self.vecho.AMMO_MAX = 60
+				self.vecho.CAN_TOGGLE_FIREMODE = false
+				self.vecho.FIRE_MODE = "single"
+				self.vecho.fire_mode_data.fire_rate = 0.28571
+				self.vecho.kick = self.stat_info.kick_tables.vertical_kick
+				self.vecho.supported = true
+				self.vecho.ads_speed = 0.340
+				self.vecho.damage_falloff = {
+					start_dist = 300,
+					end_dist = 2500,
+					min_mult = 0.15
+				}
+				self.vecho.stats = {
+					damage = 120,
+					spread = 21,
+					recoil = 39,
+					spread_moving = 7,
+					zoom = 1,
+					concealment = 24,
+					suppression = 9,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 200,
+					value = 1,
+					reload = 20
+				}
+				self.vecho.stats_modifiers = nil
+				self.vecho.panic_suppression_chance = 0.05
+				self.vecho.timers.reload_empty = 2.85
+				self.vecho.timers.reload_exit_empty = 0.8
+				self.vecho.timers.reload_not_empty = 2
+				self.vecho.timers.reload_exit_not_empty = 0.8
+			end
+
+			if self.doot_eternal_shotgun then
+				self.doot_eternal_shotgun.recategorize = { "break_shot" }	
+				self.doot_eternal_shotgun.damage_type = "shotgun_heavy"
+				self.doot_eternal_shotgun.damage_type_single_ray = "anti_materiel"
+				self.doot_eternal_shotgun.always_play_anims = true
+				self.doot_eternal_shotgun.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
+				self.doot_eternal_shotgun.rays = 10
+				self.doot_eternal_shotgun.kick = self.stat_info.kick_tables.vertical_kick
+				self.doot_eternal_shotgun.CLIP_AMMO_MAX = 16
+				self.doot_eternal_shotgun.AMMO_MAX = 40
+				self.doot_eternal_shotgun.CAN_TOGGLE_FIREMODE = false
+				self.doot_eternal_shotgun.BURST_FIRE = false
+				self.doot_eternal_shotgun.fire_mode_data.fire_rate = 0.83333
+				self.doot_eternal_shotgun.supported = true
+				self.doot_eternal_shotgun.ads_speed = 0.400
+				self.doot_eternal_shotgun.damage_falloff = {
+					start_dist = 400,
+					end_dist = 2000,
+					min_mult = 0.1333
+				}
+				self.doot_eternal_shotgun.stats = {
+					damage = 180,
+					spread = 16,
+					recoil = 30,
+					spread_moving = 6,
+					zoom = 1,
+					concealment = 22,
+					suppression = 6,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 200,
+					value = 1,
+					reload = 20
+				}
+				self.doot_eternal_shotgun.stats_modifiers = nil
+				self.doot_eternal_shotgun.panic_suppression_chance = 0.05
+			end
+
 			if self.owd_m1a then --RJC9000's OTWD M1A
 				self.owd_m1a.categories = { 
 					"assault_rifle",
@@ -18834,6 +18918,60 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.owd_m1a.sounds.fire_single = "m14_fire"
 				self.owd_m1a.sounds.fire_auto = "m14_fire_loop"
 				self.owd_m1a.sounds.stop_fire = "m14_stop"
+			end
+
+			if self.ma40 then 
+				self.ma40.categories = { 
+					"assault_rifle",
+					"no_shake"
+				}
+				self.ma40.categories = { "assault_rifle" }
+				self.ma40.recategorize = { "heavy_ar" }
+				self.ma40.damage_type = "sniper"
+				self.ma40.damage_type = "assault_rifle"
+				self.ma40.CLIP_AMMO_MAX = 36
+				self.ma40.AMMO_MAX = 120
+				self.ma40.FIRE_MODE = "auto"
+				self.ma40.fire_mode_data.fire_rate = 0.08333333
+				self.ma40.is_bullpup = true
+				self.ma40.always_hipfire = true
+				self.ma40.CAN_TOGGLE_FIREMODE = true
+				self.ma40.kick = {}
+				self.ma40.kick = self.stat_info.kick_tables.right_kick
+				self.ma40.kick = self.stat_info.kick_tables.left_kick
+				self.ma40.always_play_anims = true
+				self.ma40.descope_on_dmg = true
+				self.ma40.supported = true
+				self.ma40.ads_speed = 0.240
+				self.ma40.ads_speed = 0.200
+				self.ma40.damage_falloff = {
+					start_dist = 1200,
+					end_dist = 4000,
+					end_dist = 3400,
+					min_mult = 0.8
+				}	
+				self.ma40.stats = {
+					damage = 30,
+					spread = 71,
+					recoil = 81,
+					recoil = 91,
+					spread_moving = 5,
+					zoom = 1,
+					concealment = 22,
+					suppression = 7,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 200,
+					value = 9,
+					reload = 20
+				}
+				self.ma40.stats_modifiers = nil
+				self.ma40.panic_suppression_chance = 0.05
+				self.ma40.timers.reload_speed_multiplier = 1.17
+				self.ma40.timers.reload_empty = 2.7
+				self.ma40.timers.reload_exit_empty = 0.6
+				self.ma40.timers.reload_not_empty = 2.5
+				self.ma40.timers.reload_exit_not_empty = 0.6
 			end
 
 			if self.vk78_commando then --RJC9000 and PlayBONK's Halo Infinite VK78 Commando
@@ -19826,7 +19964,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.xm214a.stats = {
 					damage = 12,
-					spread = 21,
+					spread = 29,
 					recoil = 81,
 					spread_moving = 5,
 					zoom = 1,
@@ -20488,7 +20626,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			}
 			self.sasha.stats = {
 				damage = 24,
-				spread = 16,
+				spread = 21,
 				recoil = 79,
 				spread_moving = 5,
 				zoom = 1,
@@ -20538,7 +20676,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			}
 			self.abzats.stats = {
 				damage = 240,
-				spread = 11,
+				spread = 15,
 				recoil = 49,
 				spread_moving = 5,
 				zoom = 1,
@@ -20896,6 +21034,82 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			}
 		end
 
+		if self.bp12 then
+			self.bp12.has_description = true
+			self.bp12.desc_id = "bm_w_bp12_desc"
+			self.bp12.recategorize = { "light_shot" }
+			self.bp12.categories = { "shotgun" }
+			self.bp12.damage_type = "shotgun"
+			self.bp12.supported = true
+			self.bp12.rays = 6
+			self.bp12.fire_mode_data.fire_rate = 0.1665
+			self.bp12.panic_suppression_chance = 0.05
+			self.bp12.kick = self.stat_info.kick_tables.vertical_kick
+			self.bp12.CLIP_AMMO_MAX = 12
+			self.bp12.AMMO_MAX = 48
+			self.bp12.ads_speed = 0.2
+			self.bp12.timers.reload_not_empty = 1.54
+			self.bp12.timers.reload_empty = 1.67
+			self.bp12.timers.reload_exit_empty = 1.65
+			self.bp12.timers.reload_exit_not_empty = 1.76
+			self.bp12.damage_falloff = {
+				start_dist = 1800,
+				end_dist = 3500,
+				min_mult = 0.2
+			}
+			self.bp12.stats = {
+				damage = 90,
+				spread = 44,
+				recoil = 72,
+				spread_moving = 5,
+				zoom = 1,
+				concealment = 23,
+				suppression = 5,
+				alert_size = 7,
+				extra_ammo = 101,
+				total_ammo_mod = 200,
+				value = 1,
+				reload = 20
+			}
+			self.bp12.stats_modifiers = nil
+		end
+
+		if self.amcar4 then
+			self.amcar4.desc_id = "bm_amcar4_sc_desc"
+			self.amcar4.has_description = true
+			self.amcar4.ads_speed = 0.2
+			self.amcar4.stats_modifiers = nil
+			self.amcar4.kick = self.stat_info.kick_tables.even_recoil
+			self.amcar4.supported = true
+			self.amcar4.timers.reload_not_empty = 2.67
+			self.amcar4.timers.reload_empty = 3.43
+			self.amcar4.timers.reload_exit_empty = 0.55
+			self.amcar4.timers.reload_exit_not_empty = 0.5
+			self.amcar4.fire_mode_data.fire_rate = 0.1
+			self.amcar4.CLIP_AMMO_MAX = 30
+			self.amcar4.AMMO_MAX = 120
+			self.amcar4.stats = {
+				damage = 32,
+				spread = 74,
+				recoil = 77,
+				spread_moving = 4,
+				zoom = 1,
+				concealment = 24,
+				suppression = 10,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 200,
+				value = 1,
+				reload = 20
+			}
+			self.amcar4.damage_falloff = {
+				start_dist = 2100,
+				end_dist = 4900,
+				min_mult = 0.43
+			}
+			self.amcar4.reload_speed_multiplier = 0.88
+			self.amcar4.panic_suppression_chance = 0.05
+		end
 	--[[     CAP/WEAPONLIB REQUIRING THINGS     ]]	
 		-- Currently low priority. If it REQUIRES Weaponlib (some Weaponlib weapons just need CAP's functionality, those are fine) then it's a no-go for now
 		

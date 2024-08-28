@@ -2771,6 +2771,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					["bm_w_t9fastburst"] = "CARV.2",
 					["bm_wp_upg_i_g11"] = "K1 Internals",
 					["bm_wp_upg_i_g11_desc"] = "Increases the burst fire rate to #{skill_color}#2100 RPM## and #{skill_color}#unlocks the fire selector.##",
+					--AMCAR-4
+					["bm_amcar4_sc_desc"] = "The AMCAR-4 is one of the most versatile assault rifle there is.\n\nThe good accuracy coupled with the high rate of fire prepares it's owner for any situation.",
 			
 			--[[ DMRs ]]
 				--Little Friend

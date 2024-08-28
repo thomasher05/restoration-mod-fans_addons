@@ -930,7 +930,7 @@ function CharacterTweakData:_init_heavy_swat(presets)
 	self.heavy_swat_sniper.static_melee_preset = true
 	self.heavy_swat_sniper.spawn_sound_event_2 = "cloaker_spawn"
 	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
-		self.heavy_swat_sniper.custom_voicework = "tswat_ru"
+		self.heavy_swat_sniper.custom_voicework = "marshal_marksman_ru"
 	elseif self:get_ai_group_type() == "zombie" then
 		self.heavy_swat_sniper.custom_voicework = "tsniper_hvh"
 	else
@@ -953,7 +953,7 @@ function CharacterTweakData:_init_heavy_swat(presets)
 	self.weekend_dmr.speech_prefix_p2 = nil
 	self.weekend_dmr.speech_prefix_count = nil
 	if self:get_ai_group_type() == "russia" then
-		self.weekend_dmr.custom_voicework = "tswat_ru"
+		self.weekend_dmr.custom_voicework = "marshal_marksman_ru"
 	elseif self:get_ai_group_type() == "murkywater" then
 		self.weekend_dmr.custom_voicework = "bravo_elite_murky"	
 	elseif self:get_ai_group_type() == "federales" then
