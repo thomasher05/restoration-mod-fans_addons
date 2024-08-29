@@ -1390,15 +1390,7 @@ function CharacterTweakData:_init_marshal_shield(presets)
 	self.marshal_shield.speech_prefix_count = nil
 	self.marshal_shield.yellow_blood = nil
 	self.marshal_shield.no_asu = true
-	if self:get_ai_group_type() == "russia" then
-		self.marshal_shield.custom_voicework = "tswat_ru"
-	elseif self:get_ai_group_type() == "murkywater" then
-		self.marshal_shield.custom_voicework = "bravo_elite_murky"	
-	elseif self:get_ai_group_type() == "federales" then
-		self.marshal_shield.custom_voicework = "bravo_elite_mex"
-	else
-		self.marshal_shield.custom_voicework = "bravo"
-	end		
+	self.marshal_shield.custom_voicework = "bravo"
 	self.marshal_shield.speech_prefix_count = nil
 	self.marshal_shield.priority_shout = "f31"
 	self.marshal_shield.access = "shield"

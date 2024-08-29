@@ -2746,8 +2746,6 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 				--AK 7.62
 				["bm_akm_sc_desc"] = "This rifle will be a handy thing to have around when body armor starts getting popular in DC.\n\nThe Go-To for insurgents and crazy regimes throughout the world.",
 				["bm_akm_gold_sc_desc"] = "What does a heister, a Mexican drug lord and a megalomaniac dictator have in common? A fascination for gold-plated rifles, of course.",
-				--Queen's Wrath
-				["bm_l85a2_sc_desc"] = "Though its reputation has been marred by earlier iterations, this rifle stands to be one of the most accurate automatics ever made.\n\nStill an ergonomic nightmare though.",
 				--KETCHUPKNOB--
 				--ASPIRING POKEMON TRAINER, ASH KETCHNOV--
 				["bm_groza_sc_desc_pc"] = "The bullpup sister of the AK family, kitted out for those who want a bit more boom.\n\nPressing #{skill_color}#$BTN_BIPOD## switches to the undermounted grenade launcher.",
@@ -2773,6 +2771,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					["bm_wp_upg_i_g11_desc"] = "Increases the burst fire rate to #{skill_color}#2100 RPM## and #{skill_color}#unlocks the fire selector.##",
 					--AMCAR-4
 					["bm_amcar4_sc_desc"] = "The AMCAR-4 is one of the most versatile assault rifle there is.\n\nThe good accuracy coupled with the high rate of fire prepares it's owner for any situation.",
+					--TAR-21
+					["bm_wpn_fps_ass_tar21_sc_desc"] = "Isralic bullpup assault rifle for close-quarters combat.",
 			
 			--[[ DMRs ]]
 				--Little Friend

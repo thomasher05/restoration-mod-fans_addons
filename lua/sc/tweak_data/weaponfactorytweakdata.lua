@@ -38121,6 +38121,29 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		self.wpn_fps_sho_bp12.override.wpn_fps_upg_a_piercing = deep_clone(shot_ammo.a_piercing_semi_override)
 		self.wpn_fps_sho_bp12.override.wpn_fps_upg_a_dragons_breath = deep_clone(shot_ammo.a_dragons_breath_semi_override)
 	end
+
+	if self.parts.wpn_fps_ass_tar21_b_ctar then
+		self.parts.wpn_fps_ass_tar21_b_ctar.supported = true
+		self.parts.wpn_fps_ass_tar21_b_ctar.stats = { spread = -3, recoil = 2, concealment = 3 }
+
+		self.parts.wpn_fps_ass_tar21_b_star.supported = true
+		self.parts.wpn_fps_ass_tar21_b_star.stats = { spread = 3, recoil = -2, concealment = -2 }
+
+		self.parts.wpn_fps_ass_tar21_m_ranger.supported = true
+		self.parts.wpn_fps_ass_tar21_m_ranger.stats = { concealment = -1, reload = 2, recoil = -1 }
+
+	--	self.parts.wpn_fps_ass_tar21_a_sniper.supported = true -- its really bad and the damage value seems to not work. ill need help from dmc for this
+	--	self.parts.wpn_fps_ass_tar21_a_sniper.stats = { damage = 50, extra_ammo = -12, recoil = -5, concealment = -7 }
+	--	self.parts.wpn_fps_ass_tar21_a_sniper.custom_stats = {
+	--		rof_mult = 0.76,
+	--		armor_piercing_add= 1,
+	--		can_shoot_through_enemy = true,
+	--		can_shoot_through_shield = true,
+	--		can_shoot_through_wall = true,
+	--		ammo_pickup_min_mul = 1.4,
+	--		ammo_pickup_max_mul = 2.2
+	--	}
+	end
 	
 	if self.parts.wpn_fps_pis_usp_knife_rambo then --PlayBONK and >:3's Off-hand Knives
 		attachment_list = {

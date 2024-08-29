@@ -21250,6 +21250,40 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.temple.timers.reload_not_empty = 4
 			self.temple.timers.reload_exit_not_empty = 0.45
 		end
+
+		if self.tar21 then
+			self.tar21.desc_id = "bm_wpn_fps_ass_tar21_sc_desc"
+			self.tar21.has_description = true
+			self.tar21.ads_speed = 0.33
+			self.tar21.stats_modifiers = nil
+			self.tar21.kick = self.stat_info.kick_tables.moderate_kick
+			self.tar21.supported = true
+			self.tar21.CLIP_AMMO_MAX = 30
+			self.tar21.AMMO_MAX = 150
+			self.tar21.fire_mode_data.fire_rate = 0.08
+			self.tar21.stats = {
+				damage = 25,
+				spread = 67,
+				recoil = 71,
+				spread_moving = 6,
+				zoom = 1,
+				concealment = 26,
+				suppression = 10,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 200,
+				value = 9,
+				reload = 20
+			}
+			self.tar21.damage_falloff = {
+				start_dist = 2700,
+				end_dist = 7200,
+				min_mult = 0.5
+			}
+			self.tar21.timers = deep_clone(self.vhs.timers)
+			self.tar21.panic_suppression_chance = 0.05
+			self.tar21.reload_speed_multiplier = 1.15
+		end
 	--[[     DISABLED     ]]--
 	
 		--Akimbo VD-12 
