@@ -18797,7 +18797,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.vecho.AMMO_MAX = 60
 				self.vecho.CAN_TOGGLE_FIREMODE = false
 				self.vecho.FIRE_MODE = "single"
-				self.vecho.fire_mode_data.fire_rate = 0.28571
+				self.vecho.fire_mode_data.fire_rate = 0.2803738
 				self.vecho.kick = self.stat_info.kick_tables.vertical_kick
 				self.vecho.supported = true
 				self.vecho.ads_speed = 0.340
@@ -19708,6 +19708,164 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.mx63.timers.reload_exit_empty = 0.72
 				self.mx63.timers.reload_not_empty = 4.18
 				self.mx63.timers.reload_exit_not_empty = 1
+			end
+
+			if self.cagnali then	--Crime Boss Scudomnion
+				--Moved to primary
+				self.cagnali.use_data.selection_index = 2	
+				self.cagnali.categories = {"smg"}
+				self.cagnali.recategorize = {"light_smg"}
+				self.cagnali.damage_type = "machine_gun"
+				self.cagnali.CLIP_AMMO_MAX = 35
+				self.cagnali.AMMO_MAX = 175
+				self.cagnali.fire_mode_data.fire_rate = 0.092
+				self.cagnali.kick = self.stat_info.kick_tables.left_recoil
+				self.cagnali.ads_speed = 0.3
+				self.cagnali.stats_modifiers = nil
+				self.cagnali.panic_suppression_chance = 0.05
+				self.cagnali.supported = true
+				self.cagnali.timers.reload_not_empty = 2.29
+				self.cagnali.timers.reload_exit_not_empty = 0.86
+				self.cagnali.timers.reload_empty = 2.84
+				self.cagnali.timers.reload_exit_empty = 0.77
+				self.cagnali.has_description = true
+				self.cagnali.weapon_hold = "cagnali"
+				self.cagnali.desc_id = "bm_w_cagnali_desc"
+				self.cagnali.shell_ejection = "effects/payday2/particles/weapons/shells/shell_empty"
+				self.cagnali.damage_falloff = {
+					start_dist = 1100,
+					end_dist = 3400,
+					min_mult = 0.4
+				}
+				self.cagnali.stats = {
+					damage = 32,
+					spread = 65,
+					recoil = 80,
+					spread_moving = 5,
+					zoom = 1,
+					concealment = 24,
+					suppression = 9,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 200,
+					value = 12,
+					reload = 20
+				}
+			end
+
+			if self.bp12 then
+				self.bp12.has_description = true
+				self.bp12.desc_id = "bm_w_bp12_desc"
+				self.bp12.recategorize = { "light_shot" }
+				self.bp12.categories = { "shotgun" }
+				self.bp12.damage_type = "shotgun"
+				self.bp12.supported = true
+				self.bp12.rays = 6
+				self.bp12.fire_mode_data.fire_rate = 0.1665
+				self.bp12.panic_suppression_chance = 0.05
+				self.bp12.kick = self.stat_info.kick_tables.vertical_kick
+				self.bp12.CLIP_AMMO_MAX = 12
+				self.bp12.AMMO_MAX = 48
+				self.bp12.ads_speed = 0.2
+				self.bp12.timers.reload_not_empty = 1.54
+				self.bp12.timers.reload_empty = 1.67
+				self.bp12.timers.reload_exit_empty = 1.65
+				self.bp12.timers.reload_exit_not_empty = 1.76
+				self.bp12.damage_falloff = {
+					start_dist = 1800,
+					end_dist = 3500,
+					min_mult = 0.2
+				}
+				self.bp12.stats = {
+					damage = 90,
+					spread = 44,
+					recoil = 72,
+					spread_moving = 5,
+					zoom = 1,
+					concealment = 23,
+					suppression = 5,
+					alert_size = 7,
+					extra_ammo = 101,
+					total_ammo_mod = 200,
+					value = 1,
+					reload = 20
+				}
+				self.bp12.stats_modifiers = nil
+			end
+	
+			if self.amcar4 then
+				self.amcar4.desc_id = "bm_amcar4_sc_desc"
+				self.amcar4.has_description = true
+				self.amcar4.ads_speed = 0.2
+				self.amcar4.stats_modifiers = nil
+				self.amcar4.kick = self.stat_info.kick_tables.even_recoil
+				self.amcar4.supported = true
+				self.amcar4.timers.reload_not_empty = 2.67
+				self.amcar4.timers.reload_empty = 3.43
+				self.amcar4.timers.reload_exit_empty = 0.55
+				self.amcar4.timers.reload_exit_not_empty = 0.5
+				self.amcar4.fire_mode_data.fire_rate = 0.1
+				self.amcar4.CLIP_AMMO_MAX = 30
+				self.amcar4.AMMO_MAX = 120
+				self.amcar4.stats = {
+					damage = 32,
+					spread = 74,
+					recoil = 77,
+					spread_moving = 4,
+					zoom = 1,
+					concealment = 24,
+					suppression = 10,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 200,
+					value = 1,
+					reload = 20
+				}
+				self.amcar4.damage_falloff = {
+					start_dist = 2100,
+					end_dist = 4900,
+					min_mult = 0.43
+				}
+				self.amcar4.reload_speed_multiplier = 0.88
+				self.amcar4.panic_suppression_chance = 0.05
+			end
+
+			if self.baker then -- Travis Baker's Repeater
+				self.baker.desc_id = "wpn_fps_snp_baker_desc_sc"
+				self.baker.has_description = true
+				self.baker.ads_speed = 0.15
+				self.baker.stats_modifiers = nil
+				self.baker.kick = self.stat_info.kick_tables.left_kick
+				self.baker.FIRE_MODE = "single"
+				self.baker.supported = true
+				self.baker.AMMO_MAX = 40
+				self.baker.CLIP_AMMO_MAX = 8
+				self.baker.stats = {
+					damage = 66,
+					spread = 90,
+					recoil = 66,
+					spread_moving = 4,
+					zoom = 1,
+					concealment = 27,
+					suppression = 6,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 200,
+					value = 9,
+					reload = 20
+				}
+				self.baker.damage_falloff = {
+					start_dist = 3000,
+					end_dist = 7500,
+					min_mult = 0.3
+				}
+				self.baker.can_shoot_through_enemy = true
+				self.baker.can_shoot_through_shield = true
+				self.baker.can_shoot_through_wall = false -- Crime Boss won't let you do that. Sorry
+				self.baker.fire_mode_data.fire_rate = 0.857142857
+				self.baker.fire_rate_multiplier = 1.714285
+				self.baker.timers = deep_clone(self.winchester1874.timers)
+				self.baker.panic_suppression_chance = 0.05
 			end
 
 		--Predator Pack
@@ -20991,125 +21149,41 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.thirdeye.timers = deep_clone(self.tti.timers)
 		end
 
-		if self.cagnali then	--Crime Boss Scudomnion
-			--Moved to primary
-			self.cagnali.use_data.selection_index = 2	
-			self.cagnali.categories = {"smg"}
-			self.cagnali.recategorize = {"light_smg"}
-			self.cagnali.damage_type = "machine_gun"
-			self.cagnali.CLIP_AMMO_MAX = 35
-			self.cagnali.AMMO_MAX = 175
-			self.cagnali.fire_mode_data.fire_rate = 0.092
-			self.cagnali.kick = self.stat_info.kick_tables.left_recoil
-			self.cagnali.ads_speed = 0.3
-			self.cagnali.stats_modifiers = nil
-			self.cagnali.panic_suppression_chance = 0.05
-			self.cagnali.supported = true
-			self.cagnali.timers.reload_not_empty = 2.29
-			self.cagnali.timers.reload_exit_not_empty = 0.86
-			self.cagnali.timers.reload_empty = 2.84
-			self.cagnali.timers.reload_exit_empty = 0.77
-			self.cagnali.has_description = true
-			self.cagnali.weapon_hold = "cagnali"
-			self.cagnali.desc_id = "bm_w_cagnali_desc"
-			self.cagnali.shell_ejection = "effects/payday2/particles/weapons/shells/shell_empty"
-			self.cagnali.damage_falloff = {
-				start_dist = 1100,
-				end_dist = 3400,
-				min_mult = 0.4
+		if self.hawk12 then
+			self.hawk12.recategorize = { "light_shot" }
+			self.hawk12.categories = { "shotgun" }
+			self.hawk12.damage_type = "shotgun"
+			self.hawk12.fire_mode_data.fire_rate = 0.333
+			self.hawk12.CLIP_AMMO_MAX = 6
+			self.hawk12.AMMO_MAX = 42
+			self.hawk12.ads_speed = 0.32
+			self.hawk12.rays = 9
+			self.hawk12.kick = self.stat_info.kick_tables.left_recoil
+			self.hawk12.supported = true
+			self.hawk12.damage_falloff = {
+				start_dist = 1500,
+				end_dist = 4200,
+				min_mult = 0.6
 			}
-			self.cagnali.stats = {
-				damage = 32,
-				spread = 65,
-				recoil = 80,
-				spread_moving = 5,
+			self.hawk12.stats = {
+				damage = 100,
+				spread = 40,
+				recoil = 66,
+				spread_moving = 8,
 				zoom = 1,
-				concealment = 24,
-				suppression = 9,
+				concealment = 15,
+				suppression = 3,
 				alert_size = 2,
 				extra_ammo = 101,
 				total_ammo_mod = 200,
-				value = 12,
+				value = 2,
 				reload = 20
 			}
+			self.hawk12.stats_modifiers = nil
+			self.hawk12.panic_suppression_chance = 0.05
+			self.hawk12.timers = deep_clone(self.saiga.timers)
 		end
 
-		if self.bp12 then
-			self.bp12.has_description = true
-			self.bp12.desc_id = "bm_w_bp12_desc"
-			self.bp12.recategorize = { "light_shot" }
-			self.bp12.categories = { "shotgun" }
-			self.bp12.damage_type = "shotgun"
-			self.bp12.supported = true
-			self.bp12.rays = 6
-			self.bp12.fire_mode_data.fire_rate = 0.1665
-			self.bp12.panic_suppression_chance = 0.05
-			self.bp12.kick = self.stat_info.kick_tables.vertical_kick
-			self.bp12.CLIP_AMMO_MAX = 12
-			self.bp12.AMMO_MAX = 48
-			self.bp12.ads_speed = 0.2
-			self.bp12.timers.reload_not_empty = 1.54
-			self.bp12.timers.reload_empty = 1.67
-			self.bp12.timers.reload_exit_empty = 1.65
-			self.bp12.timers.reload_exit_not_empty = 1.76
-			self.bp12.damage_falloff = {
-				start_dist = 1800,
-				end_dist = 3500,
-				min_mult = 0.2
-			}
-			self.bp12.stats = {
-				damage = 90,
-				spread = 44,
-				recoil = 72,
-				spread_moving = 5,
-				zoom = 1,
-				concealment = 23,
-				suppression = 5,
-				alert_size = 7,
-				extra_ammo = 101,
-				total_ammo_mod = 200,
-				value = 1,
-				reload = 20
-			}
-			self.bp12.stats_modifiers = nil
-		end
-
-		if self.amcar4 then
-			self.amcar4.desc_id = "bm_amcar4_sc_desc"
-			self.amcar4.has_description = true
-			self.amcar4.ads_speed = 0.2
-			self.amcar4.stats_modifiers = nil
-			self.amcar4.kick = self.stat_info.kick_tables.even_recoil
-			self.amcar4.supported = true
-			self.amcar4.timers.reload_not_empty = 2.67
-			self.amcar4.timers.reload_empty = 3.43
-			self.amcar4.timers.reload_exit_empty = 0.55
-			self.amcar4.timers.reload_exit_not_empty = 0.5
-			self.amcar4.fire_mode_data.fire_rate = 0.1
-			self.amcar4.CLIP_AMMO_MAX = 30
-			self.amcar4.AMMO_MAX = 120
-			self.amcar4.stats = {
-				damage = 32,
-				spread = 74,
-				recoil = 77,
-				spread_moving = 4,
-				zoom = 1,
-				concealment = 24,
-				suppression = 10,
-				alert_size = 2,
-				extra_ammo = 101,
-				total_ammo_mod = 200,
-				value = 1,
-				reload = 20
-			}
-			self.amcar4.damage_falloff = {
-				start_dist = 2100,
-				end_dist = 4900,
-				min_mult = 0.43
-			}
-			self.amcar4.reload_speed_multiplier = 0.88
-			self.amcar4.panic_suppression_chance = 0.05
-		end
 	--[[     CAP/WEAPONLIB REQUIRING THINGS     ]]	
 		-- Currently low priority. If it REQUIRES Weaponlib (some Weaponlib weapons just need CAP's functionality, those are fine) then it's a no-go for now
 		
