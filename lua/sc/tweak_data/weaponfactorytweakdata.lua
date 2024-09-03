@@ -38200,6 +38200,17 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		self.wpn_fps_shot_hawk12.override.wpn_fps_upg_a_dragons_breath = deep_clone(shot_ammo.a_dragons_breath_semi_override)
 	end
 
+	if self.parts.wpn_fps_lmg_k3_b_long then
+		self.parts.wpn_fps_lmg_k3_b_long.supported = true
+		self.parts.wpn_fps_lmg_k3_b_long.stats = { spread = 1, concealment = -1 }
+
+		self.parts.wpn_fps_lmg_k3_m_quad.supported = true
+		self.parts.wpn_fps_lmg_k3_m_quad.stats = { extra_ammo = 20, reload = -2, recoil = 1, concealment = -2 }
+
+		self.parts.wpn_fps_lmg_k3_s_retract.supported = true
+		self.parts.wpn_fps_lmg_k3_s_retract.stats = { concealment = 2, recoil = -2 }
+	end
+
 	if self.parts.wpn_fps_pis_usp_knife_rambo then --PlayBONK and >:3's Off-hand Knives
 		attachment_list = {
 			"wpn_fps_pis_usp_knife_freedom"

@@ -2649,6 +2649,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					["bm_wp_wpn_fps_lmg_canton_body_desc"] = "#{skill_color}#80% chance to set enemies on fire, dealing## #{heat_warm_color}#60## #{skill_color}#damage over 4 seconds.##\n#{risk}#Chance is reduced over range and only stuns enemies before damage falloff starts.\nDeals fire damage instead of bullet damage.##",
 					--Serious Sam Minigun (XM214-A)
 					["bm_wpn_fps_lmg_xm214a_desc"] = "\"Whenever you get the minigun in a Serious Sam game, you know shit's about to go down.\" - Civvie 11\n\n#{risk}#Has a brief spin-up period before firing; aiming keeps the weapon spun-up.##",
+					["wpn_fps_lmg_k3_desc"] = "Strangly missing a few parts...",
 			--[[ SHOTGUNS ]]
 				--Saiga
 				["bm_saiga_sc_desc"] = "This fully automatic shotgun is perfect for those days you just don't feel like aiming.",

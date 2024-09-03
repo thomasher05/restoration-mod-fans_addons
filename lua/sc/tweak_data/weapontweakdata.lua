@@ -21358,6 +21358,50 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.tar21.panic_suppression_chance = 0.05
 			self.tar21.reload_speed_multiplier = 1.15
 		end
+
+		if self.k3 then
+			self.k3.categories = {
+				"lmg",
+				"smg"
+			}
+			self.k3.desc_id = "wpn_fps_lmg_k3_desc"
+			self.k3.has_description = true
+			self.k3.stats = {
+				damage = 32,
+				spread = 46,
+				recoil = 77,
+				spread_moving = 4,
+				zoom = 1,
+				concealment = 23,
+				suppression = 8,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 200,
+				value = 14,
+				reload = 20
+			}
+			self.k3.timers.reload_exit_empty = 1.7
+			self.k3.timers.reload_exit_not_empty = 1.1
+			self.k3.shell_ejection = "_dmc/effects/shell_lmg_down"
+			self.k3.stats_modifiers = nil
+			self.k3.damage_falloff = {
+				start_dist = 3200,
+				end_dist = 6600,
+				min_mult = 0.3288
+			}
+			self.k3.ads_speed = 0.33
+			self.k3.CLIP_AMMO_MAX = 60
+			self.k3.AMMO_MAX = 240
+			self.k3.fire_mode_data.fire_rate = 0.0706
+			self.k3.kick = self.stat_info.kick_tables.horizontal_left_recoil_mg
+			self.k3.always_use_standing = true
+			self.k3.muzzleflash = "effects/payday2/particles/weapons/tkb_muzzle"
+			self.k3.supported = true
+			self.k3.panic_suppression_chance = 0.05
+			self.k3.reload_speed_multiplier = 0.87
+		--	self.k3.weapon_movement_penalty = 0.95 -- dont touch that
+		end
+
 	--[[     DISABLED     ]]--
 	
 		--Akimbo VD-12 
