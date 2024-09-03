@@ -2593,6 +2593,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					["bm_w_lc10_desc_sc"] = "Full-auto submachine gun. Well rounded with excellent damage range and good accuracy. Moderate damage with an impressive muzzle velocity and a high fire rate.",
 					--Scudomnion
 					["bm_w_cagnali_desc"] = "Manufactured by Cagnali Industries for use with the C.I.A.R.S.S.E.A.\n\nOMNIA has taken note of this weapon's existence and are trying to improve where Dr. Lucia Cagnali failed.",
+					--Owen SMG
+					["wpn_fps_smg_owen_desc"] = "Australian submachine gun that supplied the Australian Army from 1938 to 1971. You can dip this in sand, mud, or even both and it still fires perfectly fine.",
 			
 			--[[ MGs ]]
 				--Bootleg/HK416c

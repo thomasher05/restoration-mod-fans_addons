@@ -19731,7 +19731,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.cagnali.has_description = true
 				self.cagnali.weapon_hold = "cagnali"
 				self.cagnali.desc_id = "bm_w_cagnali_desc"
-				self.cagnali.shell_ejection = "effects/payday2/particles/weapons/shells/shell_empty"
+				self.cagnali.shell_ejection = "effects/payday2/particles/weapons/shells/shell_9mm"
 				self.cagnali.damage_falloff = {
 					start_dist = 1100,
 					end_dist = 3400,
@@ -21402,6 +21402,43 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 		--	self.k3.weapon_movement_penalty = 0.95 -- dont touch that
 		end
 
+		if self.owen then
+			self.owen.desc_id = "wpn_fps_smg_owen_desc"
+			self.owen.has_description = true
+			self.owen.use_data.selection_index = 2	
+			self.owen.categories = {"smg"}
+			self.owen.recategorize = {"light_smg"}
+			self.owen.damage_type = "machine_gun"
+			self.owen.fire_mode_data.fire_rate = 0.0857
+			self.owen.kick = self.stat_info.kick_tables.even_recoil
+			self.owen.panic_suppression_chance = 0.05
+			self.owen.supported = true
+			self.owen.ads_speed = 0.222
+			self.owen.stats_modifiers = nil
+			self.owen.timers = deep_clone(self.schakal.timers)
+			self.owen.timers.reload_not_empty = 2.84
+			self.owen.CLIP_AMMO_MAX = 33
+			self.owen.AMMO_MAX = 198
+			self.owen.damage_falloff = {
+				start_dist = 2000,
+				end_dist = 3000,
+				min_mult = 0.67
+			}
+			self.owen.stats = {
+				damage = 40,
+				spread = 83,
+				recoil = 92,
+				spread_moving = 6,
+				zoom = 1,
+				concealment = 24,
+				suppression = 9,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 200,
+				value = 2,
+				reload = 20
+			}
+		end
 	--[[     DISABLED     ]]--
 	
 		--Akimbo VD-12 

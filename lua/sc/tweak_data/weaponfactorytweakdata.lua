@@ -38211,6 +38211,26 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		self.parts.wpn_fps_lmg_k3_s_retract.stats = { concealment = 2, recoil = -2 }
 	end
 
+	if self.parts.wpn_fps_smg_owen_b_43 then
+		self.parts.wpn_fps_smg_owen_b_43.supported = true
+		self.parts.wpn_fps_smg_owen_b_43.stats = { recoil = -1, spread = 1, concealment = -1 }
+
+		self.parts.wpn_fps_smg_owen_s_wood.supported = true
+		self.parts.wpn_fps_smg_owen_s_wood.stats = { recoil = 2, concealment = -2 }
+
+		self.parts.wpn_fps_smg_owen_s_no.supported = true
+		self.parts.wpn_fps_smg_owen_s_no.stats = { recoil = -2, spread = -2, concealment = 3 }
+
+		self.parts.wpn_fps_smg_owen_low_window.supported = true
+		self.parts.wpn_fps_smg_owen_low_window.stats = { recoil = -1, spread = 1, concealment = 1 }
+
+		self.parts.wpn_fps_smg_owen_sling.supported = true
+		self.parts.wpn_fps_smg_owen_sling.stats = { spread = 1, concealment = -1 }
+
+		self.parts.wpn_fps_smg_owen_m_double.supported = true
+		self.parts.wpn_fps_smg_owen_m_double.stats = { reload = 3, concealment = -3 }
+	end
+
 	if self.parts.wpn_fps_pis_usp_knife_rambo then --PlayBONK and >:3's Off-hand Knives
 		attachment_list = {
 			"wpn_fps_pis_usp_knife_freedom"
