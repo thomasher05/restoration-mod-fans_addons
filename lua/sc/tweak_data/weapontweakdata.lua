@@ -7087,7 +7087,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 
 					--Matever .357
 						self.mateba.has_description = true
-						self.mateba.desc_id = "bm_2006m_sc_desc"					
+						self.mateba.desc_id = "bm_2006m_sc_desc"
 						self.mateba.fire_mode_data.fire_rate = 0.15
 						self.mateba.AMMO_MAX = 30
 						self.mateba.timers.reload_not_empty = 3.6
@@ -7157,11 +7157,11 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.model3.timers.reload_exit_not_empty = 0.4
 						self.model3.timers.reload_empty = 2.2
 						self.model3.timers.reload_exit_empty = 0.4
-						self.model3.panic_suppression_chance = 0.05	
+						self.model3.panic_suppression_chance = 0.05
 
 					--Bronco
 						self.new_raging_bull.has_description = true
-						self.new_raging_bull.desc_id = "bm_rage_sc_desc"				
+						self.new_raging_bull.desc_id = "bm_rage_sc_desc"
 						self.new_raging_bull.fire_mode_data.fire_rate = 0.2
 						self.new_raging_bull.AMMO_MAX = 30
 						self.new_raging_bull.kick = self.stat_info.kick_tables.moderate_kick
@@ -7199,7 +7199,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 
 					--Castigo
 						self.chinchilla.has_description = true
-						self.chinchilla.desc_id = "bm_chinchilla_sc_desc"			
+						self.chinchilla.desc_id = "bm_chinchilla_sc_desc"
 						self.chinchilla.fire_mode_data.fire_rate = 0.1818181
 						self.chinchilla.AMMO_MAX = 30
 						self.chinchilla.kick = self.stat_info.kick_tables.moderate_kick
@@ -7235,7 +7235,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					--Deagle
 						--Back to secondary
 						self.deagle.has_description = true
-						self.deagle.desc_id = "bm_deagle_sc_desc"						
+						self.deagle.desc_id = "bm_deagle_sc_desc"
 						self.deagle.use_data.selection_index = 1
 						self.deagle.fire_mode_data.fire_rate = 0.17647058
 						self.deagle.kick = self.stat_info.kick_tables.moderate_right_kick
@@ -10751,7 +10751,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			
 					--Rattlesnake
 						self.msr.desc_id = "bm_msr_sc_desc"
-						self.msr.has_description = true					
+						self.msr.has_description = true
 						self.msr.upgrade_blocks = nil
 						self.msr.CLIP_AMMO_MAX = 10
 						self.msr.NR_CLIPS_MAX = 5
@@ -14215,6 +14215,43 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				end
 
 		--[[     CARL'S MODS     ]]--
+			if self.limafive then -- Deagle L5
+				self.limafive.recategorize = {"heavy_pis"}
+				self.limafive.damage_type = "handcannon"			
+				self.limafive.fire_mode_data.fire_rate = 0.1428
+				self.limafive.CLIP_AMMO_MAX = 9
+				self.limafive.AMMO_MAX = 30
+				self.limafive.kick = self.stat_info.kick_tables.moderate_right_kick
+				self.limafive.supported = true
+				self.limafive.ads_speed = 0.200
+				self.limafive.damage_falloff = {
+					start_dist = 1000,
+					end_dist = 3500,
+					min_mult = 0.25
+				}
+				self.limafive.stats = {
+					damage = 60,
+					spread = 61,
+					recoil = 57,
+					spread_moving = 5,
+					zoom = 1,
+					concealment = 25,
+					suppression = 8,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 200,
+					value = 1,
+					reload = 20
+				}
+				self.limafive.stats_modifiers = nil
+				self.limafive.panic_suppression_chance = 0.05
+				self.limafive.has_description = true
+				self.limafive.desc_id = "bm_ap_armor_50_weapon_sc_desc"	
+				self.limafive.can_shoot_through_enemy = true
+				self.limafive.armor_piercing_chance = 0.5
+				self.limafive.timers = deep_clone(self.deagle.timers)
+			end
+
 			if self.derringer then --Carl's Derringer
 				self.derringer.recategorize = {"heavy_pis"}
 				self.derringer.damage_type = "handcannon"
@@ -21184,6 +21221,84 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.hawk12.timers = deep_clone(self.saiga.timers)
 		end
 
+		if self.knockout then
+			self.knockout.desc_id = "bm_w_knockout_sc_desc"
+			self.knockout.has_description = true
+			self.knockout.categories = {
+				"snp",
+				"amr"
+			}
+			self.knockout.recategorize = { "antim_snp" }
+			self.knockout.CLIP_AMMO_MAX = 5
+			self.knockout.AMMO_MAX = 20
+			self.knockout.fire_mode_data.fire_rate = 1.09090909
+			self.knockout.kick = self.stat_info.kick_tables.vertical_kick
+			self.knockout.supported = true
+			self.knockout.ads_speed = 0.400
+			self.knockout.stats_modifiers = nil
+			self.knockout.panic_suppression_chance = 0.05
+			self.knockout.damage_type = "anti_materiel"
+			self.knockout.damage_falloff = {
+				start_dist = 4400,
+				end_dist = 8500,
+				min_mult = 0.5
+			}
+			self.knockout.stats = {
+				damage = 122,
+				spread = 96,
+				recoil = 24,
+				spread_moving = 8,
+				zoom = 1,
+				concealment = 26,
+				suppression = 6,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 200,
+				value = 9,
+				reload = 20
+			}
+			self.knockout.timers = deep_clone(self.msr.timers)
+			self.knockout.can_shoot_through_enemy = true
+			self.knockout.can_shoot_through_shield = true
+			self.knockout.can_shoot_through_wall = true
+			self.knockout.can_shoot_through_titan_shield = true
+		end
+
+		if self.kedr then
+			self.knockout.desc_id = "bm_w_kedr_sc_desc"
+			self.knockout.has_description = true
+			self.kedr.categories = { "pistol" }
+			self.kedr.recategorize = {"light_pis"}
+			self.kedr.AMMO_MAX = 128
+			self.kedr.CLIP_AMMO_MAX = 32
+			self.kedr.fire_mode_data.fire_rate = 0.1
+			self.kedr.kick = self.stat_info.kick_tables.left_recoil
+			self.kedr.supported = true
+			self.kedr.ads_speed = 0.120
+			self.kedr.damage_falloff = {
+				start_dist = 1000,
+				end_dist = 2600,
+				min_mult = 0.2
+			}
+			self.kedr.stats = {
+				damage = 30,
+				spread = 67,
+				recoil = 87,
+				spread_moving = 4,
+				zoom = 1,
+				concealment = 28,
+				suppression = 11,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 200,
+				value = 7,
+				reload = 20
+			}
+			self.kedr.stats_modifiers = nil
+			self.kedr.panic_suppression_chance = 0.05
+			self.kedr.timers = deep_clone(self.tec9.timers)
+		end
+
 	--[[     CAP/WEAPONLIB REQUIRING THINGS     ]]	
 		-- Currently low priority. If it REQUIRES Weaponlib (some Weaponlib weapons just need CAP's functionality, those are fine) then it's a no-go for now
 		
@@ -21205,7 +21320,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 		if self.x_cold then --disabled vmp akimbos
 			self.x_cold.use_data.selection_index = 5
 			self.x_cold.supported = true
-		end		
+		end
+
+		if self.x_kedr then --disabled vmp akimbos
+			self.x_kedr.use_data.selection_index = 5
+			self.x_kedr.supported = true
+		end	
 
 		if self.cold then --Gambyt's VMP Crosskill Protector
 			self.cold.use_data.selection_index = 5

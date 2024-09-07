@@ -2553,6 +2553,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					["whydoyoucome"] = "The only one of its kind, made specially for rockerboy Johnny Silverhand.\n\n#{skill_color}#Can pierce multiple enemies and their body armor.\nRounds ricochet off surfaces while firing from the hip and pierce walls while aiming.\nWeapon Butt attacks shoot out a short ranged wave of fire.##",
 					--Colt Detective
 					["bm_lemon_dmc_desc"] = "Imagine yourself with a concealable, high-powered revolver. Now imagine no futher, as the Investigator is exactly that.\n\n#{skill_color}#Deals double damage when attacking enemies from behind.##",
+					--PP-91 KEDR
+					["bm_w_kedr_sc_desc"] = "Easy to use, easy to fire. So easy even a monkey can- wait wrong gun. Still applies to this weapon however.",
 			
 			--[[ SMGs ]]
 				--Kobus 90
@@ -2914,7 +2916,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					["bm_wp_hmcar_hd_kit"] = "32bit 8K HD Kit",
 					["bm_wp_hmcar_hd_kit_desc"] = "Application has crashed: C++ exception\nCould not load texture because IDirect3D9::CreateTexture call failed.\nDirect3D could not allocate sufficient memory to complete the call.\n\n\n\n\n\n\n ",
 					--Travis Baker's Repeater
-					["wpn_fps_snp_baker_desc_sc"] = "A Winchester gilded in a gold pattern, fit for an upcoming candyman king...\n\n#{skill_color}#Can pierce multiple enemies and shields.##",	
+					["wpn_fps_snp_baker_desc_sc"] = "A Winchester gilded in a gold pattern, fit for a king...\n\n#{skill_color}#Can pierce multiple enemies and shields.##", --probably less cheesy idk
+					--.300 Knockout
+					["bm_w_knockout_sc_desc"] = "Anti-materiel varaint of the Rattlesnake. Much like other anti-materiel rifles, using this on living targets is probably a warcrime.\n\nComes #{skill_color}#integrally suppressed## and #{skill_color}#can pierce body armor, multiple enemies, shields, titan-shields and thin walls.##",
 			
 			--[[ SPECIALS ]]
 				--Saw
@@ -4616,6 +4620,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 				["bm_m16_sc_desc"] = "I'll give you a clip so you can do some damage",
 				["bm_w_x_type54"] = weapon_names == 2 and "The twin colts" or "The twin crosskills",
 				["bm_akmsu_sc_desc"] = "A small rifle useful for taking down #{stat_maxed}#BIG MEN##. Not to be underestimated as this rifle can hold its own in just about any scenario.",
+				["bm_w_kedr_sc_desc"] = "'Congrats on your new PhD for repeatedly dying.' - Doctor, Typical Colors 2",
+				["bm_w_rc_auto9_desc"] = "Dead or alive; you're coming with me.",
 			})
 		end
 
