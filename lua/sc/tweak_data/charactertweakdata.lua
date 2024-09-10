@@ -817,7 +817,7 @@ function CharacterTweakData:_init_swat(presets)
 	self.hrt_titan.headshot_dmg_mul = 1.625
 	self.hrt_titan.surrender = nil
 	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
-		self.hrt_titan.custom_voicework = nil
+		self.hrt_titan.custom_voicework = "asu_ru"
 	else
 		self.hrt_titan.custom_voicework = "asu"
 	end	

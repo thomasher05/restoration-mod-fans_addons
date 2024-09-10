@@ -21115,7 +21115,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 
 		if self.glockson then --Masavik's Glockson
 			--Moved to primary
-			self.glockson.use_data.selection_index = 2	
+			self.glockson.use_data.selection_index = 2
 			self.glockson.categories = {"smg"}
 			self.glockson.recategorize = {"light_smg"}
 			self.glockson.damage_type = "machine_gun"
@@ -21265,11 +21265,11 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 		end
 
 		if self.kedr then
-			self.knockout.desc_id = "bm_w_kedr_sc_desc"
-			self.knockout.has_description = true
+			self.kedr.desc_id = "bm_w_kedr_sc_desc"
+			self.kedr.has_description = true
 			self.kedr.categories = { "pistol" }
 			self.kedr.recategorize = {"light_pis"}
-			self.kedr.AMMO_MAX = 128
+			self.kedr.AMMO_MAX = 160
 			self.kedr.CLIP_AMMO_MAX = 32
 			self.kedr.fire_mode_data.fire_rate = 0.1
 			self.kedr.kick = self.stat_info.kick_tables.left_recoil
@@ -21299,6 +21299,42 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.kedr.timers = deep_clone(self.tec9.timers)
 		end
 
+		if self.af2011 then
+			--Moved to primary
+			self.af2011.rays = 2
+			self.af2011.damage_type = "shotgun"
+			self.af2011.use_data.selection_index = 2
+			self.kedr.categories = { "pistol" }
+			self.af2011.CLIP_AMMO_MAX = 10
+			self.af2011.AMMO_MAX = 70
+			self.af2011.fire_mode_data.fire_rate = 0.0882352
+			self.af2011.kick = self.stat_info.kick_tables.even_recoil
+			self.af2011.supported = true
+			self.af2011.ads_speed = 0.140
+			self.af2011.damage_falloff = {
+				start_dist = 1100,
+				end_dist = 3200,
+				min_mult = 0.44
+			}
+			self.af2011.stats = {
+				damage = 48,
+				spread = 61,
+				recoil = 85,
+				spread_moving = 5,
+				zoom = 1,
+				concealment = 30,
+				suppression = 11,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 200,
+				value = 1,
+				reload = 20
+			}
+			self.af2011.stats_modifiers = nil
+			self.af2011.panic_suppression_chance = 0.05
+			self.af2011.timers = deep_clone(self.b92fs.timers)
+		end
+
 	--[[     CAP/WEAPONLIB REQUIRING THINGS     ]]	
 		-- Currently low priority. If it REQUIRES Weaponlib (some Weaponlib weapons just need CAP's functionality, those are fine) then it's a no-go for now
 		
@@ -21326,6 +21362,11 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.x_kedr.use_data.selection_index = 5
 			self.x_kedr.supported = true
 		end	
+
+		if self.x_af2011 then
+			self.x_af2011.use_data.selection_index = 5
+			self.x_af2011.supported = true
+		end
 
 		if self.cold then --Gambyt's VMP Crosskill Protector
 			self.cold.use_data.selection_index = 5
