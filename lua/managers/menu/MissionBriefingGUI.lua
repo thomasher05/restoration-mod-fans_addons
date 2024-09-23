@@ -113,11 +113,11 @@ if restoration.Options:GetValue("HUD/UI/Loadouts") then
 		local level_data = managers.job:current_level_data()
 		local name_id = stage_data.name_id or level_data.name_id
 		local briefing_id = managers.job:current_briefing_id()
-		
+
 		if managers.skirmish:is_skirmish() and not managers.skirmish:is_weekly_skirmish() then
 			briefing_id = "heist_skm_random_briefing"
 		end
-		
+
 		local title_text = self._panel:text({
 			name = "title_text",
 			text = managers.localization:to_upper_text(name_id),
@@ -170,7 +170,7 @@ if restoration.Options:GetValue("HUD/UI/Loadouts") then
 			desc_text:set_text(text)
 		end
 		self:_chk_add_scrolling()
-		
+
 		if managers.skirmish:is_weekly_skirmish() then
 			managers.network:add_event_listener({}, "on_set_dropin", function ()
 				self:add_description_text("\n##" .. managers.localization:text("menu_weekly_skirmish_dropin_warning") .. "##")
@@ -199,6 +199,258 @@ if restoration.Options:GetValue("HUD/UI/Loadouts") then
 					show_scroll_line_bottom and 2 or 0
 				}
 			})
+		end
+	end
+
+	function AssetsItem:create_assets(assets_names, max_assets)
+		self._panel:clear()
+
+		self._loading_text = nil
+		self._asset_locked = {}
+		self._assets_list = {}
+		self._assets_names = assets_names
+		self._unlock_cost = assets_names[3] or false
+		local center_y = math.round(self._panel:h() / 2) - tweak_data.menu.pd2_small_font_size
+		self._asset_text_panel = self._panel:panel({
+			layer = 4,
+			name = "asset_text"
+		})
+		local first_rect, rect = nil
+		local w = self._panel:w() / (self._num_items / 2)
+		local step = w * 0.5
+
+		for i = 1, #assets_names do
+			local center_x = i * w - w * 0.5
+			rect = self._panel:rect({
+				w = 85,
+				h = 85,
+				name = "bg_rect_" .. tostring(i)
+			})
+
+			rect:hide()
+
+			first_rect = first_rect or rect
+			local center_x = math.ceil(i / 2) * w - step
+			local center_y = self._panel:h() * (i % 2 > 0 and 0.295 or 0.815)
+			local texture = assets_names[i][1]
+			local asset = nil
+
+			if texture and DB:has(Idstring("texture"), texture) then
+				asset = self._panel:bitmap({
+					h = 65,
+					valign = "top",
+					w = 65,
+					layer = 1,
+					name = "asset_" .. tostring(i),
+					texture = texture,
+					rotation = math.random(2) - 1.5
+				})
+			else
+				asset = self._panel:bitmap({
+					texture = "guis/textures/pd2/endscreen/what_is_this",
+					h = 65,
+					w = 65,
+					alpha = 0,
+					valign = "top",
+					layer = 1,
+					name = "asset_" .. tostring(i),
+					rotation = math.random(2) - 1.5
+				})
+			end
+
+			local aspect = asset:texture_width() / math.max(1, asset:texture_height())
+
+			asset:set_w(asset:h() * aspect)
+			rect:set_w(rect:h() * aspect)
+			rect:set_center(center_x, center_y)
+			rect:set_position(math.round(rect:x()), math.round(rect:y()))
+			asset:set_center(rect:center())
+			asset:set_position(math.round(asset:x()), math.round(asset:y()))
+			asset:set_rotation(0.5)
+
+			if not assets_names[i][3] then
+				local lock = self._panel:bitmap({
+					layer = 3,
+					name = "asset_lock_" .. tostring(i),
+					texture = managers.assets:get_asset_can_unlock_by_id(self._assets_names[i][4]) and "guis/textures/pd2/blackmarket/money_lock" or "guis/textures/pd2/skilltree/padlock",
+					color = tweak_data.screen_colors.item_stage_1
+				})
+
+				lock:set_center(rect:center())
+				asset:set_color(Color.black:with_alpha(0.6))
+
+				self._asset_locked[i] = true
+			end
+
+			table.insert(self._assets_list, asset)
+		end
+
+		self._text_strings_localized = false
+		self._my_asset_space = w
+		self._my_left_i = self._my_menu_component_data.my_left_i or 1
+
+		if math.ceil(#self._assets_list / self._num_items) > 1 then
+			self._move_left_rect = self._panel:bitmap({
+				texture = "guis/textures/pd2/hud_arrow",
+				h = 32,
+				blend_mode = "add",
+				w = 32,
+				rotation = 360,
+				layer = 3,
+				color = tweak_data.screen_colors.button_stage_3
+			})
+
+			self._move_left_rect:set_center(0, self._panel:h() / 2)
+			self._move_left_rect:set_position(math.round(self._move_left_rect:x()), math.round(self._move_left_rect:y()))
+			self._move_left_rect:set_visible(false)
+
+			self._move_right_rect = self._panel:bitmap({
+				texture = "guis/textures/pd2/hud_arrow",
+				h = 32,
+				blend_mode = "add",
+				w = 32,
+				rotation = 180,
+				layer = 3,
+				color = tweak_data.screen_colors.button_stage_3
+			})
+
+			self._move_right_rect:set_center(self._panel:w(), self._panel:h() / 2)
+			self._move_right_rect:set_position(math.round(self._move_right_rect:x()), math.round(self._move_right_rect:y()))
+			self._move_right_rect:set_visible(false)
+		end
+
+		if not managers.menu:is_pc_controller() then
+			local legends = {
+				"menu_legend_preview_move",
+				"menu_legend_select"
+			}
+
+			if managers.preplanning:has_current_level_preplanning() then
+				table.insert(legends, 1, "menu_legend_open_preplanning")
+			else
+				table.insert(legends, 1, "menu_legend_buy_all_assets")
+			end
+
+			local t_text = ""
+
+			for i, string_id in ipairs(legends) do
+				local spacing = i > 1 and "  |  " or ""
+				t_text = t_text .. spacing .. utf8.to_upper(managers.localization:text(string_id, {
+					BTN_UPDATE = managers.localization:btn_macro("menu_update"),
+					BTN_BACK = managers.localization:btn_macro("back")
+				}))
+			end
+
+			local legend_text = self._panel:text({
+				rotation = 360,
+				font = tweak_data.menu.pd2_small_font,
+				font_size = tweak_data.menu.pd2_small_font_size,
+				text = t_text
+			})
+			local _, _, lw, lh = legend_text:text_rect()
+
+			legend_text:set_size(lw, lh)
+			legend_text:set_righttop(self._panel:w() - 5, 5)
+		end
+
+		local first_rect = self._panel:child("bg_rect_1")
+
+		if first_rect then
+			self._select_box_panel = self._panel:panel({
+				visible = false,
+				layer = -3
+			})
+
+			self._select_box_panel:set_shape(first_rect:shape())
+
+			self._select_box = BoxGuiObject:new(self._select_box_panel, {
+				sides = {
+					2,
+					2,
+					2,
+					2
+				}
+			})
+		end
+
+		self:post_init()
+
+		self._is_buy_all_dialog_open = false
+
+		if not managers.preplanning:has_current_level_preplanning() and managers.menu:is_pc_controller() then
+			self.buy_all_button = self._panel:text({
+				name = "buy_all_btn",
+				align = "right",
+				blend_mode = "add",
+				visible = true,
+				text = managers.localization:to_upper_text("menu_asset_buy_all_button"),
+				h = tweak_data.menu.pd2_medium_font_size * 0.95,
+				font_size = tweak_data.menu.pd2_medium_font_size * 0.9,
+				font = tweak_data.menu.pd2_medium_font,
+				color = tweak_data.screen_colors.button_stage_3
+			})
+
+			self.buy_all_button:set_top(4.5)
+			self.buy_all_button:set_right(self._panel:w() - 5)
+		end
+	end
+
+	function MutatorsItem:init(panel, text, i)
+		MissionBriefingTabItem.init(self, panel, text, i)
+
+		if not managers.mutators:are_mutators_active() then
+			return
+		end
+
+		local title_text = self._panel:text({
+			name = "title_text",
+			y = 10,
+			x = 10,
+			text = managers.localization:to_upper_text("menu_cn_mutators_active"),
+			font_size = 28,
+			font = tweak_data.menu.default_font,
+			color = tweak_data.screen_color_blue
+		})
+		local x, y, w, h = title_text:text_rect()
+
+		title_text:set_size(w, h)
+		title_text:set_position(math.round(title_text:x()), math.round(title_text:y()))
+
+		local _y = title_text:bottom() + 5
+		local mutators_list = {}
+
+		for i, active_mutator in pairs(managers.mutators:active_mutators()) do
+			local mutator = active_mutator.mutator
+
+			if mutator then
+				table.insert(mutators_list, mutator)
+			end
+		end
+
+		table.sort(mutators_list, function (a, b)
+			return a:name() < b:name()
+		end)
+
+		for i, mutator in ipairs(mutators_list) do
+			local text = string.format("%s - %s", mutator:name(), mutator:desc())
+			local mutator_text = self._panel:text({
+				wrap = true,
+				word_wrap = true,
+				x = 10,
+				name = "mutator_text_" .. tostring(mutator:id()),
+				font = tweak_data.menu.small_font,
+				font_size = tweak_data.menu.pd2_small_font_size + 4,
+				text = text,
+				y = _y,
+				w = self._panel:w() - 5,
+				h = tweak_data.menu.pd2_small_font_size + 4,
+				color = tweak_data.screen_colors.text
+			})
+			local _, _, w, h = mutator_text:text_rect()
+
+			mutator_text:set_size(w, h)
+
+			_y = mutator_text:bottom() + 2
 		end
 	end
 
@@ -282,7 +534,7 @@ if restoration.Options:GetValue("HUD/UI/Loadouts") then
 		self._description_item = DescriptionItem:new(self._panel, utf8.to_upper(managers.localization:text("menu_description")), index, self._node:parameters().menu_component_data.saved_descriptions)
 		table.insert(self._items, self._description_item)
 		index = index + 1
-		
+
 		if not managers.skirmish:is_skirmish() then
 			self._assets_item = AssetsItem:new(self._panel, managers.preplanning:has_current_level_preplanning() and managers.localization:to_upper_text("menu_preplanning") or utf8.to_upper(managers.localization:text("menu_assets")), index, {}, nil, asset_data)
 			table.insert(self._items, self._assets_item)
@@ -356,7 +608,7 @@ if restoration.Options:GetValue("HUD/UI/Loadouts") then
 		self._multi_profile_item:panel():set_bottom(self._panel:h())
 		self._multi_profile_item:panel():set_left(0)
 		self._multi_profile_item:set_name_editing_enabled(false)
-		
+
 		local mutators_panel = self._safe_workspace:panel()
 		local mutator_category = managers.mutators:get_enabled_active_mutator_category()
 		self._lobby_mutators_text = mutators_panel:text({
@@ -374,15 +626,15 @@ if restoration.Options:GetValue("HUD/UI/Loadouts") then
 		self._lobby_mutators_text:set_top(tweak_data.menu.pd2_large_font_size)
 		local mutators_active = managers.mutators:are_mutators_enabled() and managers.mutators:allow_mutators_in_level(managers.job:current_level_id())
 		self._lobby_mutators_text:set_visible(mutators_active)
-		
+
 		self._lobby_code_text = LobbyCodeMenuComponent:new(self._safe_workspace, self._full_workspace)
 
-		self._lobby_code_text:panel():set_layer(2)	
-		
+		self._lobby_code_text:panel():set_layer(2)
+
 		if managers.crime_spree:is_active() then
 			self._lobby_code_text:panel():set_position(600, self._lobby_code_text:panel():y())
-		end		
-		
+		end
+
 		local local_peer = managers.network:session():local_peer()
 
 		for peer_id, peer in pairs(managers.network:session():peers()) do
@@ -391,8 +643,8 @@ if restoration.Options:GetValue("HUD/UI/Loadouts") then
 
 				self:set_slot_outfit(peer_id, peer:character(), outfit)
 			end
-		end		
-		
+		end
+
 		self._enabled = true
 		--self:flash_ready()
 	end
@@ -401,7 +653,7 @@ if restoration.Options:GetValue("HUD/UI/Loadouts") then
 		local max_x = alive(self._next_page) and self._next_page:left() - 5 or self._panel:w()
 
 		if self._reduced_to_small_font or self._reduced_to_small_font_mut or self._items[#self._items] and alive(self._items[#self._items]._tab_text) and max_x < self._items[#self._items]._tab_text:right() then
-			
+
 			for i, tab in ipairs(self._items) do
 				tab:reduce_to_small_font()
 			end
@@ -526,19 +778,19 @@ if restoration.Options:GetValue("HUD/UI/Loadouts") then
 				end
 			end
 		end
-		
+
 		if self._ready_button:inside(x, y) then
 			self:on_ready_pressed()
 		end
-		
+
 		if self._lobby_code_text then
 			self._lobby_code_text:mouse_pressed(button, x, y)
-		end	
-		
+		end
+
 		if not self._ready then
 			self._multi_profile_item:mouse_pressed(button, x, y)
 		end
-		
+
 		return self._selected_item
 	end
 
@@ -582,7 +834,7 @@ if restoration.Options:GetValue("HUD/UI/Loadouts") then
 		if managers.hud._hud_mission_briefing and managers.hud._hud_mission_briefing._backdrop then
 			managers.hud._hud_mission_briefing._backdrop:mouse_moved(x, y)
 		end
-		
+
 		if self._lobby_code_text then
 			local success, mouse_state = self._lobby_code_text:mouse_moved(x, y)
 
@@ -590,7 +842,7 @@ if restoration.Options:GetValue("HUD/UI/Loadouts") then
 				return success, mouse_state
 			end
 		end
-		
+
 		local u, p = self._multi_profile_item:mouse_moved(x, y)
 		return u or false, p or "arrow"
 	end
@@ -623,35 +875,35 @@ if restoration.Options:GetValue("HUD/UI/Loadouts") then
 		WalletGuiObject.close_wallet(self._safe_workspace:panel())
 		managers.music:stop_listen_all()
 		self:close_asset()
-		
+
 		local requested_asset_textures = self._assets_item and self._assets_item:get_requested_textures()
-		
+
 		if requested_asset_textures then
 			for key, data in pairs(requested_asset_textures) do
 				managers.menu_component:unretrieve_texture(data.texture, data.index)
 			end
 		end
-		
+
 		if self._lobby_code_text then
 			self._lobby_code_text:close()
-		end		
-		
+		end
+
 		if self._panel and alive(self._panel) then
 			self._panel:parent():remove(self._panel)
 		end
-		
+
 		if self._fullscreen_panel and alive(self._fullscreen_panel) then
 			self._fullscreen_panel:parent():remove(self._fullscreen_panel)
 		end
-		
+
 		local level_tweak = tweak_data.levels[managers.job:current_level_id()]
-		
+
 		if level_tweak and level_tweak.on_enter_clbks then
 			for _, clbk in pairs(level_tweak.on_enter_clbks) do
 				clbk()
 			end
 		end
-		
+
 	end
 
 end

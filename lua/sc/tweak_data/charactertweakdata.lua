@@ -372,6 +372,7 @@ function CharacterTweakData:_init_cop(presets)
 	self.cop_female.speech_prefix_p2 = "n"
 	self.cop_female.speech_prefix_count = 1
 	self.cop_female.tags = {"law", "female_enemy"}
+	self.cop_female.custom_voicework = "copfemale"
 	table.insert(self._enemy_list, "cop_female")
 	self.cop_civ = deep_clone(self.cop)
 	self.cop_civ.weapon = presets.weapon.normal
@@ -446,6 +447,7 @@ function CharacterTweakData:_init_fbi(presets)
 	self.fbi_female.speech_prefix_p2 = "n"
 	self.fbi_female.speech_prefix_count = 1
 	self.fbi_female.tags = {"law", "female_enemy"}
+	self.fbi_female.custom_voicework = "copfemale"
 	table.insert(self._enemy_list, "fbi_female")
 	
 	--Veteran Cop
@@ -883,12 +885,17 @@ function CharacterTweakData:_init_heavy_swat(presets)
 		self.heavy_swat.use_radio = "dsp_radio_russian"
 	else
 		self.heavy_swat.shooting_death = true
-	end			
+	end
 	self.heavy_swat.silent_priority_shout = "f37"
 	self.heavy_swat.static_weapon_preset = false
 	self.heavy_swat.static_dodge_preset = true
 	self.heavy_swat.static_melee_preset = false	
 	self.heavy_swat.heal_cooldown = 2.5
+	if self:get_ai_group_type() == "america" or self:get_ai_group_type() == "fbi" or self:get_ai_group_type() == "nypd" or self:get_ai_group_type() == "lapd" then
+		self.heavy_swat.custom_voicework = "heavygunner"
+	else
+		self.heavy_swat.custom_voicework = nil
+	end
 	table.insert(self._enemy_list, "heavy_swat")
 	
 	self.zeal_heavy_swat = deep_clone(self.heavy_swat)
@@ -1067,6 +1074,11 @@ function CharacterTweakData:_init_fbi_heavy_swat(presets)
 	self.fbi_heavy_swat.static_dodge_preset = true
 	self.fbi_heavy_swat.static_melee_preset = true	
 	self.fbi_heavy_swat.heal_cooldown = 1.875
+	if self:get_ai_group_type() == "america" or self:get_ai_group_type() == "fbi" or self:get_ai_group_type() == "nypd" or self:get_ai_group_type() == "lapd" then
+		self.fbi_heavy_swat.custom_voicework = "heavygunner"
+	else
+		self.fbi_heavy_swat.custom_voicework = nil
+	end
 	table.insert(self._enemy_list, "fbi_heavy_swat")
 end
 
@@ -2593,6 +2605,11 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank.min_obj_interrupt_dis = 600
 	self.tank.no_xmas_hat = true
 	self.tank.immune_to_ff_exp = true
+	if self:get_ai_group_type() == "nypd" or self:get_ai_group_type() == "murkywater" then
+		self.tank.custom_voicework = "dozer_nypd"
+	else
+		self.tank.custom_voicework = nil
+	end
 	table.insert(self._enemy_list, "tank")
 		
 	--Blackdozers, Move faster than other dozers but have a bit less EHP and can be stunned by explosives
@@ -2633,6 +2650,7 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_medic.damage.hurt_severity = presets.hurt_severities.only_explosion_hurts_tankblack
 	self.tank_medic.spawn_sound_event = self._prefix_data_p1.bulldozer() .. "_entrance_elite"
 	self.tank_medic.heal_cooldown = 10
+	self.tank_medic.custom_voicework = nil	-- Because PD3 dozer has no heal lines
 	table.insert(self.tank_medic.tags, "medic")
 	table.insert(self._enemy_list, "tank_medic")
 	
@@ -2768,6 +2786,8 @@ function CharacterTweakData:_init_spooc(presets)
 	self.spooc.kick_damage = 8.0 --Amount of damage dealt when cloakers hick players.
 	if self:get_ai_group_type() == "murkywater" then
 		self.spooc.custom_voicework = "murky_spook"
+	elseif self:get_ai_group_type() == "nypd" then
+		self.spooc.custom_voicework = "spook_nypd"
 	else
 		self.spooc.custom_voicework = nil
 	end
@@ -3490,6 +3510,11 @@ function CharacterTweakData:_init_taser(presets)
 	self.taser.no_asu = true
 	self.taser.heal_cooldown = 7.5
 	self.taser.min_obj_interrupt_dis = 1000
+--	if self:get_ai_group_type() == "nypd" or self:get_ai_group_type() == "lapd" then	-- I'M SO FUCKING STOOPID
+--		self.taser.custom_voicework = "taser_nypd"
+--	else
+--		self.taser.custom_voicework = nil
+--	end
 	table.insert(self._enemy_list, "taser")
 	
 	self.taser_summers = deep_clone(self.taser)
@@ -3557,11 +3582,12 @@ function CharacterTweakData:_init_taser(presets)
 		self.taser_titan.spawn_sound_event = "tsr_elite"
 	end	
 	self.taser_titan.spawn_sound_event_2 = "cloaker_spawn"
-	-- Wait until lines are done
 --	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
 --		self.taser_titan.custom_voicework = nil
---	else
+--	elseif self:get_ai_group_type() == "america" or self:get_ai_group_type() "lapd" or self:get_ai_group_type() "fbi" then
 --		self.taser_titan.custom_voicework = "ttazer"
+--	elseif self:get_ai_group_type() == "nypd" then
+--		self.taser_titan.custom_voicework = "taser_nypd"
 --	end
 	self.taser_titan.surrender = nil
 	self.taser_titan.dodge = presets.dodge.elite
@@ -3656,6 +3682,8 @@ function CharacterTweakData:_init_boom(presets)
 	--Temp, until we get a better one
 	elseif self:get_ai_group_type() == "russia" then
 		self.boom.custom_voicework = "tswat_ru"
+	elseif self:get_ai_group_type() == "nypd" then
+		self.boom.custom_voicework = "grenadier_nypd"
 	else
 		self.boom.custom_voicework = "grenadier"
 	end

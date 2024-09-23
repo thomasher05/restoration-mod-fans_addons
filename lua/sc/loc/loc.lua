@@ -5034,9 +5034,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills", function(loc)
 		["MutatorJungleInferno_desc"] = "All enemies now spawn with flamethrowers.",
 		["MutatorJungleInferno_longdesc"] = "All enemies have their standard weapons replaced with Flamethrowers.\n\nNote: Snipers and Shield enemies will still spawn with their normal weapons.",
 
-		["mutator_minidozers"] = "Semi-Auto Shotgun Bulldozers",
-		["mutator_minidozers_desc"] = "Semi-Auto Shotgun Bulldozers can now spawn.",
-		["mutator_minidozers_longdesc"] = "Whenever a Black Bulldozer spawns, there is a 50% chance that it will be replaced by a Bulldozer wielding an M1014.\n\nNOTE: If the Medic Bulldozer mutator is enabled, then the Semi-Auto Shotgun Bulldozer will have a 33.3% chance of replacing a Black Bulldozer.",
+		["mutator_minidozers"] = "Semi-Auto Shotgun Bulldozers And Miniguns",
+		["mutator_minidozers_desc"] = "Semi-Auto Shotgun and Minigun Bulldozers can now spawn.",
+		["mutator_minidozers_longdesc"] = "Whenever a Black Bulldozer spawns, there is a 50% chance that it will be replaced by a Bulldozer wielding an M1014 or a Minigun.\n\nNOTE: If the Medic Bulldozer mutator is enabled, then the Semi-Auto Shotgun Bulldozer will have a 33.3% chance of replacing a Black Bulldozer.",
 
 		["mutator_fatroll"] = "Fat Roll",
 		["menu_mutator_fatroll"] = "Grace Period (in seconds)",
@@ -5161,6 +5161,14 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills", function(loc)
 		["mutator_faction_override_nypd"] = "NYPD",
 		["mutator_faction_override_lapd"] = "LAPD",
 		["faction_selector_choice"] = "Faction: ",
+
+		["mutator_onlyspecials"] = "Oops All Specials!",
+		["mutator_onlyspecials_desc"] = "Only special units spawn.",
+		["mutator_onlyspecials_longdesc"] = "Only special units spawn. This makes the game significantly harder.",
+
+		["mutator_warthogs"] = "Warthogs",
+		["mutator_warthogs_desc"] = "Warthogs spawn in naturally.",
+		["mutator_warthogs_longdesc"] = "Whenever a Bulldozer of any variety spawns, there is a chance that it will be replaced by a flamethrower weilding Warthog.",
 
 		--Crime Spree mutators
 		["mutator_cloakercuff"] = "Conjurer",

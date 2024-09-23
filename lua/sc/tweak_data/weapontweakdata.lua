@@ -21304,7 +21304,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.af2011.rays = 2
 			self.af2011.damage_type = "shotgun"
 			self.af2011.use_data.selection_index = 2
-			self.kedr.categories = { "pistol" }
+			self.af2011.categories = { "pistol" }
 			self.af2011.CLIP_AMMO_MAX = 10
 			self.af2011.AMMO_MAX = 70
 			self.af2011.fire_mode_data.fire_rate = 0.0882352
