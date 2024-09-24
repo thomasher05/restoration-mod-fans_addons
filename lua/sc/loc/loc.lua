@@ -621,6 +621,9 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization", function
 		["bm_msk_wolf_stone"] = "Stonecold Wolf",
 		["bm_msk_wolf_stone_desc"] = "Wolf's original mask from when he first tipped over the edge, acting out crimes from his favourite media. The mask was thought lost in a robbery, inspired by the video game 'Hyper Heisting.'\n\nIn the wake of the gang's early jobs, the mask resurfaced, and was brought to the safehouse by one of Bain's associates.\n\nThe mask's original pattern has partially worn away over time, perhaps mirroring the decline in Wolf's mental stability.",
 
+		["bm_msk_thespian"] = "Thespian",
+		["bm_msk_thespian_desc"] = "Thespian is a superhuman solider of fortune. In the future, space marines like Thespian protect the world of mankind and its space colonies from forces of evil\n\nHis helmet is a popular gift in the criminal underworld and is given to thieves, thugs and career criminals who show their loyalty and patience to the syndicate.",
+		
 		["bm_msk_dallas_aged"] = "Aged Dallas",
 		["bm_msk_dallas_aged_desc"] = "You & your crew found these masks in the strange Egyptian box at Henry's Rock. The box itself was later intercepted in transit, and the remaining contents delivered to you.\n\nSomething about these masks... it's unusual. There's no information on where they possibly came from.\n\nJackal suggests that it might be a practical joke, or some kind of attempt to freak the crew out.\n\nAs far as you can tell, though? These seem very, very old.",
 		["bm_msk_chains_aged"] = "Aged Chains",

@@ -352,6 +352,16 @@
 		<material_config	path="units/pd2_mod_fucking_masks/msk_wolf_stone/msk_wolf_stone"/>
 		<texture			path="units/pd2_mod_fucking_masks/msk_wolf_stone/wolf_df"/>
 		
+		<!--Mask: Xbox 360 Thespian Mask-->
+		<cooked_physics path="units/pd2_mod_fucking_masks/masks/msk_thespian/msk_thespian"/>
+		<model path="units/mods/pd2_mod_fucking_masks/msk_thespian/msk_thespian"/>
+		<object path="units/pd2_mod_fucking_masks/masks/msk_thespian/msk_thespian"/>
+		<unit path="units/pd2_mod_fucking_masks/masks/msk_thespian/msk_thespian"/>
+		<material_config path="units/pd2_mod_fucking_masks/masks/msk_thespian/msk_thespian"/>
+		<texture path="units/pd2_mod_fucking_masks/masks/msk_thespian/msk_thespian_df"/>
+		<texture path="units/pd2_mod_fucking_masks/masks/msk_thespian/msk_thespian_nm"/>
+		<texture path="guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/thespian"/>
+
 		<!--Aged Crew Masks-->	
 		<texture			path="guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/wolf_stone"/>  
 		<cooked_physics		path="units/pd2_mod_fucking_masks/msk_dallas_aged/msk_dallas_aged"/>
@@ -382,7 +392,6 @@
 		<texture			path="guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/chains_aged"/>
 		<texture			path="guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/hoxton_aged"/>
 		<texture			path="guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/wolf_aged"/>  
-		
 		
 		<!--PDTH Halloween Masks-->
 		<unit_tex path="units/pd2_mod_fucking_masks/msk_chains_halloween/msk_chains_halloween"/>
