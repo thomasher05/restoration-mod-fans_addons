@@ -64,6 +64,8 @@ Titan Sniper: Marskman (Typical Colors 2)
 
 Titan Cloaker: Flanker (Typical Colors 2)
 
+Titan Cloaker Russia: Scout (Team Fortress 2: Russian Dub)
+
 Warthog/Snowman: Understandable Pyro v2 (https://gamebanana.com/sounds/59101)
 
 Murkywater Cloaker: Myself

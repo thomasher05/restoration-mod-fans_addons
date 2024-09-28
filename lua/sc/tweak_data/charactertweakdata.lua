@@ -2843,7 +2843,7 @@ function CharacterTweakData:_init_spooc(presets)
 	self.spooc_titan.no_asu = true
 	self.spooc_titan.cannot_attach_projectiles = true	
 	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
-		self.spooc_titan.custom_voicework = nil
+		self.spooc_titan.custom_voicework = "tspook_ru"
 	elseif self:get_ai_group_type() == "zombie" then
 		self.spooc_titan.custom_voicework = "tspook_hvh"
 	else
