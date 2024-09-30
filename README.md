@@ -40,6 +40,8 @@ Autumm: Robot Spy (Team Fortress 2)
 
 Bravo DMR: GSG9 (Counter Strike)
 
+Bravo DMR Murky: Phoenix (Counter Strike)
+
 Bravo Elite: Mercenary (Open Fortress)
 
 Murkywater Bravo Elite: Anarchist (Counter Strike)

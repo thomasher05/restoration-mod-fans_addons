@@ -962,7 +962,7 @@ function CharacterTweakData:_init_heavy_swat(presets)
 	if self:get_ai_group_type() == "russia" then
 		self.weekend_dmr.custom_voicework = "marshal_marksman_ru"
 	elseif self:get_ai_group_type() == "murkywater" then
-		self.weekend_dmr.custom_voicework = "bravo_elite_murky"	
+		self.weekend_dmr.custom_voicework = "bravo_dmr_murky"	
 	elseif self:get_ai_group_type() == "federales" then
 		self.weekend_dmr.custom_voicework = "bravo_elite_mex"
 	else
