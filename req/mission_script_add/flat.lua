@@ -1,4 +1,6 @@
 local difficulty = tweak_data:difficulty_to_index(Global.game_settings and Global.game_settings.difficulty or "normal")
+local pro_job = Global.game_settings and Global.game_settings.one_down
+local diff_scaling = 0.095 * difficulty
 local chavez_enforcer = "units/pd2_dlc_flat/characters/ene_gang_colombian_enforcer/ene_gang_colombian_enforcer"
 local chavez_lieutenant = "units/pd2_dlc_flat/characters/ene_gang_colombian_boss/ene_gang_colombian_boss"
 local swat_shotgunner = (difficulty == 8 and "units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_r870_sc/ene_zeal_swat_heavy_r870_sc" or difficulty == 7 and "units/pd2_mod_nypd/characters/ene_city_heavy_r870/ene_city_heavy_r870" or difficulty == 6 and "units/pd2_mod_nypd/characters/ene_fbi_heavy_r870_sc/ene_fbi_heavy_r870_sc") or "units/pd2_mod_nypd/characters/ene_nypd_heavy_r870/ene_nypd_heavy_r870"
@@ -6,8 +8,6 @@ local shield = ((difficulty >= 6 and pro_job) and "units/pd2_dlc_vip/characters/
 local tank = (difficulty == 8 and "units/pd2_dlc_gitgud/characters/ene_bulldozer_minigun/ene_bulldozer_minigun") or "units/pd2_mod_nypd/characters/ene_bulldozer_1/ene_bulldozer_1"
 local taser = (difficulty == 8 and "units/pd2_dlc_gitgud/characters/ene_zeal_tazer_sc/ene_zeal_tazer_sc") or "units/pd2_mod_nypd/characters/ene_tazer_1/ene_tazer_1"
 local cloaker = ((difficulty == 8 and pro_job) and "units/pd2_dlc_vip/characters/ene_spook_cloak_1/ene_spook_cloak_1" or difficulty == 8 and "units/pd2_dlc_gitgud/characters/ene_zeal_cloaker_sc/ene_zeal_cloaker_sc") or "units/pd2_mod_nypd/characters/ene_spook_1/ene_spook_1"
-local pro_job = Global.game_settings and Global.game_settings.one_down
-local diff_scaling = 0.113 * difficulty
 local death_sentence = difficulty == 8
 local overkill_above = difficulty >= 5
 local hard_above = difficulty >= 3
@@ -26,7 +26,7 @@ local optsSWAT_Rooftop_1 = {
     enemy = swat_shotgunner,
 	spawn_action = "e_sp_crh_to_std_rifle",
 	on_executed = { 
-		{ id = 400023, delay = 1 }
+		{ id = 400023, delay = 0 }
 	},
     enabled = true
 }
@@ -34,13 +34,12 @@ local optsSWAT_Rooftop_2 = {
     enemy = swat_shotgunner,
 	spawn_action = "e_sp_crh_to_std_rifle",
 	on_executed = { 
-		{ id = 400024, delay = 1 }
+		{ id = 400024, delay = 0 }
 	},
     enabled = true
 }
 local optsBulldozer = {
     enemy = tank,
-	trigger_times = 3,
 	on_executed = { 
 		{ id = 400014, delay = 1.5 },
 		{ id = 400016, delay = 0 }
@@ -66,7 +65,7 @@ local optsShield_1 = {
 	on_executed = { 
 		{ id = 400050, delay = 0 }
 	},
-    enabled = hard_above
+    enabled = true
 }
 local optsShield_2 = {
     enemy = shield,
@@ -74,7 +73,7 @@ local optsShield_2 = {
 	on_executed = { 
 		{ id = 400051, delay = 0 }
 	},
-    enabled = hard_above
+    enabled = true
 }
 local optsShield_3 = {
     enemy = shield,
@@ -82,7 +81,7 @@ local optsShield_3 = {
 	on_executed = { 
 		{ id = 400052, delay = 0 }
 	},
-    enabled = hard_above
+    enabled = true
 }
 local optsShield_4 = {
     enemy = shield,
@@ -90,7 +89,7 @@ local optsShield_4 = {
 	on_executed = { 
 		{ id = 400053, delay = 0 }
 	},
-    enabled = hard_above
+    enabled = true
 }
 local optsShield_5 = {
     enemy = shield,
@@ -98,7 +97,7 @@ local optsShield_5 = {
 	on_executed = { 
 		{ id = 400054, delay = 0 }
 	},
-    enabled = hard_above
+    enabled = true
 }
 local optsShield_6 = {
     enemy = shield,
@@ -106,7 +105,7 @@ local optsShield_6 = {
 	on_executed = { 
 		{ id = 400055, delay = 0 }
 	},
-    enabled = hard_above
+    enabled = true
 }
 local optsEnforcer = {
     enemy = chavez_enforcer,
@@ -227,7 +226,6 @@ local spawn_heavy_swat_145 = {
 }
 local spawn_tasers = {
 	enabled = hard_above,
-	trigger_times = 3,
 	on_executed = { 
 		{ id = 400017, delay = 0 },
 		{ id = 400018, delay = 0 },
@@ -236,7 +234,6 @@ local spawn_tasers = {
 }
 local spawn_cloakers = {
 	enabled = hard_above,
-	trigger_times = 3,
 	on_executed = { 
 		{ id = 400033, delay = 0 },
 		{ id = 400034, delay = 0 },

@@ -27991,6 +27991,14 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				self.parts.wpn_fps_shot_vecho_handguard_mini.custom_stats = deep_clone(barrels.short_b2_stats)
 				self.parts.wpn_fps_shot_vecho_handguard_mini.custom_stats.ads_speed_mult = 0.95
 
+				self.parts.wpn_fps_shot_vecho_handguard_survarium.supported = true
+				self.parts.wpn_fps_shot_vecho_handguard_survarium.stats = deep_clone(barrels.short_b2_stats)
+				self.parts.wpn_fps_shot_vecho_handguard_survarium.stats.value = 0
+				self.parts.wpn_fps_shot_vecho_handguard_survarium.stats.recoil = -1
+				self.parts.wpn_fps_shot_vecho_handguard_survarium.stats.concealment = 1
+				self.parts.wpn_fps_shot_vecho_handguard_survarium.custom_stats = deep_clone(barrels.short_b2_stats)
+				self.parts.wpn_fps_shot_vecho_handguard_survarium.custom_stats.ads_speed_mult = 0.9
+
 			--Grips
 				--IVANOV
 				self.parts.wpn_fps_shot_vecho_grip_steady.supported = true
