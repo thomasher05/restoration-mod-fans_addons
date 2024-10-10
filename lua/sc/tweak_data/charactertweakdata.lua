@@ -2786,7 +2786,7 @@ function CharacterTweakData:_init_spooc(presets)
 	self.spooc.dodge = presets.dodge.ninja
 	self.spooc.chatter = presets.enemy_chatter.cloaker
 	self.spooc.steal_loot = nil
-	self.spooc.melee_weapon = nil
+	self.spooc.melee_weapon = "baton"
 	self.spooc.use_radio = nil
 	self.spooc.can_be_tased = true
 	self.spooc.static_dodge_preset = true
@@ -3051,6 +3051,11 @@ function CharacterTweakData:_init_shield(presets)
 	self.shield.heal_cooldown = 5
 	self.shield.min_obj_interrupt_dis = 300
 	self.shield.no_mutator_weapon_override = true
+	if self:get_ai_group_type() == "nypd" then
+		self.shield.custom_voicework = "shield_nypd"
+	else
+		self.shield.custom_voicework = nil
+	end
 	table.insert(self._enemy_list, "shield")
 end
 
@@ -3132,13 +3137,7 @@ function CharacterTweakData:_init_phalanx_vip(presets)
 	self.phalanx_vip.damage.fire_pool_damage_mul = 0.05
 	self.phalanx_vip.damage.bullet_damage_mul = 0.25
 	self.phalanx_vip.damage.fire_damage_mul = 0.25
-	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
-		self.phalanx_vip.spawn_sound_event = "cpw_a01"
-		self.phalanx_vip.spawn_sound_event_2 = "cloaker_spawn"
-	else
-		self.phalanx_vip.spawn_sound_event = "cpa_a02_01"
-		self.phalanx_vip.spawn_sound_event_2 = nil
-	end	
+	self.phalanx_vip.spawn_sound_event = "cpa_a02_01"
 	self.phalanx_vip.priority_shout = "f45"
 	self.phalanx_vip.bot_priority_shout = "f45x_any"
 	self.phalanx_vip.priority_shout_max_dis = 3000
@@ -3353,11 +3352,7 @@ function CharacterTweakData:_init_summers(presets)
 	self.summers.deathguard = true
 	self.summers.chatter = presets.enemy_chatter.summers
 	self.summers.announce_incomming = "incomming_captain"
-	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
-		self.summers.spawn_sound_event = "cloaker_spawn"
-	else
-		self.summers.spawn_sound_event = "cpa_a02_01"
-	end
+	self.summers.spawn_sound_event = "cpa_a02_01"
 	self.summers.fire_bag_death = true	
 	self.summers.use_radio = "dsp_radio_russian"
 	self.summers.steal_loot = nil
@@ -3588,11 +3583,7 @@ function CharacterTweakData:_init_taser(presets)
 	self.taser_titan.immune_to_concussion = true	
 	self.taser_titan.use_animation_on_fire_damage = false
 	self.taser_titan.can_be_tased = false	
-	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
-		self.taser_titan.spawn_sound_event = "rtsr_elite"
-	else
-		self.taser_titan.spawn_sound_event = "tsr_elite"
-	end	
+	self.taser_titan.spawn_sound_event = self._prefix_data_p1.taser() .. "_elite"
 	self.taser_titan.spawn_sound_event_2 = "cloaker_spawn"
 --	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
 --		self.taser_titan.custom_voicework = nil
