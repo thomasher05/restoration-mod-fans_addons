@@ -19908,6 +19908,45 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.baker.panic_suppression_chance = 0.05
 			end
 
+			if self.g7 then
+				self.g7.hs_mult = 1.5
+				self.g7.CLIP_AMMO_MAX = 10
+				self.g7.fire_mode_data.fire_rate = 0.25
+				self.g7.FIRE_MODE = "single"
+				self.g7.kick = self.stat_info.kick_tables.vertical_kick
+				self.g7.AMMO_MAX = 80
+				self.g7.muzzleflash = "effects/payday2/particles/weapons/big_762_auto_fps"
+				self.g7.supported = true
+				self.g7.ads_speed = 0.450
+				self.g7.damage_falloff = {
+					start_dist = 3000,
+					end_dist = 7000,
+					min_mult = 0.5
+				}
+				self.g7.stats = {
+					damage = 40,
+					spread = 90,
+					recoil = 67,
+					spread_moving = 7,
+					zoom = 1,
+					concealment = 22,
+					suppression = 7,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 200,
+					value = 1,
+					reload = 20
+				}
+				self.g7.stats_modifiers = nil
+				self.g7.can_shoot_through_enemy = false
+				self.g7.can_shoot_through_wall = false
+				self.g7.timers.reload_not_empty = 1.90
+				self.g7.timers.reload_exit_not_empty = 1.1
+				self.g7.timers.reload_empty = 2.15
+				self.g7.timers.reload_exit_empty = 0.9
+				self.g7.panic_suppression_chance = 0.05
+			end
+
 		--Predator Pack
 			if self.owlfbullpup then
 				self.owlfbullpup.categories = { 

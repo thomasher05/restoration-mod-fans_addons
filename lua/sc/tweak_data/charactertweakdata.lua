@@ -3364,6 +3364,7 @@ function CharacterTweakData:_init_summers(presets)
 	self.summers.min_obj_interrupt_dis = 300
 	self.summers.captain_type = restoration.captain_types.summer
 	self.summers.no_mutator_weapon_override = true
+	self.summers.custom_voicework = "summers"
 	table.insert(self._enemy_list, "summers")
 end
 
@@ -3413,7 +3414,7 @@ function CharacterTweakData:_init_autumn(presets)
 	self.autumn.experience.cable_tie = "tie_swat"
 	self.autumn.speech_prefix_p1 = "cpa"
 	self.autumn.speech_prefix_count = nil
-	self.autumn.custom_voicework = "autumn"		
+	self.autumn.custom_voicework = "autumn"
 	self.autumn.ends_assault_on_death = true	
 	self.autumn.access = "spooc"
 	self.autumn.dodge = presets.dodge.autumn
