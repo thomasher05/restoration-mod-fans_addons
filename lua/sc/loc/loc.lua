@@ -476,6 +476,9 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization", function
 		["restoration_level_data_lvl_friday"] = "5:00 PM, Shield Mall",
 		["restoration_level_data_skm_nightmare_lvl"] = "A laundromat? Are you here to wash away your sins?",
 		["restoration_level_data_bluewave"] = "TIME CLASSIFIED, Aurelian Warehouse",
+		["restoration_level_data_secret_stash"] = "6:00 PM, The District - Abandoned Building",
+		["restoration_level_data_bridge"] = "10:45 PM, Green Bridge - Southbound",
+		["restoration_level_data_four_stores_remixed"] = "1:20 PM, Storefronts",
 
 		--custom heists
 		["restoration_level_data_flatline_lvl"] = "10:26 PM, Больница им. Н.И. Пирогова", --Flatline
@@ -4822,9 +4825,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills", function(loc)
 		["loading_gameplay_res_16"] = "You can parry melee attacks by charging your own. This can be upgraded to work against cloaker kicks.",
 		["loading_gameplay_res_17"] = "Enemy melee attacks are quick and deadly. Keep your distance!",
 		["loading_gameplay_res_18"] = "You know what's better than smacking enemies with a baseball bat? Smacking them in the head with a baseball bat for headshot damage.",
-		["loading_gameplay_res_19"] = "Snipers take a brief period of time to focus before firing. Mind their lasers! Sometimes they can appear with the rest of the units!",
-		["loading_gameplay_res_20"] = "Your Jokers aren't safe from being kicked by Cloakers.",
-		["loading_gameplay_res_21"] = "Common enemies of all factions share keen details on their uniforms to warn you about their preferred weaponry.",
+		["loading_gameplay_res_19"] = "Snipers take a brief period of time to focus before firing. Sometimes they can appear with the rest of the units! Mind their lasers!",
+		["loading_gameplay_res_20"] = "Your Jokers aren't safe from being kicked by Cloakers. If a Cloaker somehow gets converted, it will instantly kill any unit it kicks.",
+		["loading_gameplay_res_21"] = "Common enemies of all factions sometimes use diffrent weaponry. Some of Restoration's enemies do not use random weapons.",
 		["loading_gameplay_res_22"] = "Shotgun-wielding enemies are poor at range, but make up for it in close-quarters.",
 		["loading_gameplay_res_23"] = "Enemies will make better use of Shields on higher difficulties.",
 		["loading_gameplay_res_24"] = "Enemies will have different behaviors on higher difficulties.",

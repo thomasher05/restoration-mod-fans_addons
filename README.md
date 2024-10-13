@@ -62,7 +62,7 @@ Titan Bulldozer Russia: Heavy Weapons Guy (Team Fortress 2: Russian Dub)
 
 Titan Shield: Robot Pyro (Team Fortress 2)
 
-Titan Sniper: Marskman (Typical Colors 2)
+Titan Sniper Murkywater: Marskman (Typical Colors 2)
 
 Titan Cloaker: Flanker (Typical Colors 2)
 

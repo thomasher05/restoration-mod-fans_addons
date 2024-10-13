@@ -137,6 +137,7 @@ function restoration:Init()
 
 		--Autumn
 		alex_1 = restoration.captain_types.autumn, --Rats Day 1
+		secret_stash = restoration.captain_types.autumn, --undercover-- (Map_Add Edit)
 		rat = restoration.captain_types.autumn,	--cook off
 		welcome_to_the_jungle_1_night = restoration.captain_types.autumn, --Big Oil Day 1 Night
 		nightclub = restoration.captain_types.autumn, --Night Club
