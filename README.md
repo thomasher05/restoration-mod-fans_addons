@@ -26,11 +26,13 @@ Package data for Russia and Murkywater properlly load.
 
 Titan Cloakers spawn on mayhem and above.
 
-NewCopper's Assets somehow
+NewCopper's Assets somehow (Does not load)
 
 Zip .22 has a 1% chance to fail
 
-A new mutator
+3 new mutators
+
+Scout G7 deals 25% more damage on headshots at the cost of less damage
 
 # Voicelines:
 

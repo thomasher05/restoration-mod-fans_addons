@@ -19909,24 +19909,31 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.g7 then
-				self.g7.hs_mult = 1.5
-				self.g7.CLIP_AMMO_MAX = 10
-				self.g7.fire_mode_data.fire_rate = 0.25
+				self.g7.hs_mult = 1.25
+				self.g7.categories = { 
+					"assault_rifle",
+					"dmr_h"
+				}
+				self.g7.recategorize = {"dmr_ar"}
+				self.g7.damage_type = "sniper"
+				self.g7.tactical_reload = 1
+				self.g7.CLIP_AMMO_MAX = 20
+				self.g7.AMMO_MAX = 60
+				self.g7.fire_mode_data.fire_rate = 0.238095
+				self.g7.CAN_TOGGLE_FIREMODE = false
 				self.g7.FIRE_MODE = "single"
 				self.g7.kick = self.stat_info.kick_tables.vertical_kick
-				self.g7.AMMO_MAX = 80
-				self.g7.muzzleflash = "effects/payday2/particles/weapons/big_762_auto_fps"
 				self.g7.supported = true
-				self.g7.ads_speed = 0.450
+				self.g7.ads_speed = 0.320
 				self.g7.damage_falloff = {
-					start_dist = 3000,
-					end_dist = 7000,
-					min_mult = 0.5
+					start_dist = 3300,
+					end_dist = 7500,
+					min_mult = 0.4
 				}
 				self.g7.stats = {
-					damage = 40,
-					spread = 90,
-					recoil = 67,
+					damage = 50,
+					spread = 96,
+					recoil = 51,
 					spread_moving = 7,
 					zoom = 1,
 					concealment = 22,
@@ -19934,17 +19941,63 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					alert_size = 2,
 					extra_ammo = 101,
 					total_ammo_mod = 200,
-					value = 1,
+					value = 4,
 					reload = 20
 				}
 				self.g7.stats_modifiers = nil
-				self.g7.can_shoot_through_enemy = false
-				self.g7.can_shoot_through_wall = false
-				self.g7.timers.reload_not_empty = 1.90
-				self.g7.timers.reload_exit_not_empty = 1.1
-				self.g7.timers.reload_empty = 2.15
-				self.g7.timers.reload_exit_empty = 0.9
-				self.g7.panic_suppression_chance = 0.05
+				self.g7.panic_suppression_chance = 0.05	
+				self.g7.timers.reload_not_empty = 1.65
+				self.g7.timers.reload_exit_not_empty = 0.58
+				self.g7.timers.reload_empty = 2.35
+				self.g7.timers.reload_exit_empty = 0.5
+			end
+
+			if self.ar2 then
+				self.ar2.categories = { 
+					"assault_rifle"
+				}
+				self.ar2.recategorize = {"light_ar"}
+				self.ar2.damage_type = "assault_rifle"
+				self.ar2.CLIP_AMMO_MAX = 30
+				self.ar2.AMMO_MAX = 150
+				self.ar2.fire_mode_data.fire_rate = 0.1
+				self.ar2.CAN_TOGGLE_FIREMODE = false
+				self.ar2.FIRE_MODE = "auto"
+				self.ar2.kick = self.stat_info.kick_tables.even_recoil
+				self.ar2.supported = true
+				self.ar2.ads_speed = 0.200
+				self.ar2.damage_falloff = {
+					start_dist = 1400,
+					end_dist = 4900,
+					min_mult = 0.41667
+				}
+				self.ar2.stats = {
+					damage = 24,
+					spread = 71,
+					recoil = 97,
+					spread_moving = 7,
+					zoom = 1,
+					concealment = 22,
+					suppression = 7,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 200,
+					value = 4,
+					reload = 20
+				}
+				self.ar2.stats_modifiers = nil
+				self.ar2.panic_suppression_chance = 0.05
+				self.ar2.trail_effect = "effects/payday2/particles/weapons/hailstorm_streak"
+				self.ar2.recoil_values = {
+					{ 80, 60 },
+					7.5,
+					0.6,
+					srm = {
+						-0.3,
+						{1, 3},
+						2
+					}
+				}
 			end
 
 		--Predator Pack
