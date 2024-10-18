@@ -790,6 +790,11 @@ function CharacterTweakData:_init_swat(presets)
 	self.swat.silent_priority_shout = "f37"
 	self.swat.heal_cooldown = 1.25
 	self.swat.overheal_mult = 2
+	if self:get_ai_group_type() == "nypd" then
+		self.swat.custom_voicework = "swat_pd3"
+	else
+		self.swat.custom_voicework = nil
+	end
 	table.insert(self._enemy_list, "swat")
 	
 	self.zeal_swat = deep_clone(self.swat)
@@ -799,7 +804,8 @@ function CharacterTweakData:_init_swat(presets)
 	self.hrt.access = "fbi"
 	self.hrt.headshot_dmg_mul = 2
 	self.hrt.rescue_hostages = true
-	self.hrt.steal_loot = true	
+	self.hrt.steal_loot = true
+	self.hrt.custom_voicework = nil
 	table.insert(self._enemy_list, "hrt")
 	
 	self.hrt_titan = deep_clone(self.hrt)
@@ -1037,6 +1043,11 @@ function CharacterTweakData:_init_fbi_swat(presets)
 	self.fbi_swat.overheal_mult = 1.5
 	self.fbi_swat.weapon = deep_clone(self.presets.weapon.expert)
 	self.fbi_swat.melee_weapon_dmg_multiplier = 2
+	if self:get_ai_group_type() == "nypd" then
+		self.fbi_swat.custom_voicework = "swat_pd3"
+	else
+		self.fbi_swat.custom_voicework = nil
+	end
 	table.insert(self._enemy_list, "fbi_swat")
 	
 	self.fbi_swat_vet = deep_clone(self.fbi_swat)
@@ -1141,6 +1152,11 @@ function CharacterTweakData:_init_city_swat(presets)
 	self.city_swat.custom_voicework = nil
 	self.city_swat.heal_cooldown = 1.25
 	self.city_swat.overheal_mult = 1.5
+	if self:get_ai_group_type() == "nypd" then
+		self.city_swat.custom_voicework = "swat_pd3"
+	else
+		self.city_swat.custom_voicework = nil
+	end
 	table.insert(self._enemy_list, "city_swat")
 	
 	--Guard variant, different entry type as a failsafe

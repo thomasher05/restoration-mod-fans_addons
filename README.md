@@ -18,7 +18,7 @@ fbi_1, and big dave spawn natrually.
 
 Added descriptions for the Serious Sam Minigun, Chiappa Triple Threat, AMCAR-4, and IWI TAR-21.
 
-Half assed custom weapon support for Third Eye Railgun, UTS-15, VxWolf's HK G11, Crime Boss: Rockay City Scudomnion, PD:TH AMCAR-4, M7 Pursuivant Shotgun, IWI TAR-21, Travis Baker's Repeater, Hawk Type 97, K3 Light Machine Gun, Owen SMG, .300 Knockout, PP-91 KEDR, and AF2011.
+Half assed custom weapon support for Third Eye Railgun, UTS-15, VxWolf's HK G11, Crime Boss: Rockay City Scudomnion, PD:TH AMCAR-4, M7 Pursuivant Shotgun, IWI TAR-21, Travis Baker's Repeater, Hawk Type 97, K3 Light Machine Gun, Owen SMG, .300 Knockout, PP-91 KEDR, AF2011, and Crime Boss Handcannon.
 
 SPAS-15 fires 12 shells instead of 9.
 

@@ -17812,6 +17812,48 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.alpha57.use_data.selection_index = 5
 			end
 
+			if self.acr_2012 then --ACR
+				self.acr_2012.categories = { "assault_rifle" }
+				self.acr_2012.recategorize = { "light_ar" }
+				self.acr_2012.damage_type = "assault_rifle"
+				self.acr_2012.nato = true
+				self.acr_2012.tactical_reload = 1
+				self.acr_2012.fire_mode_data.fire_rate = 0.0833333333
+				self.acr_2012.CLIP_AMMO_MAX = 30
+				self.acr_2012.AMMO_MAX = 150
+				self.acr_2012.CAN_TOGGLE_FIREMODE = true
+				self.acr_2012.FIRE_MODE = "auto"
+				self.acr_2012.kick = {}
+				self.acr_2012.kick = self.stat_info.kick_tables.moderate_kick
+				self.acr_2012.supported = true
+				self.acr_2012.ads_speed = 0.240
+				self.acr_2012.damage_falloff = {
+					start_dist = 2400,
+					end_dist = 5800,
+					min_mult = 0.416666
+				}	
+				self.acr_2012.stats = {
+					damage = 24,
+					spread = 83,
+					recoil = 95,
+					spread_moving = 5,
+					zoom = 1,
+					concealment = 24,
+					suppression = 10,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 200,
+					value = 9,
+					reload = 20
+				}
+				self.acr_2012.stats_modifiers = nil
+				self.acr_2012.panic_suppression_chance = 0.05
+				self.acr_2012.timers.reload_empty = 2.58
+				self.acr_2012.timers.reload_exit_empty = 0.7
+				self.acr_2012.timers.reload_not_empty = 1.65
+				self.acr_2012.timers.reload_exit_not_empty = 0.85
+			end
+
 			if self.nova4 then --RJC9000 and Synd1cate's Infinite Warfare NV4
 				self.nova4.categories = { "assault_rifle" }
 				self.nova4.recategorize = { "light_ar" }
@@ -17861,7 +17903,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.m4_usasoc.categories = { "assault_rifle" }
 				self.m4_usasoc.recategorize = { "heavy_ar" }
 				self.m4_usasoc.damage_type = "assault_rifle"
-				self.m4_usasoc.nato = 1
+				self.m4_usasoc.nato = true
 				self.m4_usasoc.tactical_reload = 1
 				self.m4_usasoc.CLIP_AMMO_MAX = 30
 				self.m4_usasoc.AMMO_MAX = 120
@@ -19705,6 +19747,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.mx63.recategorize = { "light_mg" }
 				self.mx63.damage_type = "machine_gun"
+				self.mx63.nato = true
 				self.mx63.sms = sms_preset.lmg_48
 				self.mx63.weapon_movement_penalty = sms_preset.lmg_48
 				self.mx63.CLIP_AMMO_MAX = 100
@@ -19933,7 +19976,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.g7.stats = {
 					damage = 50,
 					spread = 96,
-					recoil = 51,
+					recoil = 61,
 					spread_moving = 7,
 					zoom = 1,
 					concealment = 22,
@@ -21430,6 +21473,44 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.af2011.timers = deep_clone(self.b92fs.timers)
 		end
 
+		if self.perun then	-- Crime Boss' Cursed Handcannon
+			self.perun.categories = { "pistol" }
+			self.perun.recategorize = {"heavy_pis"}
+			self.perun.fire_mode_data.fire_rate = 0.181818181
+			self.perun.kick = self.stat_info.kick_tables.moderate_right_kick
+			self.perun.CLIP_AMMO_MAX = 20
+			self.perun.AMMO_MAX = 60
+			self.perun.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps"
+			self.perun.no_auto_anims = true
+			self.perun.supported = true
+			self.perun.ads_speed = 0.260
+			self.perun.damage_falloff = {
+				start_dist = 1000,
+				end_dist = 3000,
+				min_mult = 0.4444
+			}
+			self.perun.stats = {
+				damage = 80,
+				spread = 51,
+				recoil = 37,
+				spread_moving = 6,
+				zoom = 1,
+				concealment = 21,
+				suppression = 8,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 200,
+				value = 1,
+				reload = 20
+			}
+			self.perun.stats_modifiers = nil
+			self.perun.armor_piercing_chance = 0.5
+			self.perun.panic_suppression_chance = 0.05
+			self.perun.timers.reload_exit_empty = 1.6
+			self.perun.timers.reload_exit_not_empty = 1.6
+			self.perun.hs_mult = 1.11
+		end
+
 	--[[     CAP/WEAPONLIB REQUIRING THINGS     ]]	
 		-- Currently low priority. If it REQUIRES Weaponlib (some Weaponlib weapons just need CAP's functionality, those are fine) then it's a no-go for now
 		
@@ -22015,7 +22096,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						srm = {
 							0.02,
 							{0.9, 1},
-							4
+							2
 						}
 					}
 				elseif weap.recategorize[1] == "heavy_smg" then
@@ -22027,7 +22108,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						srm = {
 							0.01,
 							{0.9, 1},
-							9
+							7
 						}
 					}
 				elseif weap.recategorize[1] == "light_ar" then
@@ -22087,7 +22168,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						srm = {
 							0.0125,
 							{0.8, 1.01},
-							14
+							11
 						}
 					}
 				elseif weap.recategorize[1] == "miniguns" then
@@ -22099,7 +22180,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						srm = {
 							0.016,
 							{0.6, 1},
-							19
+							14
 						}
 					}
 				elseif weap.recategorize[1] == "light_snp" then
