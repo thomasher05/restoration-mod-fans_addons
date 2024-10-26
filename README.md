@@ -34,6 +34,8 @@ Zip .22 has a 1% chance to fail
 
 Scout G7 deals 25% more damage on headshots at the cost of less damage
 
+Widomaker TX is a primary and deals more headshot damage, but has less body shot damage
+
 # Voicelines:
 
 ASU: Coach (L4D2)
@@ -47,6 +49,8 @@ Bravo DMR Murky: Phoenix (Counter Strike)
 Bravo Elite: Mercenary (Open Fortress)
 
 Murkywater Bravo Elite: Anarchist (Counter Strike)
+
+Murkywater Vet: Trooper (Typical Colors 2)
 
 Cop Female: Female Spy (Team Fortress 2)
 

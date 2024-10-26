@@ -7,7 +7,7 @@ local gensec_dozer = (difficulty >= 6 and "units/payday2/characters/ene_bulldoze
 local fbiagent_2 = (difficulty >= 7 and "units/payday2/characters/ene_hoxton_breakout_responder_1/ene_hoxton_breakout_responder_1")
 local fbiagent_3 = (difficulty >= 7 and "units/payday2/characters/ene_hoxton_breakout_responder_2/ene_hoxton_breakout_responder_2")
 local ponr_value = (difficulty <= 5 and 300 or (difficulty == 6 or difficulty == 7) and 420) or 540
-
+	
 local gensec_1 = {
 	values = {
         enemy = gensec_rifle
@@ -21,11 +21,6 @@ local gensec_2 = {
 local gensec_tank = {
 	values = {
         enemy = gensec_dozer
-	}
-}
-local fbi_1 = {
-	values = {
-        enemy = fbiagent_1
 	}
 }
 local fbi_2 = {
@@ -44,24 +39,19 @@ return {
 		ponr = ponr_value,
 		hunt = hunt_projob
 	},
-	--FBI Agents, you don't want to see Zeal HRT from FBI Suvs
+	--FBI Agents, replace them with Ready Teams on DW+
 	[100514] = fbi_3,
 	[100515] = fbi_2,
-	[100520] = fbi_1,
 	[100521] = fbi_2,
 	[100547] = fbi_3,
 	[100551] = fbi_3,
-	[100560] = fbi_1,
 	[100562] = fbi_3,
 	[100563] = fbi_2,
 	[100564] = fbi_3,
-	[100566] = fbi_1,
 	[100567] = fbi_2,
-	[100568] = fbi_1,
 	[100569] = fbi_2,
 	[100570] = fbi_3,
 	[100571] = fbi_2,
-	[100572] = fbi_1,
 	[100573] = fbi_3,
 	--GenSec Scripted Spawns
 	--Drivers

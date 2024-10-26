@@ -5,7 +5,7 @@ local gensec_rifle = ((pro_job and difficulty <= 6) and "units/payday2/character
 local gensec_smg = ((pro_job and difficulty <= 6) and "units/payday2/characters/ene_city_guard_2/ene_city_guard_2" or difficulty >= 7 and "units/payday2/characters/ene_city_swat_3_sc/ene_city_swat_3_sc")
 local gensec_dozer = (difficulty >= 6 and "units/payday2/characters/ene_bulldozer_3_sc/ene_bulldozer_3_sc")
 local ponr_value = (difficulty <= 5 and 300 or (difficulty == 6 or difficulty == 7) and 420) or 540
-
+		
 local gensec_1 = {
 	values = {
         enemy = gensec_rifle
@@ -20,7 +20,8 @@ local gensec_tank = {
 	values = {
         enemy = gensec_dozer
 	}
-}
+}	
+
 return {
 	--Pro Job PONR+Hunt (Endless assault), triggers when van arrives cause that's better
 	[100329] = {

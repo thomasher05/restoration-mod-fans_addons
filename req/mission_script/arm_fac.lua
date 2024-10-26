@@ -6,14 +6,6 @@ local gensec_smg = ((pro_job and difficulty <= 6) and "units/payday2/characters/
 local gensec_dozer = (difficulty >= 6 and "units/payday2/characters/ene_bulldozer_3_sc/ene_bulldozer_3_sc")
 local ponr_value = (difficulty <= 5 and 300 or (difficulty == 6 or difficulty == 7) and 420) or 540
 		
-	--Due to how bag requirements are handled (less on lower diffs, more on high diffs) have less time on lower but more time on higher diffs
-	if difficulty <= 5 then
-		ponr_value = 300
-	elseif difficulty == 6 or difficulty == 7 then
-		ponr_value = 420	
-	else
-		ponr_value = 540	
-	end
 local gensec_1 = {
 	values = {
         enemy = gensec_rifle
@@ -28,7 +20,8 @@ local gensec_tank = {
 	values = {
         enemy = gensec_dozer
 	}
-}
+}	
+
 return {
 	--Pro Job PONR+Hunt (Endless assault), triggers when van arrives cause that's better
 	[102982] = {

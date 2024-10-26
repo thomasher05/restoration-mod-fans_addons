@@ -115,4 +115,4 @@ return {
 	[102411] = tshield,
 	[102416] = tshield,
 	[102417] = tshield
-}
+}	

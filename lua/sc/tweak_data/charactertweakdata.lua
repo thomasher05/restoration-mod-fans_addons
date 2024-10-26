@@ -470,10 +470,12 @@ function CharacterTweakData:_init_fbi(presets)
 	self.fbi_vet.move_speed = presets.move_speed.lightning
 	self.fbi_vet.surrender = nil
 	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
-	   self.fbi_vet.custom_voicework = nil	
-	else   
-	   self.fbi_vet.custom_voicework = "bruce"
-	end   
+		self.fbi_vet.custom_voicework = nil
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.fbi_vet.custom_voicework = "murky_vet"
+	else
+		self.fbi_vet.custom_voicework = "bruce"
+	end
 	self.fbi_vet.dodge_with_grenade = {
 		smoke = {duration = {
 			12,
