@@ -5012,7 +5012,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills", function(loc)
 		["mutator_medidozer_longdesc"] = "All normal enemies during assault waves are replaced with Medics, and all special units are replaced with Bulldozers.",
 		["mutator_medicdozers"] = "Medic Dozers",
 		["mutator_medicdozers_desc"] = "Medic Dozers can now spawn.",
-		["mutator_medicdozers_longdesc"] = "Whenever a Bulldozer of any variety spawns, there is a 50% chance that it will be replaced by a Medic Bulldozer. \n\nNOTE: If the Semi-Auto Shotgun Bulldozer mutator is enabled, then the Medic Dozer will have a 33.3% chance of replacing a Black Bulldozer.",
+		["mutator_medicdozers_longdesc"] = "Whenever a Bulldozer of any variety spawns, there is a 50% chance that it will be replaced by a Medic Bulldozer. \n\nNOTE: If the Semi-Auto Shotgun Bulldozer and Minigun Bulldozers mutator is enabled, then the Medic Dozer will have a 33.3% chance of replacing a Black Bulldozer.",
 
 		--Alternative arsenal
 		["mutator_enemy_damage_longdesc"] = "Players will take different damage than normal from being hit by enemies.",
@@ -5040,9 +5040,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills", function(loc)
 		["MutatorJungleInferno_desc"] = "All enemies now spawn with flamethrowers.",
 		["MutatorJungleInferno_longdesc"] = "All enemies have their standard weapons replaced with Flamethrowers.\n\nNote: Snipers and Shield enemies will still spawn with their normal weapons.",
 
-		["mutator_minidozers"] = "Semi-Auto Shotgun Bulldozers And Miniguns",
+		["mutator_minidozers"] = "Semi-Auto Shotgun Bulldozers And Minigun Bulldozers",
 		["mutator_minidozers_desc"] = "Semi-Auto Shotgun and Minigun Bulldozers can now spawn.",
-		["mutator_minidozers_longdesc"] = "Whenever a Black Bulldozer spawns, there is a 50% chance that it will be replaced by a Bulldozer wielding an M1014 or a Minigun.\n\nNOTE: If the Medic Bulldozer mutator is enabled, then the Semi-Auto Shotgun Bulldozer will have a 33.3% chance of replacing a Black Bulldozer.",
+		["mutator_minidozers_longdesc"] = "Whenever a Black Bulldozer spawns, there is a 50% chance that it will be replaced by a Bulldozer wielding an M1014 or a Minigun.\n\nNOTE: If the Medic Bulldozer mutator is enabled, then the Semi-Auto Shotgun Bulldozer or Minigun Bulldozer will have a 33.3% chance of replacing a Black Bulldozer.",
 
 		["mutator_fatroll"] = "Fat Roll",
 		["menu_mutator_fatroll"] = "Grace Period (in seconds)",

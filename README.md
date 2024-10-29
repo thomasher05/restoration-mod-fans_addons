@@ -14,9 +14,11 @@ Increased the volume of some voicelines.
 
 Medics, Medic-dozers, and OMNIA LPFs can heal eachother.
 
-fbi_1, and big dave spawn natrually.
+fbi_1, and Big Dave spawn natrually.
 
-Added descriptions for the Serious Sam Minigun, Chiappa Triple Threat, AMCAR-4, and IWI TAR-21.
+Big Dave has random weapons.
+
+Added descriptions for various weapons.
 
 Half assed custom weapon support for Third Eye Railgun, UTS-15, VxWolf's HK G11, Crime Boss: Rockay City Scudomnion, PD:TH AMCAR-4, M7 Pursuivant Shotgun, IWI TAR-21, Travis Baker's Repeater, Hawk Type 97, K3 Light Machine Gun, Owen SMG, .300 Knockout, PP-91 KEDR, AF2011, and Crime Boss Handcannon.
 
@@ -34,7 +36,17 @@ Zip .22 has a 1% chance to fail
 
 Scout G7 deals 25% more damage on headshots at the cost of less damage
 
-Widomaker TX is a primary and deals more headshot damage, but has less body shot damage
+Widomaker TX is a primary and deals more headshot damage, but has less body shot damage and fires slower.
+
+# Mutators:
+
+Ludicrous Mode: Enemies drop one less ammo pickup.
+
+Warthogs: All types of bulldozers have a chance to spawn a flamethrower weilding Warthog.
+
+Oops! All Specials!: Only special units spawn.
+
+Semi-Auto Shotgun Bulldozers spawns miniguns (`Loc.lua` was changed to reflect this)
 
 # Voicelines:
 
