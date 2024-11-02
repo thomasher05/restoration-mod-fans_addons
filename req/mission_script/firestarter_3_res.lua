@@ -1,9 +1,9 @@
 local difficulty = tweak_data:difficulty_to_index(Global.game_settings and Global.game_settings.difficulty or "normal")
 local pro_job = Global.game_settings and Global.game_settings.one_down
-local teargaschopper = (pro_job and 2)
-local teargas = (pro_job and 2)
-local teargasmayhem = ((pro_job and difficulty == 8) and 4 or pro_job and 3)
-local vaultdoor = (pro_job and 100)
+local teargaschopper = (difficulty >= 6 and 2)
+local teargas = ((pro_job and difficulty >= 4) and 2)
+local teargasmayhem = ((pro_job and difficulty == 8) and 4) or 3
+local vaultdoor = (difficulty == 8 and 100)
 local copcars = (difficulty >= 7 and 2)
 local snipers = (difficulty == 8 and 3 or (difficulty == 7 or difficulty == 6) and 2)
 local ponr_value = (difficulty <= 5 and 600 or (difficulty == 6 or difficulty == 7) and 570) or 540
@@ -119,8 +119,7 @@ return {
 			end
 		end
 	},
-	--Pro Job Stuff
-	--The vault door is always locked
+	--The vault door is always locked on DS
 	[100195] = {
 		values = {
 			chance = vaultdoor
@@ -131,6 +130,7 @@ return {
 			chance = vaultdoor
 		}
 	},
+	--Pro Job Stuff
 	--2 tear gas choppers instead of 1
 	[105610] = {
 		values = {

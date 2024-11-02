@@ -32,7 +32,7 @@ NewCopper's Assets somehow (Does not load)
 
 Zip .22 has a 1% chance to fail
 
-3 new mutators
+4 new mutators
 
 Scout G7 deals 25% more damage on headshots at the cost of less damage
 
@@ -47,6 +47,8 @@ Warthogs: All types of bulldozers have a chance to spawn a flamethrower weilding
 Oops! All Specials!: Only special units spawn.
 
 Semi-Auto Shotgun Bulldozers spawns miniguns (`Loc.lua` was changed to reflect this)
+
+Sniper Hell: Most enemies spawn with Sniper Rifles.
 
 # Voicelines:
 

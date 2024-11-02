@@ -5176,6 +5176,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills", function(loc)
 		["mutator_warthogs_desc"] = "Warthogs spawn in naturally.",
 		["mutator_warthogs_longdesc"] = "Whenever a Bulldozer of any variety spawns, there is a chance that it will be replaced by a flamethrower weilding Warthog.",
 
+		["MutatorSnipersAndSnipers"] = "Sniper Hell",
+		["MutatorSnipersAndSnipers_desc"] = "All enemies now spawn with Sniper Rifles.",
+		["MutatorSnipersAndSnipers_longdesc"] = "All enemies have their standard weapons replaced with Sniper Rifles.\n\nNote: Shield enemies will still spawn with their normal weapons.",
+
 		--Crime Spree mutators
 		["mutator_cloakercuff"] = "Conjurer",
 		["mutator_cloakercuff_desc"] = "Cloaker melee strikes will now cuff players.",

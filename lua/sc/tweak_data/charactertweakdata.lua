@@ -661,7 +661,7 @@ function CharacterTweakData:_init_medic(presets)
 	self.medic_summers.bot_priority_shout = "f45x_any"
 	self.medic_summers.speech_prefix_p1 = "rmdc"
 	self.medic_summers.speech_prefix_p2 = nil
-	self.medic_summers.custom_voicework = nil
+	self.medic_summers.custom_voicework = "summers_doc"
 	self.medic_summers.spawn_sound_event = "rmdc_entrance"
 	self.medic_summers.use_radio = "dsp_radio_russian"
 	self.medic_summers.chatter = presets.enemy_chatter.omnia_lpf
@@ -1462,7 +1462,7 @@ function CharacterTweakData:_init_marshal_shield(presets)
 	self.marshal_shield_break.wall_fwd_offset = nil
 	self.marshal_shield_break.priority_shout = nil
 	self.marshal_shield_break.access = "swat"
-	
+	self.marshal_shield_break.no_mutator_weapon_override = false
 	self.marshal_shield_break.chatter = presets.enemy_chatter.swat
 	self.marshal_shield_break.announce_incomming = nil
 	self.marshal_shield_break.damage.hurt_severity = presets.hurt_severities.base
@@ -1471,7 +1471,6 @@ function CharacterTweakData:_init_marshal_shield(presets)
 	self.marshal_shield_break.damage.shield_knocked = nil
 	self.marshal_shield_break.modify_health_on_tweak_change = true
 	self.marshal_shield_break.tmp_invulnerable_on_tweak_change = 1.5 --still better than 3 seconds
-	self.marshal_shield_break.no_mutator_weapon_override = true
 	self.marshal_shield_break.unintimidateable = true
 	self.marshal_shield_break.no_asu = true
 	table.insert(self._enemy_list, "marshal_shield_break")

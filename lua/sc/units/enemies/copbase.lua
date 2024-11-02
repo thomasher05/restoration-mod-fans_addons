@@ -719,6 +719,12 @@ function CopBase:default_weapon_name(...)
 		self._default_weapon_id = "flamethrower"
 		self._weapon_set = true		
 	end
+
+	--For Sniper Hell Mutator
+	if not self._weapon_set and restoration and restoration.whywhywhywhy and not self._char_tweak.no_mutator_weapon_override then
+		self._default_weapon_id = "m14_sniper_npc"
+		self._weapon_set = true		
+	end
 	
 	--Have White Titandozers use Grenade Launchers like their Reaper counterparts in Russia/Mexico heists (mostly for Holiday Effects and consistency with factions)
 	if self._tweak_table == "tank_hw" and faction == "russia" or self._tweak_table == "tank_hw" and faction == "federales" then
@@ -810,6 +816,7 @@ local zeal = {
 	rifle_heavy = {
 		"m4",
 		"g36",
+		"ump",
 		"m249"
 	},
 }

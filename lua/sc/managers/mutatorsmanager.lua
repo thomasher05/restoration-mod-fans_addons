@@ -59,7 +59,8 @@ function MutatorsManager:init()
 		MutatorBirthday:new(self),
 		MutatorNoAmmoPickups:new(self),
 		MutatorOopsAllSpecials:new(self),
-		MutatorPiggyBulldozer:new(self)
+		MutatorPiggyBulldozer:new(self),
+		MutatorSnipersAndSnipers:new(self)
 	}
 	self._active_mutators = {}
 	local activate = Global.mutators and Global.mutators.active_on_load
