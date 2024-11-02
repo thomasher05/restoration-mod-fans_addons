@@ -94,6 +94,10 @@ Murkywater Cloaker: Myself
 
 Marshal Marksman: Sniper (Team Fortress 2)
 
+Summers: Bill (Left 4 Dead Russian Dub)
+
+Sergeant Doc: Nick (Left 4 Dead 2 Russian Dub)
+
 # Credits
 
 Rhynne: Helped in development of the Restoration HUD and was the original project lead. Creating Major Heist Edits.
