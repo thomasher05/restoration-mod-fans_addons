@@ -2617,7 +2617,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 				["bm_rpk_sc_desc"] = "A good choice when you want your bullet-hose to be on target and a little more Eastern Bloc.",
 				["bm_wp_rpk_m_ban_sc"] = "Potassium Magazine",
 				["bm_wp_ak_m_drum"] = "Drum Magazine",
-				["bm_wp_upg_i_rpk74"] = "RPK 5.45 Kit",
+				["bm_wp_upg_i_rpk74"] = "AK 5.45 Kit",
 				--Brenner 21/HK21
 				["bm_hk21_sc_desc"] = "The big-little sister to the Gewehr-3. Comes with an increased fire rate for even greater suppressive abilties.",
 				--M60
@@ -2784,6 +2784,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					["bm_amcar4_sc_desc"] = "The AMCAR-4 is one of the most versatile assault rifle there is.\n\nThe good accuracy coupled with the high rate of fire prepares it's owner for any situation.",
 					--TAR-21
 					["bm_wpn_fps_ass_tar21_sc_desc"] = "Isralic bullpup assault rifle for close-quarters combat.",
+					--MW2023 STG-44 (FUCK YOU, SLEDGEHAMMER)
+					["bm_w_stango44"] = "\"STG-44\"",
+					["bm_wp_wpn_fps_ass_stango44_magazine_40"] = "30 Round Magazine",
 			
 			--[[ DMRs ]]
 				--Little Friend

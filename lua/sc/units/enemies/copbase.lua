@@ -717,13 +717,104 @@ function CopBase:default_weapon_name(...)
 	--For Jungle Inferno Mutator
 	if not self._weapon_set and restoration and restoration.disco_inferno and not self._char_tweak.no_mutator_weapon_override then
 		self._default_weapon_id = "flamethrower"
-		self._weapon_set = true		
+		self._weapon_set = true
 	end
 
 	--For Sniper Hell Mutator
 	if not self._weapon_set and restoration and restoration.whywhywhywhy and not self._char_tweak.no_mutator_weapon_override then
 		self._default_weapon_id = "m14_sniper_npc"
-		self._weapon_set = true		
+		self._weapon_set = true
+
+		if faction == "russia" then
+			self._default_weapon_id = "asval_smg_elite"
+		end
+
+		--Manually give dozers the right weapons
+		local dozers_snipers = {
+			-- Vanilla Bulldozers
+			[Idstring("units/payday2/characters/ene_bulldozer_1/ene_bulldozer_1"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/payday2/characters/ene_bulldozer_2/ene_bulldozer_2"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/payday2/characters/ene_bulldozer_3/ene_bulldozer_3"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer/ene_zeal_bulldozer"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2/ene_zeal_bulldozer_2"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_3/ene_zeal_bulldozer_3"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic/ene_bulldozer_medic"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_minigun_classic/ene_bulldozer_minigun_classic"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_minigun/ene_bulldozer_minigun"):key()] = {"m14_sniper_npc"},
+			-- Akan (asval_smg_elite was reprogramed to be a sniper so I'm doing that)
+			[Idstring("units/pd2_dlc_mad/characters/ene_akan_fbi_tank_r870/ene_akan_fbi_tank_r870"):key()] = {"asval_smg_elite"},
+			[Idstring("units/pd2_dlc_mad/characters/ene_akan_fbi_tank_saiga/ene_akan_fbi_tank_saiga"):key()] = {"asval_smg_elite"},
+			[Idstring("units/pd2_dlc_mad/characters/ene_akan_fbi_tank_rpk_lmg/ene_akan_fbi_tank_rpk_lmg"):key()] = {"asval_smg_elite"},
+			-- HVH
+			[Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_hvh_1/ene_bulldozer_hvh_1"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_hvh_2/ene_bulldozer_hvh_2"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_hvh_3/ene_bulldozer_hvh_3"):key()] = {"m14_sniper_npc"},
+			-- BPH
+			[Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_2/ene_murkywater_bulldozer_2"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_3/ene_murkywater_bulldozer_3"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_4/ene_murkywater_bulldozer_4"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_medic/ene_murkywater_bulldozer_medic"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_1/ene_murkywater_bulldozer_1"):key()] = {"m14_sniper_npc"},
+			-- BEX
+			[Idstring("units/pd2_dlc_bex/characters/ene_swat_dozer_policia_federale_r870/ene_swat_dozer_policia_federale_r870"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_bex/characters/ene_swat_dozer_policia_federale_saiga/ene_swat_dozer_policia_federale_saiga"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_bex/characters/ene_swat_dozer_policia_federale_m249/ene_swat_dozer_policia_federale_m249"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_bex/characters/ene_swat_dozer_medic_policia_federale/ene_swat_dozer_medic_policia_federale"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_bex/characters/ene_swat_dozer_policia_federale_minigun/ene_swat_dozer_policia_federale_minigun"):key()] = {"m14_sniper_npc"},
+			-- SC Bulldozers
+			[Idstring("units/payday2/characters/ene_bulldozer_1_sc/ene_bulldozer_1_sc"):key()] = {"railgun_npc"},
+			[Idstring("units/payday2/characters/ene_bulldozer_2_sc/ene_bulldozer_2_sc"):key()] = {"railgun_npc"},
+			[Idstring("units/payday2/characters/ene_bulldozer_3_sc/ene_bulldozer_3_sc"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_lapd/characters/ene_bulldozer_3/ene_bulldozer_3"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_sc/ene_zeal_bulldozer_sc"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/ene_zeal_bulldozer_2_sc"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_3_sc/ene_zeal_bulldozer_3_sc"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_dlc_gitgud/characters/ene_bulldozer_minigun/ene_bulldozer_minigun"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_bravo/characters/ene_bravo_bulldozer/ene_bravo_bulldozer"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic_classic/ene_bulldozer_medic_classic")] = {"railgun_npc"},
+			[Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic_sc/ene_bulldozer_medic_sc"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_dlc_vip/characters/ene_vip_2_assault/ene_vip_2_assault"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2"):key()] = {"railgun_npc"},
+			-- Akan SC
+			[Idstring("units/pd2_mod_reapers/characters/ene_bulldozer_1/ene_bulldozer_1"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_reapers/characters/ene_bulldozer_2/ene_bulldozer_2"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_reapers/characters/ene_bulldozer_3/ene_bulldozer_3"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_reapers/characters/ene_bulldozer_mini/ene_bulldozer_mini"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_reapers/characters/ene_bulldozer_medic/ene_bulldozer_medic"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_reapers/characters/ene_vip_2/ene_vip_2"):key()] = {"railgun_npc"},
+			-- HVH SC
+			[Idstring("units/pd2_mod_halloween/characters/ene_bulldozer_1/ene_bulldozer_1"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_halloween/characters/ene_bulldozer_2/ene_bulldozer_2"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_halloween/characters/ene_bulldozer_3/ene_bulldozer_3"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_halloween/characters/ene_zeal_bulldozer_2/ene_zeal_bulldozer_2"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_halloween/characters/ene_zeal_bulldozer_3/ene_zeal_bulldozer_3"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_halloween/characters/ene_zeal_bulldozer/ene_zeal_bulldozer"):key()] = {"railgun_npc"},
+			[Idstring("units/payday2/characters/ene_bulldozer_2_hw/ene_bulldozer_2_hw"):key()] = {"railgun_npc"},
+			[Idstring("units/payday2/characters/ene_bulldozer_4/ene_bulldozer_4"):key()] = {"railgun_npc"},
+			-- BEX SC
+			[Idstring("units/pd2_dlc_bex/characters/ene_bulldozer_1/ene_bulldozer_1"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_dlc_bex/characters/ene_bulldozer_2/ene_bulldozer_2"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_dlc_bex/characters/ene_bulldozer_3/ene_bulldozer_3"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_dlc_bex/characters/ene_bulldozer_minigun/ene_bulldozer_minigun"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_dlc_bex/characters/ene_bulldozer_medic/ene_bulldozer_medic"):key()] = {"railgun_npc"},
+			-- NYPD
+			[Idstring("units/pd2_mod_nypd/characters/ene_bulldozer_1/ene_bulldozer_1"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_nypd/characters/ene_bulldozer_2/ene_bulldozer_2"):key()] = {"railgun_npc"},
+			-- OMNIA
+			[Idstring("units/pd2_mod_omnia/characters/ene_bulldozer_1/ene_bulldozer_1"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_omnia/characters/ene_bulldozer_2/ene_bulldozer_2"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_omnia/characters/ene_bulldozer_3/ene_bulldozer_3"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_omnia/characters/ene_bulldozer_minigun/ene_bulldozer_minigun"):key()] = {"railgun_npc"},
+			-- Captains
+			[Idstring("units/pd2_dlc_vip/characters/ene_spring/ene_spring")] = {"railgun_npc"},
+			[Idstring("units/pd2_mod_halloween/characters/ene_headless_hatman/ene_headless_hatman"):key()] = {"railgun_npc"}
+		}
+
+		local tank_snipers = dozers_snipers[self._unit:name():key()]
+
+		if tank_snipers then
+			self._default_weapon_id = type(tank_snipers) == "table" and table.random(tank_snipers) or tank_snipers
+		end
 	end
 	
 	--Have White Titandozers use Grenade Launchers like their Reaper counterparts in Russia/Mexico heists (mostly for Holiday Effects and consistency with factions)

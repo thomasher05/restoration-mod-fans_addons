@@ -7000,6 +7000,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 					Idstring("units/payday2/characters/ene_bulldozer_3_sc/ene_bulldozer_3_sc")
 				},
 				russia = {
+					Idstring("units/pd2_dlc_mad/characters/ene_akan_fbi_tank_rpk_lmg/ene_akan_fbi_tank_rpk_lmg"),
 					Idstring("units/pd2_mod_reapers/characters/ene_bulldozer_3/ene_bulldozer_3")
 				},
 				zombie = {
@@ -7038,6 +7039,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 					Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_sc/ene_zeal_bulldozer_sc")
 				},
 				russia = {
+					Idstring("units/pd2_dlc_mad/characters/ene_akan_fbi_tank_rpk_lmg/ene_akan_fbi_tank_rpk_lmg"),
 					Idstring("units/pd2_mod_reapers/characters/ene_bulldozer_3/ene_bulldozer_3")
 				},
 				zombie = {
