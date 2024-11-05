@@ -7321,8 +7321,9 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 					Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale/ene_swat_medic_policia_federale"),
 					Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale_r870/ene_swat_medic_policia_federale_r870"),
 					Idstring("units/pd2_dlc_bex/characters/ene_medic_mp5/ene_medic_mp5"),	
-					Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
-				},					
+					Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"),
+					Idstring("units/pd2_mod_reapers/characters/ene_akan_lpf/ene_akan_lpf")
+				},
 				nypd = {
 					Idstring("units/pd2_mod_nypd/characters/ene_nypd_medic/ene_nypd_medic"),
 					Idstring("units/payday2/characters/ene_medic_m4/ene_medic_m4"),
@@ -7502,7 +7503,8 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 					Idstring("units/pd2_dlc_bex/characters/ene_medic_mp5/ene_medic_mp5"),
 					Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale/ene_swat_medic_policia_federale"),
 					Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale_r870/ene_swat_medic_policia_federale_r870"),
-					Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
+					Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"),
+					Idstring("units/pd2_mod_reapers/characters/ene_akan_lpf/ene_akan_lpf")
 				},					
 				nypd = {
 					Idstring("units/pd2_mod_nypd/characters/ene_nypd_medic/ene_nypd_medic"),
@@ -7635,7 +7637,8 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 					Idstring("units/pd2_dlc_bex/characters/ene_medic_mp5/ene_medic_mp5"),
 					Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale/ene_swat_medic_policia_federale"),
 					Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale_r870/ene_swat_medic_policia_federale_r870"),
-					Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
+					Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"),
+					Idstring("units/pd2_mod_reapers/characters/ene_akan_lpf/ene_akan_lpf")
 				},
 				nypd = {
 					Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_medic/ene_zeal_medic"),
@@ -9302,7 +9305,8 @@ end
 				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
 			},
 			federales = {
-				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
+				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"),
+				Idstring("units/pd2_mod_reapers/characters/ene_akan_lpf/ene_akan_lpf")
 			},				
 			nypd = {
 				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
@@ -10852,7 +10856,8 @@ end
 				Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale/ene_swat_medic_policia_federale"),
 				Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale_r870/ene_swat_medic_policia_federale_r870"),
 				Idstring("units/pd2_dlc_bex/characters/ene_medic_mp5/ene_medic_mp5"),
-				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
+				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"),
+				Idstring("units/pd2_mod_reapers/characters/ene_akan_lpf/ene_akan_lpf")
 			},					
 			nypd = {
 				Idstring("units/pd2_mod_nypd/characters/ene_nypd_medic/ene_nypd_medic"),
@@ -11966,7 +11971,8 @@ end
 				Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale/ene_swat_medic_policia_federale"),
 				Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale_r870/ene_swat_medic_policia_federale_r870"),
 				Idstring("units/pd2_dlc_bex/characters/ene_medic_mp5/ene_medic_mp5"),	
-				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
+				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"),
+				Idstring("units/pd2_mod_reapers/characters/ene_akan_lpf/ene_akan_lpf")
 			},					
 			nypd = {
 				Idstring("units/pd2_mod_nypd/characters/ene_nypd_medic/ene_nypd_medic"),
@@ -12100,7 +12106,8 @@ end
 				Idstring("units/pd2_dlc_bex/characters/ene_medic_mp5/ene_medic_mp5"),
 				Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale/ene_swat_medic_policia_federale"),
 				Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale_r870/ene_swat_medic_policia_federale_r870"),
-				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
+				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"),
+				Idstring("units/pd2_mod_reapers/characters/ene_akan_lpf/ene_akan_lpf")
 			},					
 			nypd = {
 				Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_medic/ene_zeal_medic"),
@@ -12204,7 +12211,8 @@ end
 				Idstring("units/pd2_dlc_bex/characters/ene_medic_mp5/ene_medic_mp5"),
 				Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale/ene_swat_medic_policia_federale"),
 				Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale_r870/ene_swat_medic_policia_federale_r870"),
-				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
+				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"),
+				Idstring("units/pd2_mod_reapers/characters/ene_akan_lpf/ene_akan_lpf")
 			},					
 			nypd = {
 				Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_medic/ene_zeal_medic"),

@@ -28,7 +28,7 @@ Package data for Russia and Murkywater properlly load.
 
 Titan Cloakers spawn on mayhem and above.
 
-NewCopper's Assets somehow (Does not load)
+NewCopper's Assets somehow (Planned to remove on 2025)
 
 Zip .22 has a 1% chance to fail
 
@@ -37,6 +37,8 @@ Zip .22 has a 1% chance to fail
 Scout G7 deals 25% more damage on headshots at the cost of less damage
 
 Widomaker TX is a primary and deals more headshot damage, but has less body shot damage and fires slower.
+
+Akan LPFs and Enforcers spawn on mexico heists
 
 # Mutators:
 
