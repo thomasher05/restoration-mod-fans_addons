@@ -705,6 +705,10 @@ local weapons_map = {
 	[Idstring("units/pd2_dlc_spa/characters/npc_spa/npc_spa"):key()] = "beretta92",
 	[Idstring("units/payday2/characters/npc_old_hoxton_prisonsuit_2/npc_old_hoxton_prisonsuit_2"):key()] = "beretta92",
 	[Idstring("units/pd2_dlc_berry/characters/npc_locke/npc_locke"):key()] = "beretta92",
+
+	--Giving vanilla units the right guns
+	[Idstring("units/pd2_dlc_mad/characters/ene_akan_medic_r870/ene_akan_medic_r870"):key()] = "fort_500",
+	[Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale_r870/ene_swat_medic_policia_federale_r870"):key()] = "m500",
 }
 
 local default_weapon_name_orig = CopBase.default_weapon_name
@@ -918,11 +922,11 @@ local russia = {
 		"akmsu_smg"
 	},
 	rifle_heavy = {
-		"ak47_ass",
+		"ak47_ass_elite",
 		"rpk_lmg"
 	},
 	shotgun = {
-		"r870",
+		"fort_500",
 		"saiga",
 		"benelli"
 	}
@@ -932,12 +936,15 @@ local murkywater = {
 	rifle_light = {
 		"m4",
 		"scar_murky",
-		"ump"
+		"ump",
+		"scar_npc"
 	},
 	rifle_heavy = {
 		"m4",
 		"scar_murky",
 		"ump",
+		"scar_npc",
+		"m249",
 		"m249",
 		"m249",
 		"m249"
@@ -956,15 +963,13 @@ local federales = {
 		"ump"
 	},
 	rifle_heavy = {
-		"mp5",
-		"m4",
-		"ump",
-		"m249",
+		"amcar",
+		"hk33",
 		"m249",
 		"m249"
 	},
 	shotgun = {
-		"r870",
+		"m500",
 		"benelli",
 		"saiga"
 	}
@@ -1038,7 +1043,6 @@ local weapon_mapping = {
 	[("units/pd2_dlc_mad/characters/ene_akan_fbi_swat_r870/ene_akan_fbi_swat_r870"):key()] = russia.shotgun,
 	[("units/pd2_dlc_mad/characters/ene_akan_fbi_heavy_r870/ene_akan_fbi_heavy_r870"):key()] = russia.shotgun,
 	[("units/pd2_dlc_mad/characters/ene_akan_fbi_swat_dw_r870/ene_akan_fbi_swat_dw_r870"):key()] = russia.shotgun,
-	[("units/pd2_dlc_mad/characters/ene_akan_medic_r870/ene_akan_medic_r870"):key()] = russia.shotgun,
 -- Zombie
 	[("units/pd2_dlc_hvh/characters/ene_cop_hvh_1/ene_cop_hvh_1"):key()] = cop.pistol,
 	[("units/pd2_dlc_hvh/characters/ene_cop_hvh_2/ene_cop_hvh_2"):key()] = cop.pistol,
@@ -1081,7 +1085,6 @@ local weapon_mapping = {
 	[("units/pd2_dlc_bex/characters/ene_swat_policia_federale_city_r870/ene_swat_policia_federale_city_r870"):key()] = federales.shotgun,
 	[("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale_r870/ene_swat_heavy_policia_federale_r870"):key()] = federales.shotgun,
 	[("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale_fbi_r870/ene_swat_heavy_policia_federale_fbi_r870"):key()] = federales.shotgun,
-	[("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale_r870/ene_swat_medic_policia_federale_r870"):key()] = federales.shotgun,
 -- Dave's guns
 	[("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"):key{}] = dave.all_the_guns
 }
