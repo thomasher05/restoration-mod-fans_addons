@@ -4814,6 +4814,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 	}
 	for i, wep_id in ipairs(recat) do
 		self[ wep_id ].always_hipfire = true
+		self[ wep_id ].is_bullpup = true
 	end
 
 	--Weapon specific attachment category names
@@ -19690,13 +19691,13 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.or12.spin_up_shoot = nil
 				self.or12.spin_up_t = nil
 				self.or12.spin_down_t = nil
-				self.or12.sounds.magazine_empty = "wp_rifle_slide_lock"
 				self.or12.panic_suppression_chance = 0.05
 				self.or12.reload_speed_multiplier = 0.8
 				self.or12.timers.reload_not_empty = 2.8
 				self.or12.timers.reload_exit_not_empty = 0.9
 				self.or12.timers.reload_empty = 3.21
 				self.or12.timers.reload_exit_empty = 1.0
+				self.or12.tactical_reload = 1
 			end
 
 			if self.ntw20 then
@@ -19882,43 +19883,57 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.bp12 then
-				self.bp12.has_description = true
-				self.bp12.desc_id = "bm_w_bp12_desc"
 				self.bp12.recategorize = { "light_shot" }
 				self.bp12.categories = { "shotgun" }
 				self.bp12.damage_type = "shotgun"
-				self.bp12.supported = true
-				self.bp12.rays = 6
-				self.bp12.fire_mode_data.fire_rate = 0.1665
-				self.bp12.panic_suppression_chance = 0.05
-				self.bp12.kick = self.stat_info.kick_tables.vertical_kick
+				self.bp12.damage_type_single_ray = "sniper"
+				self.bp12.burst = nil
+				self.bp12.fire_mode_data.burst_cooldown = nil
+				self.bp12.BURST_COUNT = nil
+				self.bp12.fire_mode_data.fire_rate = 0.13043478
+				self.bp12.BURST_FIRE_DEFAULT = true
+				self.bp12.BURST_ONLY = true
+				self.bp12.LOCK_BURST = true
+				self.bp12.BURST_FIRE = 3
+				self.bp12.BURST_DELAY = 0.5
+				self.bp12.BURST_FIRE_RECOIL_MULTIPLIER = 0.75
+				self.bp12.BURST_FIRE_LAST_RECOIL_MULTIPLIER = 1.05
 				self.bp12.CLIP_AMMO_MAX = 12
-				self.bp12.AMMO_MAX = 48
-				self.bp12.ads_speed = 0.2
-				self.bp12.timers.reload_not_empty = 1.54
-				self.bp12.timers.reload_empty = 1.67
-				self.bp12.timers.reload_exit_empty = 1.65
-				self.bp12.timers.reload_exit_not_empty = 1.76
+				self.bp12.fire_mode_data.fire_rate = 0.13333
+				self.bp12.AMMO_MAX = 60
+				self.bp12.kick = self.stat_info.kick_tables.vertical_kick
+				self.bp12.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
+				self.bp12.FIRE_MODE = "single"				
+				self.bp12.rays = 9
+				self.bp12.supported = true
+				self.bp12.ads_speed = 0.340
+				self.bp12.tactical_reload = 1
 				self.bp12.damage_falloff = {
-					start_dist = 1800,
-					end_dist = 3500,
-					min_mult = 0.2
+					start_dist = 400,
+					end_dist = 2600,
+					min_mult = 0.15
 				}
 				self.bp12.stats = {
-					damage = 90,
-					spread = 44,
-					recoil = 72,
-					spread_moving = 5,
+					damage = 120,
+					spread = 25,
+					recoil = 37,
+					spread_moving = 7,
 					zoom = 1,
-					concealment = 23,
-					suppression = 5,
-					alert_size = 7,
+					concealment = 22,
+					suppression = 8,
+					alert_size = 2,
 					extra_ammo = 101,
 					total_ammo_mod = 200,
 					value = 1,
 					reload = 20
 				}
 				self.bp12.stats_modifiers = nil
+				self.bp12.panic_suppression_chance = 0.05
+				self.bp12.lock_slide = true
+				self.bp12.sounds.magazine_empty = "wp_rifle_slide_lock"
+				self.bp12.timers.reload_empty = 2.65
+				self.bp12.timers.reload_exit_empty = 0.6
+				self.bp12.timers.reload_exit_not_empty = 0.7
 			end
 	
 			if self.amcar4 then
@@ -20361,6 +20376,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.xm214a.spin_up_t = 0.25
 				self.xm214a.spin_down_t = 0.5
 				self.xm214a.always_hipfire = true
+				self.xm214a.is_bullpup = true
 				self.xm214a.always_play_anims = true
 				self.xm214a.no_reload_anims = true
 				self.xm214a.sounds.no_fix = true
@@ -20401,6 +20417,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.sidewinder.timers.reload_exit_empty = 0.9
 			self.sidewinder.timers.reload_empty = 3.9
 			self.sidewinder.always_hipfire = true
+			self.sidewinder.is_bullpup = true
 			self.sidewinder.always_play_anims = true
 		end
 
@@ -21026,6 +21043,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.sasha.spin_up_shoot = nil
 			self.sasha.spin_up_anims = true
 			self.sasha.always_hipfire = true
+			self.sasha.is_bullpup = true
 			self.sasha.weapon_movement_penalty = sms_preset.mini_40
 			self.sasha.sms = sms_preset.mini_40
 			self.sasha.alt_shotgunraycast = true
@@ -21074,6 +21092,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.abzats.spin_down_t = 0.00000001
 			self.abzats.spin_up_shoot = true
 			self.abzats.always_hipfire = true
+			self.abzats.is_bullpup = true
 			self.abzats.reload_speed_multiplier = 0.85
 			self.abzats.timers.reload_exit_empty = 1.2
 			self.abzats.timers.reload_exit_not_empty = 1.2

@@ -5261,6 +5261,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills", function(loc)
 		["menu_cs_modifier_10secondsresponsetime"] = "All police assaults now start at maximum intensity.",
 		["menu_cs_modifier_dozerpairs"] = "Bulldozers will now always spawn in pairs.",
 		["menu_cs_modifier_spoocsquad"] = "Cloakers now tend to spawn in groups.",
+		["menu_cs_modifier_titandozer"] = "Whenever a Bulldozer of any variety spawns, there is a 20% chance that it will be replaced by a railgun weilding Titan Bulldozer.",
 
 		["bm_menu_skill"] = "Crew Boosts",
 

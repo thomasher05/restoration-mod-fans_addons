@@ -848,6 +848,13 @@ function CrimeSpreeTweakData:init_modifiers(tweak_data)
 				icon = "crime_spree_dozer_medic",
 				data = {}
 			},
+			--HOLY SHIT TITANDOZER!!!
+			{
+				id = "titan_bulldozers",
+				class = "ModifierTitanTanks",
+				icon = "crime_spree_more_dozers",
+				data = {}
+			},
 			--Longer assault waves
 			{
 				id = "assault_extender",
@@ -926,7 +933,7 @@ function CrimeSpreeTweakData:init_modifiers(tweak_data)
 				data = {
 					speed = {25, "add"}
 				}
-			}	
+			},
 		},
 		stealth = {
 			{

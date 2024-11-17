@@ -2417,7 +2417,10 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_sights", "resmod_sights", function
 			self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_smg_ksp45 = {
 				translation = Vector3(-0.005, 7.1, -0.46)
 			}
-
+			self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_sho_bp12 = {
+				translation = Vector3(0.04, 4.9, -0.01),
+				rotation = Rotation(0.05, 0, 0.47)
+			}
 			self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_shot_omni = {
 				translation = Vector3(-0.04, -0.8, -0.2),
 				rotation = Rotation(-0.11, 0.1 ,-0.7)
@@ -2546,9 +2549,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_sights", "resmod_sights", function
 			self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_ass_g7 = {
 				translation = Vector3(0, -2.2, -3.17)
 			}
-			self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_lmg_mx63 = {
-				translation = Vector3(0, 4.8, -0.09)
-			}
 			self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_lmg_sig_xm250 = {
 				translation = Vector3(0.02, 4, 0.03),
 				rotation = Rotation(0.11, -0.09, 0)
@@ -2575,8 +2575,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_sights", "resmod_sights", function
 			}
 
 			self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_lmg_mx63 = {
-				translation = Vector3(-0.025, 9.6, -0.225),
-				rotation = Rotation(-0.05, 0, -0.7)
+				translation = Vector3(0, 4.8, -0.09)
 			}
 
 			self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_snp_m200 = {
@@ -38522,12 +38521,12 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 
 	if self.parts.wpn_fps_sho_bp12_b_ext then
 		self.parts.wpn_fps_sho_bp12_b_ext.supported = true
-		self.parts.wpn_fps_sho_bp12_b_ext.stats = { recoil = 1, concealment = -2, spread = 2 }
-		self.parts.wpn_fps_sho_bp12_b_ext.custom_stats = { ads_speed_mult = 1.022 }
+		self.parts.wpn_fps_sho_bp12_b_ext.stats = deep_clone(barrels.long_b2_stats)
+		self.parts.wpn_fps_sho_bp12_b_ext.custom_stats = deep_clone(barrels.long_b2_stats)
 
 		self.parts.wpn_fps_sho_bp12_b_short.supported = true
-		self.parts.wpn_fps_sho_bp12_b_short.stats = { recoil = -1, concealment = 2, spread = -1 }
-		self.parts.wpn_fps_sho_bp12_b_short.custom_stats = { ads_speed_mult = 0.88 }
+		self.parts.wpn_fps_sho_bp12_b_short.stats = deep_clone(barrels.short_b1_stats)
+		self.parts.wpn_fps_sho_bp12_b_short.custom_stats = deep_clone(barrels.short_b1_stats)
 
 		self.parts.wpn_fps_sho_bp12_m_ext.supported = true
 		self.parts.wpn_fps_sho_bp12_m_ext.stats = { extra_ammo = 3, concealment = -2 }
@@ -42320,6 +42319,38 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "PD3FIK22TLRMod", function(self)
 	end
 end)
 Hooks:PostHook(WeaponFactoryTweakData, "init", "PD3BlysprutaMod", function(self)
+	if self.wpn_fps_lmg_mx63 then
+		self.wpn_fps_lmg_mx63.override= {
+		--	wpn_fps_upg_o_acog = {stance_mod = {wpn_fps_lmg_mx63 = {translation = Vector3(0, 7, -0),rotation = Rotation(0, 0, 0)}}},
+		--	wpn_fps_upg_o_tf90 = {stance_mod = {wpn_fps_lmg_mx63 = {translation = Vector3(0, 4.5, -0.1),rotation = Rotation(0, 0, 0)}}},
+		--	wpn_fps_upg_o_hamr = {stance_mod = {wpn_fps_lmg_mx63 = {translation = Vector3(0, 7, -0),rotation = Rotation(0, 0, 0)}}},
+		--	wpn_fps_upg_o_poe = {stance_mod = {wpn_fps_lmg_mx63 = {translation = Vector3(0, 4.5, -0),rotation = Rotation(0, 0, 0)}}},
+		--	wpn_fps_upg_o_bmg = {stance_mod = {wpn_fps_lmg_mx63 = {translation = Vector3(0, 7, -0),rotation = Rotation(0, 0, 0)}}},
+			wpn_fps_upg_m4_g_hgrip = {a_obj ="a_g"},
+			wpn_fps_upg_m4_g_mgrip = {a_obj ="a_g"},
+			wpn_fps_upg_m4_g_ergo = {a_obj ="a_g"},
+			wpn_fps_upg_m4_g_sniper = {a_obj ="a_g"},
+			wpn_fps_snp_tti_g_grippy = {a_obj ="a_g"},
+			wpn_fps_sho_sko12_body_grip = {a_obj ="a_g"},
+			wpn_fps_upg_g_m4_surgeon = {a_obj ="a_g"},
+			wpn_fps_snp_victor_g_mod3 = {a_obj ="a_g"},
+			wpn_fps_m4_uupg_g_billet = {a_obj ="a_g"}
+		}
+	end
+end)
+Hooks:PostHook(WeaponFactoryTweakData, "init", "PD3BP12ShotgunMod", function(self)
+	if self.wpn_fps_sho_bp12 then
+		self.parts.wpn_fps_sho_bp12_body.animations = {
+			fire = "recoil",
+			fire_steelsight = "recoil",
+			reload = "reload"
+		}
+		self.parts.wpn_fps_sho_bp12_dh.animations = {
+			fire = "recoil",
+			fire_steelsight = "recoil",
+			reload = "reload"
+		}
+	end
 end)
 
 Hooks:PostHook(WeaponFactoryTweakData, "init", "SPAS15ModInit", function(self)

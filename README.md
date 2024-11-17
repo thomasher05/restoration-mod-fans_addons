@@ -1,8 +1,7 @@
 # What's this?
 
-(rushing this because my dumbass forgot to save and pressed the previous page by mistake)
-
 This is a couple of edits to Restoration Mod fitted for my liking.
+These range from minor weapon tweaks to new features such as mutators.
 
 # Changes:
 
@@ -20,7 +19,7 @@ Big Dave has random weapons.
 
 Added descriptions for various weapons.
 
-Half assed custom weapon support for Third Eye Railgun, UTS-15, VxWolf's HK G11, Crime Boss: Rockay City Scudomnion, PD:TH AMCAR-4, M7 Pursuivant Shotgun, IWI TAR-21, Travis Baker's Repeater, Hawk Type 97, K3 Light Machine Gun, Owen SMG, .300 Knockout, PP-91 KEDR, AF2011, and Crime Boss Handcannon.
+Half assed custom weapon support for Third Eye Railgun, UTS-15, VxWolf's HK G11, Crime Boss: Rockay City Scudomnion, PD:TH AMCAR-4, IWI TAR-21, Travis Baker's Repeater, Hawk Type 97, K3 Light Machine Gun, Owen SMG, .300 Knockout, PP-91 KEDR, AF2011, and Crime Boss Handcannon.
 
 SPAS-15 fires 12 shells instead of 9.
 
@@ -40,6 +39,8 @@ Widomaker TX is a primary and deals more headshot damage, but has less body shot
 
 Akan LPFs and Enforcers spawn on mexico heists
 
+1 new Crime Spree modifier
+
 # Mutators:
 
 Ludicrous Mode: Enemies drop one less ammo pickup.
@@ -51,6 +52,10 @@ Oops! All Specials!: Only special units spawn.
 Semi-Auto Shotgun Bulldozers spawns miniguns (`Loc.lua` was changed to reflect this)
 
 Sniper Hell: Most enemies spawn with Sniper Rifles.
+
+# Crime Spree Modifiers:
+
+The odds of titan bulldozers are increased by 20%
 
 # Voicelines:
 
