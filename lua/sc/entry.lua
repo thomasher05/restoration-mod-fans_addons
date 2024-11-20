@@ -214,6 +214,13 @@ if GGWEPNENAME then
 				if table.contains(blueprint, "wpn_fps_m16_fg_vietnam") then
 					return managers.localization:text("bm_w_m16a1")
 				end
+			
+			elseif factory_id == "wpn_fps_ass_ar23" then
+				if table.contains(blueprint, "wpn_fps_ass_ar23_ck_concussive") then
+					return managers.localization:text("bm_w_ar23_concussive")
+				elseif table.contains(blueprint, "wpn_fps_ass_ar23_ck_penetrator") then
+					return managers.localization:text("bm_w_ar23_penetrator")
+				end
 
 		--[[     BRs     ]]--
 			elseif factory_id == "wpn_fps_ass_scar" then

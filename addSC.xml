@@ -617,7 +617,7 @@
 	<model				path="units/pd2_dlc_xm20/characters/ene_acc_dozer_zeal_santa_hat_sc/ene_acc_dozer_zeal_santa_hat_sc"/>
 	<object				path="units/pd2_dlc_xm20/characters/ene_acc_dozer_zeal_santa_hat_sc/ene_acc_dozer_zeal_santa_hat_sc"/>
 	<unit				path="units/pd2_dlc_xm20/characters/ene_acc_dozer_zeal_santa_hat_sc/ene_acc_dozer_zeal_santa_hat_sc" load="false"/>
-	<!--Dozer Eggman Emp--- I mean Akan helm-->
+	<!--Dozer Eggman Emp- I mean Akan helm-->
 	<cooked_physics		path="units/pd2_dlc_xm20/characters/ene_acc_dozer_akan_santa_hat_sc/ene_acc_dozer_akan_santa_hat_sc"/>
 	<model				path="units/pd2_dlc_xm20/characters/ene_acc_dozer_akan_santa_hat_sc/ene_acc_dozer_akan_santa_hat_sc"/>
 	<object				path="units/pd2_dlc_xm20/characters/ene_acc_dozer_akan_santa_hat_sc/ene_acc_dozer_akan_santa_hat_sc"/>
@@ -934,7 +934,7 @@
 	<texture			path="units/pd2_dlc_vip/characters/shared_textures/spook_cloak_glow_df" load="true"/> 
 	
 	
-	<!--DRAK Titan Cloaker (why would Shado--- i mean Autumn hang around with DRAK clonkers?)-->	
+	<!--DRAK Titan Cloaker (why would Shado- i mean Autumn hang around with DRAK clonkers?)-->	
 	<model				path="units/pd2_mod_reapers/characters/ene_spook_cloak_1/ene_spook_cloak_1"/>
 	<object				path="units/pd2_mod_reapers/characters/ene_spook_cloak_1/ene_spook_cloak_1"/>
 	<sequence_manager	path="units/pd2_mod_reapers/characters/ene_spook_cloak_1/ene_spook_cloak_1"/>
@@ -1245,6 +1245,9 @@
 	<texture			path="units/pd2_mod_dave/characters/shared_textures/taser_body_nm"/>
 	<texture			path="units/pd2_mod_dave/characters/shared_textures/heads_atlas_df"/>
 	<texture			path="units/pd2_mod_dave/characters/shared_textures/helmets_heavy_taser_atlas_df"/>
+
+	<unit				path="units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_scripted_2/ene_male_marshal_marksman_scripted_2" load="true" force="false"/>
+	<unit				path="units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_scripted_2/ene_male_marshal_marksman_scripted_2_husk" load="true" force="false"/>
 	
 	<!--LPF and Medic (over-)healing Effects-->
 	<effect path="effects/pd2_mod_omnia/particles/character/overkillpack/mega_alien_eyes"/>
