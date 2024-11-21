@@ -1511,7 +1511,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 				"units/pd2_dlc_bex/characters/ene_medic_mp5/ene_medic_mp5",
 				"units/pd2_dlc_bex/characters/ene_medic_mp5/ene_medic_mp5",
 				"units/pd2_dlc_bex/characters/ene_medic_mp5/ene_medic_mp5",
-				"units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"
+				"units/pd2_mod_reapers/characters/ene_akan_lpf/ene_akan_lpf"
 			},
 			taser = {
 				"units/pd2_dlc_bex/characters/ene_tazer_1/ene_tazer_1",
@@ -2564,7 +2564,7 @@ if level_id == "dinner" or level_id == "ranc" then
 		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
 		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
 		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
-		"units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"
+		"units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_scripted_2/ene_male_marshal_marksman_scripted_2"
 	}
 	ElementSpawnEnemyDummy.faction_mapping.lapd.sm_wish.sniper = {
 		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
@@ -2572,9 +2572,9 @@ if level_id == "dinner" or level_id == "ranc" then
 		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
 		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
 		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
-		"units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"
+		"units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_scripted_2/ene_male_marshal_marksman_scripted_2"
 	}
-end
+end	
 
 ElementSpawnEnemyDummy.faction_mapping.america.normal = ElementSpawnEnemyDummy.faction_mapping.america.overkill
 ElementSpawnEnemyDummy.faction_mapping.america.hard = ElementSpawnEnemyDummy.faction_mapping.america.overkill
