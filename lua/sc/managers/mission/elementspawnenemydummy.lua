@@ -2575,6 +2575,17 @@ if level_id == "dinner" or level_id == "ranc" then
 		"units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_scripted_2/ene_male_marshal_marksman_scripted_2"
 	}
 end
+--Bravo Sharpshooters replacing OMNIA Titan Snipers
+if level_id == "jolly" then
+	ElementSpawnEnemyDummy.faction_mapping.lapd.sm_wish.sniper = {
+		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
+		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
+		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
+		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
+		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
+		"units/pd2_mod_bravo/characters/ene_bravo_dmr_scripted/ene_bravo_dmr_scripted"
+	}
+end
 
 ElementSpawnEnemyDummy.faction_mapping.america.normal = ElementSpawnEnemyDummy.faction_mapping.america.overkill
 ElementSpawnEnemyDummy.faction_mapping.america.hard = ElementSpawnEnemyDummy.faction_mapping.america.overkill
@@ -2840,7 +2851,8 @@ Hooks:PostHook(ElementSpawnEnemyDummy, "init", "sh_init", function (self)
 
 	local mapped_name = enemy_mapping[self._enemy_name:key()]
 	local mapped_unit = faction_mapping and faction_mapping[mapped_name]
-	if type(mapped_unit) == "table" then
+	local mapped_is_table = type(mapped_unit) == "table"
+	if mapped_is_table then
 		self._enemy_table = mapped_unit
 	elseif mapped_unit then
 		self._enemy_name = Idstring(mapped_unit)
@@ -2852,7 +2864,7 @@ Hooks:PostHook(ElementSpawnEnemyDummy, "init", "sh_init", function (self)
 			self._enemy_table = {}
 
 			for _, name in pairs(self._values.enemy_table) do
-				local mapped = faction_mapping[enemy_mapping[name:key()]] or nil
+				local mapped = faction_mapping[enemy_mapping[name:key()]] or name
 
 				if type(mapped) == "table" then
 					table.list_append(self._enemy_table, mapped)
@@ -2862,7 +2874,7 @@ Hooks:PostHook(ElementSpawnEnemyDummy, "init", "sh_init", function (self)
 			end
 
 			if not next(self._enemy_table) then
-				self._enemy_table = nil
+				self._enemy_table = mapped_is_table and mapped_unit or nil
 			end
 		end
 

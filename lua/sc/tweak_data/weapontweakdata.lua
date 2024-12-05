@@ -20187,6 +20187,56 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.ar23.timers.reload_exit_not_empty = 1.13
 			end
 
+			if self.bulldog then
+				self.bulldog.categories = { 
+					"assault_rifle"
+				}
+				self.bulldog.use_data.selection_index = 2
+				self.bulldog.recategorize = {"heavy_ar"}
+				self.bulldog.damage_type = "assault_rifle"
+				self.bulldog.CLIP_AMMO_MAX = 24
+				self.bulldog.AMMO_MAX = 96
+				self.bulldog.fire_mode_data.fire_rate = 0.1
+				self.bulldog.BURST_FIRE_ADS_TOGGLE = true
+				self.bulldog.BURST_FIRE = 3
+				self.bulldog.BURST_DELAY = 0.15
+				self.bulldog.BURST_FIRE_RATE_MULTIPLIER = 1.3333
+				self.bulldog.BURST_FIRE_RECOIL_MULTIPLIER = 0.75
+				self.bulldog.BURST_FIRE_LAST_RECOIL_MULTIPLIER = 1.05
+				self.bulldog.CAN_TOGGLE_FIREMODE = false
+				self.bulldog.FIRE_MODE = "auto"
+				self.bulldog.kick = self.stat_info.kick_tables.moderate_kick
+				self.bulldog.supported = true
+				self.bulldog.ads_speed = 0.280
+				self.bulldog.damage_falloff = {
+					start_dist = 1800,
+					end_dist = 5000,
+					min_mult = 0.6
+				}
+				self.bulldog.stats = {
+					damage = 30,
+					spread = 86,
+					recoil = 81,
+					spread_moving = 7,
+					zoom = 1,
+					concealment = 25,
+					suppression = 7,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 4,
+					reload = 20
+				}
+				self.bulldog.stats_modifiers = nil
+				self.bulldog.panic_suppression_chance = 0.05
+				self.bulldog.hs_mult = 1.5
+				self.bulldog.is_bullpup = true
+				self.bulldog.timers.reload_empty = 2.6
+				self.bulldog.timers.reload_exit_empty = 0.6
+				self.bulldog.timers.reload_not_empty = 2
+				self.bulldog.timers.reload_exit_not_empty = 0.6
+			end
+
 			if self.ar2 then
 				self.ar2.categories = { 
 					"assault_rifle"
