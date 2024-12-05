@@ -41,6 +41,8 @@ Akan LPFs and Enforcers spawn on mexico heists
 
 1 new Crime Spree modifier
 
+A Blue Archive skin is disabled becaused I messed up the copy and paste.
+
 # Mutators:
 
 Ludicrous Mode: Enemies drop one less ammo pickup.

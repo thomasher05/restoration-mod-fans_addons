@@ -39091,53 +39091,54 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 					end
 				end
 
-			--The End: Destroyer
-				self.parts.wpn_fps_lmg_mg42_hina_cnuy = {
-					type = "legendary",
-					name_id = "bm_wskn_mg42_hina_cnuy",
-					desc_id = "bm_wskn_mg42_hina_cnuy_desc_dmc",
-					is_a_unlockable = true,
-					a_obj = "a_body",
-					unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
-					third_unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
-					supported = true,
-					stats = { value = 0 },
-					internal_part = false,
-					texture_bundle_folder = "boost_in_lootdrop",
-					alt_icon = "guis/dlcs/boost_in_lootdrop/textures/pd2/blackmarket/icons/mods/wpn_fps_upg_bonus_concealment_p3",
-					has_description = true,
-					override = {
-						wpn_fps_lmg_mg42_reciever = {
-							unit = "units/mods/weapons/wpn_fps_lmg_mg42_receiver_hinature/wpn_fps_lmg_mg42_receiver_hinature" 
-						},
-						wpn_fps_lmg_mg42_b_mg42 = {
-							override = {},
-							unit = "units/mods/weapons/wpn_fps_lmg_mg42_b_hinature/wpn_fps_lmg_mg42_b_hinature"
-						},
-						wpn_fps_lmg_mg42_n42 = {
-							third_unit = "units/mods/weapons/wpn_fps_lmg_mg42_n_hinature/wpn_fps_lmg_mg42_n_hinature",
-							unit = "units/mods/weapons/wpn_fps_lmg_mg42_n_hinature/wpn_fps_lmg_mg42_n_hinature"
-						},
-						forbids = {}
-					}
-				}
-				for k, used_part_id in ipairs(self.wpn_fps_lmg_mg42.uses_parts) do
-					if self.parts[used_part_id] and self.parts[used_part_id].type then
-						if self.parts[used_part_id].type == "barrel" then
-							self.parts.wpn_fps_lmg_mg42_hina_cnuy.override[used_part_id] = {
-								override = {},
-								unit = "units/mods/weapons/wpn_fps_lmg_mg42_b_hinature/wpn_fps_lmg_mg42_b_hinature"
-							}
-						elseif self.parts[used_part_id].type == "barrel_ext" and not self.parts[used_part_id].sub_type then
-							self.parts.wpn_fps_lmg_mg42_hina_cnuy.override[used_part_id] = {
-								third_unit = "units/mods/weapons/wpn_fps_lmg_mg42_n_hinature/wpn_fps_lmg_mg42_n_hinature",
-								unit = "units/mods/weapons/wpn_fps_lmg_mg42_n_hinature/wpn_fps_lmg_mg42_n_hinature"
-							}
-						elseif self.parts[used_part_id].type == "sight" then
-							table.insert(self.parts.wpn_fps_lmg_mg42_hina_cnuy.forbids, used_part_id)
-						end
-					end
-				end
+			--The End: Destroyer	-- disable this because I fucked up on something
+			--	self.parts.wpn_fps_lmg_mg42_hina_cnuy = {
+			--		type = "legendary",
+			--		name_id = "bm_wskn_mg42_hina_cnuy",
+			--		desc_id = "bm_wskn_mg42_hina_cnuy_desc_dmc",
+			--		is_a_unlockable = true,
+			--		a_obj = "a_body",
+			--		unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
+			--		third_unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
+			--		supported = true,
+			--		stats = { value = 0 },
+			--		internal_part = false,
+			--		texture_bundle_folder = "boost_in_lootdrop",
+			--		alt_icon = "guis/dlcs/boost_in_lootdrop/textures/pd2/blackmarket/icons/mods/wpn_fps_upg_bonus_concealment_p3",
+			--		has_description = true,
+			--		override = {
+			--			wpn_fps_lmg_mg42_reciever = {
+			--				unit = "units/mods/weapons/wpn_fps_lmg_mg42_receiver_hinature/wpn_fps_lmg_mg42_receiver_hinature" 
+			--			},
+			--			wpn_fps_lmg_mg42_b_mg42 = {
+			--				override = {},
+			--				unit = "units/mods/weapons/wpn_fps_lmg_mg42_b_hinature/wpn_fps_lmg_mg42_b_hinature"
+			--			},
+			--			wpn_fps_lmg_mg42_n42 = {
+			--				third_unit = "units/mods/weapons/wpn_fps_lmg_mg42_n_hinature/wpn_fps_lmg_mg42_n_hinature",
+			--				unit = "units/mods/weapons/wpn_fps_lmg_mg42_n_hinature/wpn_fps_lmg_mg42_n_hinature"
+			--			},
+			--			forbids = {}
+			--		}
+			--	}
+			--	for k, used_part_id in ipairs(self.wpn_fps_lmg_mg42.uses_parts) do
+			--		if self.parts[used_part_id] and self.parts[used_part_id].type then
+			--			if self.parts[used_part_id].type == "barrel" then
+			--				self.parts.wpn_fps_lmg_mg42_hina_cnuy.override[used_part_id] = {
+			--					override = {},
+			--					unit = "units/mods/weapons/wpn_fps_lmg_mg42_b_hinature/wpn_fps_lmg_mg42_b_hinature"
+			--				}
+			--			elseif self.parts[used_part_id].type == "barrel_ext" and not self.parts[used_part_id].sub_type then
+			--				self.parts.wpn_fps_lmg_mg42_hina_cnuy.override[used_part_id] = {
+			--					third_unit = "units/mods/weapons/wpn_fps_lmg_mg42_n_hinature/wpn_fps_lmg_mg42_n_hinature",
+			--					unit = "units/mods/weapons/wpn_fps_lmg_mg42_n_hinature/wpn_fps_lmg_mg42_n_hinature"
+			--				}
+			--			elseif self.parts[used_part_id].type == "sight" then
+			--				table.insert(self.parts.wpn_fps_lmg_mg42_hina_cnuy.forbids, used_part_id)
+			--			end
+			--		end
+			--	end
+				
 			--NK Delta
 			self.parts.wpn_fps_pis_c96_cnuy_satsuki = {
 				type = "legendary",
