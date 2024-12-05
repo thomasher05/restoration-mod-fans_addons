@@ -107,6 +107,8 @@ Summers: Bill (Left 4 Dead Russian Dub)
 
 Sergeant Doc: Nick (Left 4 Dead 2 Russian Dub)
 
+Major Molly: Rochelle (Left 4 Dead 2 Russian Dub)
+
 # Credits
 
 Rhynne: Helped in development of the Restoration HUD and was the original project lead. Creating Major Heist Edits.
@@ -201,4 +203,4 @@ GullwingDoor: Korean localisation
 
 Additional Testers: Derma, ShortonComedyGamer, K4_Kydure, Finale
 
-AND YOU, THE RESMOD GAMERS!
+AND YOU, for downloading this I guess.

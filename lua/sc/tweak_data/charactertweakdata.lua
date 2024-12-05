@@ -3753,12 +3753,12 @@ function CharacterTweakData:_init_boom(presets)
 	self.boom_summers.speech_prefix_p1 = "fl"
 	self.boom_summers.speech_prefix_p2 = "n"
 	self.boom_summers.speech_prefix_count = 1
-	self.boom_summers.custom_voicework = nil
+	self.boom_summers.custom_voicework = "summers_molly"
 	self.boom_summers.use_radio = "dsp_radio_russian"
 	self.boom_summers.HEALTH_INIT = 120
 	self.boom_summers.headshot_dmg_mul = 1.5
 	self.boom_summers.damage_resistance = presets.damage_resistance.none
-	self.boom_summers.tags = {"female_enemy", "custom", "special"}
+	self.boom_summers.tags = {"female_enemy", "custom", "special", "customvo"}
 	self.boom_summers.ignore_medic_revive_animation = false
 	self.boom_summers.can_deploy_tear_gas = false
 	self.boom_summers.can_throw_molotov = true
