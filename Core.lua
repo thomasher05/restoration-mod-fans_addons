@@ -320,6 +320,8 @@ function restoration:Init()
 		--Custom Heists below--
 		"junk", --Doghouse
 		"run_res", --Whurr's Heat Street Edit
+		"secret_stash", --Undercover (MapAdd Version)
+		"bridge", --Green Bridge (MapAdd Version)
 		"knk_jwl", --Knockover: Jewerly Store
 		"RogueCompany", --Rogue Company
 		"Gambling_room", --Underground Bargains
@@ -365,6 +367,8 @@ function restoration:Init()
 		"fex", --Buluc's Mansion
 		"peta2", --Goats day 2
 		"nail",	--Lab Rats
+		"hox_1", --Hoxout D1
+		"xmn_hox_1", --Xmas edition
 		--Skirmish heists below
 		"skmc_mad",
 		"skm_red2",
