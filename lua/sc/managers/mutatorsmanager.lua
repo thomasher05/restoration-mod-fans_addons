@@ -57,6 +57,8 @@ function MutatorsManager:init()
 		MutatorOnlyTitans:new(self),
 		MutatorVanillaPoliceCall:new(self),
 		MutatorBirthday:new(self),
+		MutatorReloadMarathon:new(self),
+		MutatorMagazineMartyr:new(self),
 		MutatorNoAmmoPickups:new(self),
 		MutatorOopsAllSpecials:new(self),
 		MutatorPiggyBulldozer:new(self),
