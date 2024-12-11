@@ -5133,7 +5133,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills", function(loc)
 		["mutator_thecandlesburnoutforyou_longdesc"] = "You must manually reload your weapon when its magazine is empty.",
 		["mutator_letthesleepinggoddie"] = "Magazine Martyr",
 		["mutator_letthesleepinggoddie_desc"] = "You will lose the ammo currently loaded in your weapon after non-empty reloads.",
-		["mutator_letthesleepinggoddie_longdesc"] = "You will lose the ammo currently loaded in your weapon after non-empty reloads.\n\n NOTE: weapons that retain their ammo for their reload (per-round loading, retention reloads, etc.) as well as reloads triggered by skills are exempt from the effects of this mutator.",
+		["mutator_letthesleepinggoddie_longdesc"] = "You will lose the ammo currently loaded in your weapon after non-empty reloads.\n\nNote: Weapons that retain their ammo during their reload (per-round loading, retention reloads, etc.) as well as reloads triggered by skills are exempt from the effects of this mutator.",
 		["mutator_letthesleepinggoddie_no_effect"] = "Unaffected by the \"Magazine Martyr\" mutator.",
 
 		["menu_cg22_post_objective_1_desc"] = "Kill 200 enemies with any sniper rifle.",

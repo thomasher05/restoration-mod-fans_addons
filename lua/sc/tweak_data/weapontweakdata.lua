@@ -13932,6 +13932,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						reload = 20
 					}
 					self.sg416.stats_modifiers = nil
+					self.sg416.sounds.magazine_empty = "wp_rifle_slide_lock"
 					self.sg416.reload_speed_multiplier = 1.15
 					self.sg416.timers.reload_not_empty = self.new_m4.timers.reload_not_empty
 					self.sg416.timers.reload_empty = self.new_m4.timers.reload_empty
@@ -18024,6 +18025,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.m4_usasoc.stats_modifiers = nil
 				self.m4_usasoc.panic_suppression_chance = 0.05
 				self.m4_usasoc.sounds.magazine_empty = "wp_rifle_slide_lock"
+				self.m4_usasoc.keep_ammo = 1
 				self.m4_usasoc.reload_speed_multiplier = 1.08
 				self.m4_usasoc.timers.reload_empty = 3
 				self.m4_usasoc.timers.reload_exit_empty = 0.55
@@ -18493,6 +18495,50 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.cp2077_guts.timers.shotgun_reload_shell = 0.73
 			end
 
+			if self.tti_dracarys then
+				self.tti_dracarys.recategorize = { "light_shot" }	
+				self.tti_dracarys.damage_type = "shotgun"
+				self.tti_dracarys.damage_type_single_ray = "sniper"
+				self.tti_dracarys.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
+				self.tti_dracarys.rays = 9
+				self.tti_dracarys.kick = self.stat_info.kick_tables.even_recoil
+				self.tti_dracarys.tactical_reload = 1
+				self.tti_dracarys.CLIP_AMMO_MAX = 10
+				self.tti_dracarys.AMMO_MAX = 60
+				self.tti_dracarys.CAN_TOGGLE_FIREMODE = true							
+				self.tti_dracarys.BURST_FIRE = false
+				self.tti_dracarys.fire_mode_data.fire_rate = 0.1
+				self.tti_dracarys.lock_slide = true
+				self.tti_dracarys.supported = true
+				self.tti_dracarys.ads_speed = 0.400
+				self.tti_dracarys.damage_falloff = {
+					start_dist = 200,
+					end_dist = 1600,
+					min_mult = 0.15
+				}
+				self.tti_dracarys.stats = {
+					damage = 120,
+					spread = 13,
+					recoil = 57,
+					spread_moving = 6,
+					zoom = 1,
+					concealment = 24,
+					suppression = 8,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 1,
+					reload = 20
+				}
+				self.tti_dracarys.stats_modifiers = nil
+				self.tti_dracarys.keep_ammo = 1
+				self.tti_dracarys.panic_suppression_chance = 0.05
+				self.tti_dracarys.sounds.magazine_empty = "wp_rifle_slide_lock"
+				self.tti_dracarys.reload_speed_multiplier = 0.9
+				self.tti_dracarys.timers.reload_exit_empty = 0.5
+				self.tti_dracarys.timers.reload_exit_not_empty = 0.82
+			end
+
 			if self.swhiskey then --RJC9000 and PlayBONK's MW2022 SW500
 				self.swhiskey.recategorize = { "heavy_pis", "handcannon" }
 				self.swhiskey.damage_type = "handcannon"
@@ -18707,6 +18753,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.mike4_2022.stats_modifiers = nil
 				self.mike4_2022.reload_speed_multiplier = 1.36
+				self.mike4_2022.keep_ammo = 1
 				self.mike4_2022.panic_suppression_chance = 0.05
 				self.mike4_2022.timers.reload_empty = 3
 				self.mike4_2022.timers.reload_exit_empty = 0.55
