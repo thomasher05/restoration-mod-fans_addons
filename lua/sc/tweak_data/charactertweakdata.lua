@@ -372,7 +372,7 @@ function CharacterTweakData:_init_cop(presets)
 	self.cop_female.speech_prefix_p2 = "n"
 	self.cop_female.speech_prefix_count = 1
 	self.cop_female.tags = {"law", "female_enemy"}
-	self.cop_female.custom_voicework = "copfemale"
+--	self.cop_female.custom_voicework = "copfemale"
 	table.insert(self._enemy_list, "cop_female")
 	self.cop_civ = deep_clone(self.cop)
 	self.cop_civ.weapon = presets.weapon.normal
@@ -447,7 +447,7 @@ function CharacterTweakData:_init_fbi(presets)
 	self.fbi_female.speech_prefix_p2 = "n"
 	self.fbi_female.speech_prefix_count = 1
 	self.fbi_female.tags = {"law", "female_enemy"}
-	self.fbi_female.custom_voicework = "copfemale"
+--	self.fbi_female.custom_voicework = "copfemale"
 	table.insert(self._enemy_list, "fbi_female")
 	
 	--Veteran Cop
@@ -896,8 +896,8 @@ function CharacterTweakData:_init_heavy_swat(presets)
 	self.heavy_swat.heal_cooldown = 2.5
 	if self:get_ai_group_type() == "america" or self:get_ai_group_type() == "fbi" or self:get_ai_group_type() == "nypd" or self:get_ai_group_type() == "lapd" then
 		self.heavy_swat.custom_voicework = "heavygunner"
-	elseif self:get_ai_group_type() == "zombie" then
-		self.heavy_swat.custom_voicework = "heavygunner_hvh"
+--	elseif self:get_ai_group_type() == "zombie" then	-- it's causing the game to crash
+--		self.heavy_swat.custom_voicework = "heavygunner_hvh"
 	else
 		self.heavy_swat.custom_voicework = nil
 	end
@@ -1109,8 +1109,8 @@ function CharacterTweakData:_init_fbi_heavy_swat(presets)
 	if self:get_ai_group_type() == "america" or self:get_ai_group_type() == "fbi" or self:get_ai_group_type() == "nypd" or self:get_ai_group_type() == "lapd" then
 		self.fbi_heavy_swat.custom_voicework = "heavygunner"
 	elseif self:get_ai_group_type() == "zombie" then
-		self.fbi_heavy_swat.custom_voicework = "heavygunner_hvh"
-	else
+--		self.fbi_heavy_swat.custom_voicework = "heavygunner_hvh"
+--	else
 		self.fbi_heavy_swat.custom_voicework = nil
 	end
 	table.insert(self._enemy_list, "fbi_heavy_swat")
