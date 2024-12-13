@@ -113,6 +113,10 @@ function MutatorGrenadeMayhem:setup(data)
 		char_tweak.taser_titan.can_throw_frag = true
 		char_tweak.taser_titan_reaper.can_throw_frag = true
 		char_tweak.enforcer_assault.can_throw_molotov = true
+		char_tweak.marshal_marksman.can_throw_frag = true
+		char_tweak.marshal_marksman.grenade_toss_chance = 1.5
+		char_tweak.marshal_shield.can_throw_frag = true
+		char_tweak.marshal_shield_break.can_throw_frag = true
 	end
 	
 	--[[if sosa_cosplay == "on" then

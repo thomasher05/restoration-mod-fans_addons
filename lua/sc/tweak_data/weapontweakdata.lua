@@ -1532,10 +1532,11 @@ local crew_wep_preset = {
 		self.argos_bravo_npc.sounds.prefix = "ultima_npc"		
 	end
 	
-	--Vanilla Deagle, less lethal
+	--Vanilla Deagle
 	function WeaponTweakData:_init_data_deagle_npc()
 		self.deagle_npc = deep_clone(self.raging_bull_npc)
-		self.deagle_npc.DAMAGE = 1.2
+		self.deagle_npc.CLIP_AMMO_MAX = 8
+		self.deagle_npc.DAMAGE = 8
 		self.deagle_npc.CLIP_AMMO_MAX = 8
 		self.deagle_npc.sounds.prefix = "deagle_npc"
 		self.deagle_npc.anim_usage = "is_pistol"
@@ -1543,12 +1544,12 @@ local crew_wep_preset = {
 		self.deagle_npc.reload = "pistol"	
 	end
 
-	--Marshal Shield Phase 2 Shotgun, less lethal
+	--Marshal Shield Phase 2 Shotgun
 	function WeaponTweakData:_init_data_sko12_conc_npc()
 		self.sko12_conc_npc.categories = clone(self.sko12.categories)
 		self.sko12_conc_npc.sounds.prefix = "sko12_npc"
 		self.sko12_conc_npc.use_data.selection_index = 2
-		self.sko12_conc_npc.DAMAGE = 1
+		self.sko12_conc_npc.DAMAGE = 5
 		self.sko12_conc_npc.muzzleflash = "effects/payday2/particles/weapons/big_762_auto"
 		self.sko12_conc_npc.shell_ejection = "effects/payday2/particles/weapons/shells/shell_slug_g2"
 		self.sko12_conc_npc.CLIP_AMMO_MAX = 25
@@ -1567,7 +1568,7 @@ local crew_wep_preset = {
 			}
 		}
 	end	
-			
+
 	function WeaponTweakData:_init_data_swat_van_turret_module_npc()
 		self.swat_van_turret_module.name_id = "debug_sentry_gun"
 		self.swat_van_turret_module.DAMAGE = 2
@@ -11001,9 +11002,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.wa2000.armor_piercing_chance = 1
 						self.wa2000.stats_modifiers = nil
 						self.wa2000.panic_suppression_chance = 0.05
-						self.wa2000.reload_speed_multiplier = 1.05
-						self.wa2000.timers.reload_exit_empty = 0.85
-						self.wa2000.timers.reload_exit_not_empty = 1
+						self.wa2000.reload_speed_multiplier = 1.33
+						self.wa2000.timers.reload_empty = 6.1
+						self.wa2000.timers.reload_exit_empty = 0.95
 
 					--Grom (SVD)
 						self.siltstone.categories = {
@@ -11044,8 +11045,10 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.siltstone.armor_piercing_chance = 1
 						self.siltstone.stats_modifiers = nil
 						self.siltstone.panic_suppression_chance = 0.05
-						self.siltstone.timers.reload_exit_empty = 0.4
-						self.siltstone.timers.reload_exit_not_empty = 0.4
+						self.siltstone.timers.reload_empty = 3.1
+						self.siltstone.timers.reload_exit_empty = 0.6
+						self.siltstone.timers.reload_not_empty = 2.1
+						self.siltstone.timers.reload_exit_not_empty = 0.8
 
 					--Bernetti Rangehitter (Marlin SBL)
 						self.sbl.upgrade_blocks = nil

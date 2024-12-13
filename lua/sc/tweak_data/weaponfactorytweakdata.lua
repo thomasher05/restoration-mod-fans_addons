@@ -32252,7 +32252,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				self.parts.wpn_fps_upg_fl_ass_smg_sho_pointshoot.has_description = true
 				self.parts.wpn_fps_upg_fl_ass_smg_sho_pointshoot.supported = true
 				self.parts.wpn_fps_upg_fl_ass_smg_sho_pointshoot.stats = {
-					value = 5,
+					value = 0,
 					gadget_zoom = 1
 				}
 		

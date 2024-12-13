@@ -896,6 +896,8 @@ function CharacterTweakData:_init_heavy_swat(presets)
 	self.heavy_swat.heal_cooldown = 2.5
 	if self:get_ai_group_type() == "america" or self:get_ai_group_type() == "fbi" or self:get_ai_group_type() == "nypd" or self:get_ai_group_type() == "lapd" then
 		self.heavy_swat.custom_voicework = "heavygunner"
+	elseif self:get_ai_group_type() == "zombie" then
+		self.heavy_swat.custom_voicework = "heavygunner_hvh"
 	else
 		self.heavy_swat.custom_voicework = nil
 	end
@@ -1106,6 +1108,8 @@ function CharacterTweakData:_init_fbi_heavy_swat(presets)
 	self.fbi_heavy_swat.heal_cooldown = 1.875
 	if self:get_ai_group_type() == "america" or self:get_ai_group_type() == "fbi" or self:get_ai_group_type() == "nypd" or self:get_ai_group_type() == "lapd" then
 		self.fbi_heavy_swat.custom_voicework = "heavygunner"
+	elseif self:get_ai_group_type() == "zombie" then
+		self.fbi_heavy_swat.custom_voicework = "heavygunner_hvh"
 	else
 		self.fbi_heavy_swat.custom_voicework = nil
 	end
@@ -1381,15 +1385,16 @@ function CharacterTweakData:_init_marshal_marksman(presets)
 	self.marshal_marksman_scripted.speech_prefix_count = nil
 	self.marshal_marksman_scripted.yellow_blood = false
 	if self:get_ai_group_type() == "federales" then
-		self.marshal_marksman.custom_voicework = "marshal_marksman_bex"
+		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman_bex"
 	elseif self:get_ai_group_type() == "russia" then
-		self.marshal_marksman.custom_voicework = "marshal_marksman_ru"
+		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman_ru"
 	else
-		self.marshal_marksman.custom_voicework = "marshal_marksman"
+		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman"
 	end
 	table.insert(self._enemy_list, "marshal_marksman")
 end
 
+-- Stronger than normal shields but not as tough as titan shields
 function CharacterTweakData:_init_marshal_shield(presets)
 	self.marshal_shield = deep_clone(presets.base)
 	self.marshal_shield.tags = {
@@ -1400,7 +1405,7 @@ function CharacterTweakData:_init_marshal_shield(presets)
 	self.marshal_shield.weapon = deep_clone(presets.weapon.normal)
 	self.marshal_shield.static_weapon_preset = true
 	self.marshal_shield.detection = presets.detection.normal
-	self.marshal_shield.HEALTH_INIT = 13
+	self.marshal_shield.HEALTH_INIT = 18
 	self.marshal_shield.headshot_dmg_mul = 2.2
 	self.marshal_shield.allowed_stances = {
 		cbt = true
@@ -1415,7 +1420,7 @@ function CharacterTweakData:_init_marshal_shield(presets)
 	self.marshal_shield.no_retreat = true
 	self.marshal_shield.no_arrest = true
 	self.marshal_shield.surrender = nil
-	self.marshal_shield.rotation_speed = 0.75
+	self.marshal_shield.rotation_speed = 1.5 -- dunno what this does but im gonna set it to 1.5 and see what happens
 	self.marshal_shield.ecm_vulnerability = 0
 	self.marshal_shield.ecm_hurts = {
 		ears = {
@@ -1455,21 +1460,22 @@ function CharacterTweakData:_init_marshal_shield(presets)
 	self.marshal_shield.steal_loot = nil
 	self.marshal_shield.no_mutator_weapon_override = true
 	self.marshal_shield.is_special = true
+	self.marshal_shield.heal_cooldown = 4
 	table.insert(self._enemy_list, "marshal_shield")
 
 	self.marshal_shield_break = deep_clone(self.marshal_shield)
-	self.marshal_shield_break.rotation_speed = 3
+	self.marshal_shield_break.rotation_speed = 4 -- dunno what this does but im gonna set it to 4 and see what happens
 	self.marshal_shield_break.tags = {
 		"law"
 	}
-	self.marshal_shield_break.HEALTH_INIT = 22.5
-	self.marshal_shield_break.headshot_dmg_mul = 2.2
+	self.marshal_shield_break.HEALTH_INIT = 20
+	self.marshal_shield_break.headshot_dmg_mul = 2.4
 	self.marshal_shield_break.allowed_stances = nil
 	self.marshal_shield_break.allowed_poses = nil
 	self.marshal_shield_break.no_equip_anim = nil
 	self.marshal_shield_break.no_run_start = nil
 	self.marshal_shield_break.no_run_stop = nil
-	self.marshal_shield_break.always_face_enemy = nil
+	self.marshal_shield_break.always_face_enemy = true
 	self.marshal_shield_break.wall_fwd_offset = nil
 	self.marshal_shield_break.priority_shout = nil
 	self.marshal_shield_break.access = "swat"
@@ -1484,6 +1490,12 @@ function CharacterTweakData:_init_marshal_shield(presets)
 	self.marshal_shield_break.tmp_invulnerable_on_tweak_change = 1.5 --still better than 3 seconds
 	self.marshal_shield_break.unintimidateable = true
 	self.marshal_shield_break.no_asu = true
+	self.marshal_shield_break.heal_cooldown = 2
+	self.marshal_shield_break.damage.explosion_damage_mul = 0.9
+	self.marshal_shield_break.damage.rocket_damage_mul = 0.9
+	self.marshal_shield_break.damage.fire_pool_damage_mul = 0.8
+	self.marshal_shield_break.damage.bullet_damage_mul = 0.85
+	self.marshal_shield_break.damage.fire_damage_mul = 0.8
 	table.insert(self._enemy_list, "marshal_shield_break")
 end
 
@@ -3210,7 +3222,7 @@ function CharacterTweakData:_init_phalanx_vip(presets)
         duration = 1.5,
         power = 0.75,
 		range = 2000
-    }	
+    }
 	self.phalanx_vip.static_weapon_preset = false
 	--self.phalanx_vip.death_animation = "death_run" 
 	--self.phalanx_vip.death_animation_vars = {"var3", "heavy", "fwd", "high"}

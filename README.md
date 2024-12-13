@@ -43,6 +43,8 @@ Akan LPFs and Enforcers spawn on mexico heists
 
 A Blue Archive skin is disabled becaused I messed up the copy and paste.
 
+Marshal Shield has been buffed.
+
 # Mutators:
 
 Ludicrous Mode: Enemies drop one less ammo pickup.
