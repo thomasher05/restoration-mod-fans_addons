@@ -1205,10 +1205,26 @@ function PlayerStandard:_check_action_primary_attack(t, input, params)
 							end
 						end
 						local srm = weap_base._srm
-						local shots_fired = srm and math.max(weap_base._shots_fired - 1 - (srm[3] or 0), 0)  or 0
+						local shots_fired = srm and math.max(weap_base._shot_recoil_count - 1 - (srm[3] or 0), 0)  or 0
 						local shots_fired_mult = srm and math.round(100000 * math.clamp( 1 - (shots_fired * srm[1]) , srm[2][1], srm[2][2])) / 100000
 						local recoil_multiplier = (weap_base:recoil() + weap_base:recoil_addend()) * weap_base:recoil_multiplier() * (shots_fired_mult or 1)
-						local kick_tweak_data = weap_tweak_data.kick[fire_mode] or weap_tweak_data.kick
+						local stance_mults = weap_tweak_data.stance_multipliers or nil
+						recoil_multiplier = recoil_multiplier * ((stance_mults and (self._state_data.in_steelsight and stance_mults.steelsight or self._state_data.ducking and stance_mults.crouching or stance_mults.standing)) or 1)
+						local recoil_count = weap_base._shot_recoil_count or 0
+						local recoil_stage = nil
+						if weap_tweak_data.kick_pattern then
+							local function shot_recoil_pattern(shot_count, recoil_table)
+								local stage = nil
+								for i, k in pairs(recoil_table) do
+									if type(i) == "number" and shot_count >= recoil_table[i][1] then
+										stage = i
+									end
+								end
+								return stage
+							end
+							recoil_stage = shot_recoil_pattern(recoil_count, weap_tweak_data.kick_pattern)
+						end
+						local kick_tweak_data = weap_tweak_data.kick[fire_mode] or (recoil_stage and weap_tweak_data.kick_pattern[recoil_stage][2]) or weap_tweak_data.kick
 						local always_standing = weap_tweak_data.always_use_standing
 						local up, down, left, right = unpack(kick_tweak_data[always_standing and "standing" or self._state_data.in_steelsight and "steelsight" or self._state_data.ducking and "crouching" or "standing"])
 						local min_h_recoil = kick_tweak_data.min_h_recoil
@@ -1375,7 +1391,7 @@ function PlayerStandard:_check_stop_shooting()
 			if (not weap_base.akimbo or weap_base:weapon_tweak_data().allow_akimbo_autofire) then
 				self._ext_network:send("sync_stop_auto_fire_sound", 0)
 			end
-			weap_base._next_fire_allowed = weap_base._next_fire_allowed + (next_fire * ((srm and srm[2][2] > 1 and 0.45) or 0.15) )
+			weap_base._next_fire_allowed = weap_base._next_fire_allowed + (next_fire * 0.2)
 		end
 		local weap_hold = weap_base.weapon_hold and weap_base:weapon_hold() or weap_base:get_name_id()
 		local is_bow = table.contains(weap_base:weapon_tweak_data().categories, "bow")
@@ -2633,6 +2649,7 @@ Hooks:PreHook(PlayerStandard, "update", "ResWeaponUpdate", function(self, t, dt)
 		self:_update_slide_locks()
 		self:_shooting_move_speed_timer(t, dt)
 		self:_last_shot_t(t, dt)
+		self:_last_shot_recoil_t(t, dt)
 	end
 	self:_update_js_t(t, dt)
 	self:_update_d_scope_t(t, dt)
@@ -2753,6 +2770,31 @@ function PlayerStandard:_last_shot_t(t, dt)
 		end
 	end
 end
+
+function PlayerStandard:_last_shot_recoil_t(t, dt)
+	local weapon = alive(self._equipped_unit) and self._equipped_unit:base()
+	local fire_rate = weapon and weapon:weapon_fire_rate()
+	local weapon_tweak = weapon and weapon:weapon_tweak_data()
+	local base_fire_rate_multiplier = weapon_tweak.fire_rate_multiplier or 1
+	local in_burst = weapon:in_burst_mode()
+	local auto_burst = in_burst and weapon._auto_burst
+	local burst_delay = (in_burst and weapon._burst_delay) or 0
+	local max_t = weapon_tweak.kick_pattern and weapon_tweak.kick_pattern.max_t or 0.35
+	if weapon then
+		if self._shooting then
+			self._last_recoil_t = math.clamp( ((fire_rate + burst_delay) / (weapon:fire_rate_multiplier() * 0.8)) * 2 , math.max(0, math.lerp( 0.2, -0.25, fire_rate + burst_delay )) , max_t + burst_delay / ((not auto_burst and (weapon:fire_rate_multiplier() / base_fire_rate_multiplier) ) or 1) )
+		else
+			if self._last_recoil_t then
+				self._last_recoil_t = self._last_recoil_t - dt
+				if self._last_recoil_t < 0 then
+					self._last_recoil_t = nil
+					weapon._shot_recoil_count = 0
+				end
+			end
+		end
+	end
+end
+
 
 
 function PlayerStandard:_shooting_move_speed_timer(t, dt)
@@ -4432,6 +4474,7 @@ function PlayerStandard:_start_action_unequip_weapon(t, data)
 	self._spin_up_shoot = nil
 	self._queue_burst = nil
 	self._queue_fire = nil
+	self._last_recoil_t = nil
 
 	local result = self._ext_camera:play_redirect(self:get_animation("unequip"), speed_multiplier)
 

@@ -49,6 +49,13 @@
 	<text text="The Rant-Man" type="name"/>
 	<text text="RedFlame" type="name"/>
 	<text text="SonicSoapyBoi" type="name"/>
+	<text text="Sgt. Joe" type="name"/>
+	<text text="easterunit100" type="name"/>
+	<text text="Marcel Kamisso" type="name"/>
+	<text text="Dorpenka" type="name"/>
+	<text text="Rickerus" type="name"/>
+	<text text="PlayBONK" type="name"/>
+	<text text="R_Populik" type="name"/>
 	<br/>
 	<text text="Sound Contributions" type="title"/>
 	<br/>
@@ -75,5 +82,8 @@
 	<text text="The Mod's Edits" type="title"/>
 	<br/>
 	<text text="FaN Scout" type="name"/>
+	<br/>
+	<text text="AND YOU, for downloading this I guess" type="title"/>
+	<br/>
 	<command cmd="stop" offset="220"/>
 </table>
