@@ -1181,7 +1181,7 @@ function CharacterTweakData:_init_city_swat(presets)
 	--Weekend
 	self.weekend = deep_clone(self.city_swat)
 	if self:get_ai_group_type() == "russia" then
-		self.weekend.custom_voicework = "tswat_ru"
+		self.weekend.custom_voicework = "bravo_ru"
 	elseif self:get_ai_group_type() == "murkywater" then
 		self.weekend.custom_voicework = "bravo_murky"	
 	elseif self:get_ai_group_type() == "federales" then
@@ -1273,11 +1273,11 @@ function CharacterTweakData:_init_city_swat(presets)
 		range = 600
 	}
 	table.insert(self._enemy_list, "city_swat_titan_assault")
-		
+
 	--Weekend LMG
 	self.weekend_lmg = deep_clone(self.city_swat_titan)		
 	if self:get_ai_group_type() == "russia" then
-		self.weekend_lmg.custom_voicework = "tswat_ru"
+		self.weekend_lmg.custom_voicework = "bravo_elite_ru"
 	elseif self:get_ai_group_type() == "murkywater" then
 		self.weekend_lmg.custom_voicework = "bravo_elite_murky"	
 	elseif self:get_ai_group_type() == "federales" then

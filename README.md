@@ -75,6 +75,10 @@ Bravo Elite: Mercenary (Open Fortress)
 
 Murkywater Bravo Elite: Anarchist (Counter Strike)
 
+Russian Bravo: This Mod -> https://gamebanana.com/sounds/74365
+
+Russian Bravo Elite: Soldier (Team Fortess 2: Russian Dub)
+
 Murkywater Vet: Trooper (Typical Colors 2)
 
 Cop Female: Female Spy (Team Fortress 2)
