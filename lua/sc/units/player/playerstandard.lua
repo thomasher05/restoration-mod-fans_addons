@@ -241,7 +241,7 @@ function PlayerStandard:_start_action_ducking(t, no_slide)
 	self._ext_network:send("action_change_pose", 2, self._unit:position())
 	self:_upd_attention()
 	
-	if AdvMov and PlayerStandard._check_slide and not no_slide then
+	if AdvMov and PlayerStandard._check_slide and not no_slide and self._unit:movement():is_above_stamina_threshold()  then
 		self:_check_slide()
 	end
 end
@@ -1777,7 +1777,7 @@ function PlayerStandard:_get_max_walk_speed(t, force_run)
 		movement_speed = speed_tweak.INAIR_MAX
 		speed_state = nil
 	elseif self._running or force_run then
-		movement_speed = speed_tweak.RUNNING_MAX
+		movement_speed = (not self._unit:movement():is_above_stamina_threshold() and speed_tweak.RUNNING_MAX_TIRED) or speed_tweak.RUNNING_MAX
 		speed_state = "run"
 	end
 
@@ -1884,12 +1884,12 @@ function PlayerStandard:_start_action_running(t)
 		return
 	end
 	--Consolidated vanilla checks.
-	if not self._move_dir or self:on_ladder() or self:_on_zipline() or not self:_can_run_directional() or managers.player:get_player_rule("no_run") or not self._unit:movement():is_above_stamina_threshold() then
+	if not self._move_dir or self:on_ladder() or self:_on_zipline() or not self:_can_run_directional() or managers.player:get_player_rule("no_run") --[[ or not self._unit:movement():is_above_stamina_threshold() ]] then
 		self._running_wanted = true
 		return
 	end
 
-	local slide_threshold = self._slide_speed and self._slide_end_speed and self._slide_end_speed * 4 >= self._slide_speed
+	local slide_threshold = self._slide_speed and self._slide_end_speed and self._slide_end_speed * 4 >= self._slide_speed and self._unit:movement():is_above_stamina_threshold() 
 
 	if (self._shooting or self._spin_up_shoot) and not self._equipped_unit:base():run_and_shoot_allowed() or (self:_is_charging_weapon() and not self._equipped_unit:base():run_and_shoot_allowed()) or --[[self:_changing_weapon() or]] self._use_item_expire_t or self._state_data.in_air or self:_is_throwing_projectile() or (is_pro and self._is_sliding and not slide_threshold) or self:_in_burst() or self._state_data.ducking and not self:_can_stand() then
 		self._running_wanted = true
@@ -1934,6 +1934,18 @@ function PlayerStandard:_start_action_running(t)
 				
 	self:_interupt_action_steelsight(t)
 	self:_interupt_action_ducking(t)
+end
+
+function PlayerStandard:_update_running_timers(t)
+	if self._end_running_expire_t then
+		if self._end_running_expire_t <= t then
+			self._end_running_expire_t = nil
+
+			self:set_running(false)
+		end
+	--elseif self._running and (self._unit:movement():is_stamina_drained() or not self:_can_run_directional()) then
+		--self:_interupt_action_running(t)
+	end
 end
 
 function PlayerStandard:_end_action_running(t)
@@ -4569,7 +4581,7 @@ if AdvMov then
 	local AdvMovWallKick = PlayerStandard._check_wallkick
 	--Kills wallkick checks
 	function PlayerStandard:_check_wallkick(t, dt)
-		if restoration.Options:GetValue("AdVMovResOpt/DisableAdvMovTF") then
+		if restoration.Options:GetValue("AdVMovResOpt/DisableAdvMovTF") or not self._unit:movement():is_above_stamina_threshold() then
 		else
 			AdvMovWallKick(self, t, dt)
 		end

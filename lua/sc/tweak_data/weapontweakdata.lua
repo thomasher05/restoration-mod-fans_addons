@@ -19459,6 +19459,71 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.doot_eternal_shotgun.panic_suppression_chance = 0.05
 			end
 
+			if self.bolter_40k then --+++ 40K Bolter +++--
+				self.bolter_40k.bmp = 40000
+				self.bolter_40k.categories = {
+					"smg",
+					"bige"
+				}
+				self.bolter_40k.recategorize = { "heavy_smg" }
+				self.bolter_40k.damage_type = "anti_materiel"
+				self.bolter_40k.has_description = true
+				self.bolter_40k.desc_id = "bm_w_redacted_desc_sc"
+				self.bolter_40k.upgrade_blocks = nil
+				self.bolter_40k.CLIP_AMMO_MAX = 15
+				self.bolter_40k.AMMO_MAX = 30
+				self.bolter_40k.muzzleflash = "effects/payday2/particles/weapons/awp_muzzle"
+				self.bolter_40k.shell_ejection = "effects/payday2/particles/weapons/shells/shell_shak"
+				self.bolter_40k.fire_mode_data.fire_rate = 0.333334
+				self.bolter_40k.BURST_FIRE_RATE_MULTIPLIER = 2.2222
+				self.bolter_40k.BURST_FIRE_RATE_MULTIPLIER_ALT = true
+				self.bolter_40k.BURST_FIRE_INIT = 2
+				self.bolter_40k.BURST_FIRE = 2
+				self.bolter_40k.BURST_FIRE_HIPFIRE_TOGGLE = true
+				self.bolter_40k.AUTO_BURST = true
+				self.bolter_40k.FIRE_MODE = "single"
+				self.bolter_40k.CAN_TOGGLE_FIREMODE = false
+				self.bolter_40k.sms = 0.6
+				self.bolter_40k.kick = deep_clone(self.stat_info.kick_tables.vertical_kick)
+				self.bolter_40k.kick_pattern = {
+					{0, self.stat_info.kick_tables.pattern_r1},
+					{2, self.stat_info.kick_tables.pattern_r2},
+					{3, self.stat_info.kick_tables.pattern_v2},
+					{4, self.stat_info.kick_tables.pattern_l2},
+					{5, self.stat_info.kick_tables.pattern_l1},
+					{6, self.stat_info.kick_tables.pattern_v4},
+				}
+				self.bolter_40k.supported = true
+				self.bolter_40k.ads_speed = 0.560
+				self.bolter_40k.damage_falloff = {
+					start_dist = 8000,
+					end_dist = 20000,
+					min_mult = 0.5
+				}
+				self.bolter_40k.stats = {
+					damage = 120,
+					spread = 76,
+					recoil = 5,
+					spread_moving = 8,
+					zoom = 1,
+					concealment = 10,
+					suppression = 4,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 9,
+					reload = 20
+				}
+				self.bolter_40k.stats_modifiers = nil
+				self.bolter_40k.armor_piercing_chance = 1
+				self.bolter_40k.sounds.use_fix = nil
+				self.bolter_40k.panic_suppression_chance = 0.05
+				self.bolter_40k.use_vapor_trail = true
+				self.bolter_40k.trail_effect = "_dmc/effects/sterwers_trail_m"
+				self.bolter_40k.trail_effect_npc = "_dmc/effects/sterwers_trail_m_npc"
+				self.bolter_40k.bullet_class = "InstantExplosiveBulletBase"
+			end
+
 			if self.owd_m1a then --RJC9000's OTWD M1A
 				self.owd_m1a.categories = { 
 					"assault_rifle",
