@@ -370,7 +370,6 @@
 		<hook file="sc/modifiers/new/modifierdozerpairs.lua" source_file="lib/modifiers/basemodifier"/>
 		<hook file="sc/modifiers/new/modifieruberchargeshields.lua" source_file="lib/modifiers/modifierenemyhealthanddamage"/>
 		<hook file="sc/modifiers/new/modifierspoocsquad.lua" source_file="lib/modifiers/basemodifier"/>
-		<hook file="sc/modifiers/new/modifiertitantanks.lua" source_file="lib/modifiers/basemodifier"/>
 		<!--///MUTATORS\\\-->
 		<hook file="sc/managers/mutatorsmanager.lua" source_file="lib/managers/mutatorsmanager"/>
 		<hook file="sc/mutators/mutatorcloakereffect.lua" source_file="lib/mutators/mutatorcloakereffect"/>
@@ -419,10 +418,6 @@
 		<hook file="sc/mutators/new/mutatorvanillapolicecall.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatormarathonreload.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatorcitadelmags.lua" source_file="lib/mutators/basemutator"/>
-		<hook file="sc/mutators/new/mutatornoammo.lua" source_file="lib/mutators/basemutator"/>
-		<hook file="sc/mutators/new/mutatorsoopsallspecials.lua" source_file="lib/mutators/basemutator"/>
-		<hook file="sc/mutators/new/mutatorwarthogs.lua" source_file="lib/mutators/basemutator"/>
-		<hook file="sc/mutators/new/mutatorsnipersandsnipers.lua" source_file="lib/mutators/basemutator"/>
 		<!--<hook file="sc/mutators/new/mutatorfactionsreplacer.lua" source_file="lib/mutators/basemutator"/>-->
 		<!--///NETWORKING\\\-->
 		<hook file="sc/network/base/hostnetworksession.lua" source_file="lib/network/base/hostnetworksession"/>
@@ -502,6 +497,7 @@
 						<option type="bool" default_value="false" name="Profile"/>
 						<option type="bool" default_value="false" name="Crimenet"/>
 						<option type="bool" default_value="false" name="Newsfeed"/>
+						<option type="multichoice" default_value="1" name="NewsFeedStyle" values_tbl="restoration.newsfeed_style"/>
 						<option type="bool" default_value="false" name="DifficultyMarkers"/>
 						<option type="bool" default_value="false" name="BlackScreen"/>
 						<option type="bool" default_value="false" name="Loadouts"/>
@@ -664,6 +660,11 @@
 				<option type="bool" default_value="false" name="DisableAdvMovTF"/>
 				<!--Wall/Slide/Jump/Dash Kicks | 1 = default, 2 = disabled during stealth, 3 = disabled entirely -->
 				<option type="multichoice" default_value="1" name="AdvMovMelee" values_tbl="restoration.AdvMovMelee"/>
+				<divider name="tod_divider" size="8"/>
+				<option type="bool" default_value="false" name="AdvMovBackstep"/>
+				<option type="number" default_value="0.5" min="0" max="1" step="0.01" show_value="true" name="AdvMovDashScreenEffectAlpha"/>
+				<divider name="tod_divider" size="8"/>
+				<option type="number" default_value="0.5" min="0" max="1" step="0.01" show_value="true" name="AdvMovSlideScreenEffectAlpha"/>
 			</option_group>
         </options>
     </Options>
@@ -680,7 +681,7 @@
 	<Package id="packages/addscrubs" file="addscrubs.xml" use_clbk="self:DebugLoadAssets"/> 
 	<Package id="packages/addsnow" file="addsnow.xml" use_clbk="self:DebugLoadAssets"/> 
 	<Package id="packages/addslaughter" file="addslaughter.xml" use_clbk="self:DebugLoadAssets"/> 
-	<Package id="packages/addtux" file="addtux.xml" use_clbk="self:DebugLoadAssets"/>
+	<Package id="packages/addtux" file="addtux.xml" use_clbk="self:DebugLoadAssets"/> 
 	<Package id="packages/rex_gold" file="rex_gold.xml" use_clbk="self:DebugLoadAssets"/>
 	<Package id="packages/classicmovies" file="classicmovies.xml" use_clbk="self:LoadClassicMovies"/>
 	<Package id="packages/custom_fonts" file="fonts.xml" use_clbk="self:LoadFonts"/>
