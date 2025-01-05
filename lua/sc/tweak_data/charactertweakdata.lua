@@ -1284,7 +1284,7 @@ function CharacterTweakData:_init_city_swat(presets)
 		self.weekend_lmg.custom_voicework = "bravo_elite_mex"
 	else
 		self.weekend_lmg.custom_voicework = "bravo_elite"
-	end		
+	end
 	self.weekend_lmg.speech_prefix_p1 = "null"
 	self.weekend_lmg.speech_prefix_p2 = nil
 	self.weekend_lmg.speech_prefix_count = nil

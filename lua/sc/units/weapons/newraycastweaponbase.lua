@@ -22,6 +22,7 @@ local FIRE_MODE_IDS = {
 	burst = ids_burst,
 	volley = ids_volley
 }
+local is_pro = Global.game_settings and Global.game_settings.one_down
 --Adds ability to define per weapon category AP skills.
 Hooks:PostHook(NewRaycastWeaponBase, "init", "ResExtraSkills", function(self)
 	--Since armor piercing chance is no longer used, lets use weapon category to determine armor piercing baseline.
@@ -1495,7 +1496,7 @@ function NewRaycastWeaponBase:_update_stats_values(disallow_replenish, ammo_data
 		end
 	end	
 
-	if not self._locked_fire_mode and self._has_burst_fire and self:weapon_tweak_data().BURST_FIRE_DEFAULT then
+	if not self._locked_fire_mode and self._has_burst_fire and self:weapon_tweak_data().BURST_FIRE_DEFAULT then 
 		self:_set_burst_mode(true, true)
 	end
 
@@ -1659,7 +1660,10 @@ function NewRaycastWeaponBase:precalculate_ammo_pickup()
 		self._ammo_pickup = {self:weapon_tweak_data().AMMO_PICKUP[1], self:weapon_tweak_data().AMMO_PICKUP[2]} --Get base gun ammo pickup.
 
 		--Pickup multiplier from skills.
-		local pickup_multiplier = managers.player:upgrade_value("player", "fully_loaded_pick_up_multiplier", 1)
+		local pickup_multiplier = managers.player:upgrade_value("player", "fully_loaded_pick_up_multiplier", 1)	
+		if not is_pro then
+			pickup_multiplier = pickup_multiplier * managers.player:upgrade_value("player", "passive_pick_up_multiplier", 1)
+		end
 
 		for _, category in ipairs(self:categories()) do
 			pickup_multiplier = pickup_multiplier + managers.player:upgrade_value(category, "pick_up_multiplier", 1) - 1
@@ -1870,7 +1874,9 @@ function NewRaycastWeaponBase:reload_speed_multiplier()
 	for _, category in ipairs(self:categories()) do
 		multiplier = multiplier * managers.player:upgrade_value(category, "reload_speed_multiplier", 1)
 	end
-	multiplier = multiplier * managers.player:upgrade_value("weapon", "passive_reload_speed_multiplier", 1)
+	if not is_pro then
+		multiplier = multiplier * managers.player:upgrade_value("weapon", "passive_reload_speed_multiplier", 1)
+	end
 	multiplier = multiplier * managers.player:upgrade_value(self._name_id, "reload_speed_multiplier", 1)
 
 	if self:get_ammo_remaining_in_clip() ~= 0 then
@@ -2471,7 +2477,7 @@ function NewRaycastWeaponBase:_set_parts_visible(visible)
 	self:_chk_charm_upd_state()
 end
 
-
+--[[
 function NewRaycastWeaponBase:clbk_assembly_complete(clbk, parts, blueprint)
 	self._assembly_complete = true
 	self._parts = parts
@@ -2623,3 +2629,4 @@ function NewRaycastWeaponBase:clbk_assembly_complete(clbk, parts, blueprint)
 
 	clbk()
 end
+--]]
