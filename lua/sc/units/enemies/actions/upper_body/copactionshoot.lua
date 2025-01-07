@@ -581,6 +581,8 @@ function CopActionShoot:set_sniper_focus_sound(sound_progress)
 				local set_sound = math_min(100, sound_progress)
 
 				SoundDevice:set_rtpc("downed_state_progression", set_sound)
+				
+				managers.music:set_volume_multiplier("downed", 1 - (set_sound / 100), 0)
 			end
 		end
 	end
@@ -1273,6 +1275,7 @@ function CopActionShoot:check_melee_start(t, attention, target_dis, autotarget, 
 				local is_player = self._shooting_player or self._shooting_husk_player
 				local target_has_shield = alive(attention.unit:inventory() and attention.unit:inventory()._shield_unit) and true or nil
 				local target_is_covered_by_shield = not is_player and self._unit:raycast("ray", shoot_from_pos, melee_vec1, "sphere_cast_radius", 20, "slot_mask", self._shield_slotmask, "ray_type", "body melee", "report")
+				
 				if autotarget then
 					if not target_is_covered_by_shield then
 						if not self._melee_weapon_data.electrical or not attention.unit:movement():tased() then

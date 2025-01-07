@@ -343,5 +343,6 @@ function BlackMarketManager:_calculate_suspicion_offset(index, lerp)
 	local max_ratio = max_val / min_val
 	local mul_ratio = math.max(1, con_val / min_val)
 	local susp_lerp = math.clamp(1 - (con_val - min_val) / (max_val - min_val), 0, 1)
+
 	return math.lerp(0, lerp, susp_lerp)
 end
