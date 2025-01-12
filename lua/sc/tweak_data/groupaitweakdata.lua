@@ -396,7 +396,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				federales = {
 					Idstring("units/pd2_dlc_bex/characters/ene_swat_cloaker_policia_federale/ene_swat_cloaker_policia_federale"),
 					Idstring("units/pd2_dlc_bex/characters/ene_spook_1/ene_spook_1")
-				},					
+				},
 				nypd = {
 					Idstring("units/payday2/characters/ene_spook_1/ene_spook_1"),
 					Idstring("units/pd2_mod_nypd/characters/ene_spook_1/ene_spook_1")
@@ -406,7 +406,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				},
 				fbi = {
 					Idstring("units/payday2/characters/ene_spook_1/ene_spook_1")
-				}			
+				}
 			},
 			access = access_type_all,
 			special_type = "spooc"

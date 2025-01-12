@@ -4840,7 +4840,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills", function(loc)
 
 		--More fitting descriptions of difficulties--
 		["menu_risk_elite"] = "DEATH WISH. FOR YOU, ACTION IS THE JUICE.",
-		["menu_risk_sm_wish"] = "DEATH SENTENCE. NOW SHOW THEM THAT YOU CAN'T BE STOPPED.",
+		["menu_risk_sm_wish"] = "DEATH SENTENCE. you gonna fucking die lol. good luck.",
 
 		--Loading Hints--
 		--Restoration Gameplay Hints--
@@ -4975,22 +4975,22 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills", function(loc)
 		["loading_equip_skills_res_38"] = "The \"Cleave\" stat for melee weapons represents how many enemies you can hit with a single attack.",
 		--Misc Hints
 		["loading_misc_res_title"] = "Restoration Miscellaneous Tips",
-		["loading_misc_res_1"] = "Try our Custom Heists as well! You can find most of them under the 'Jackal' Contractor, as well as 'Doghouse' under Vlad.",
-		["loading_misc_res_2"] = "Restoration Mod has a Steam Guide! This should be your resource for more detailed information. Check the Main Menu.",
-		["loading_misc_res_3"] = "Restoration Mod has a Discord server! Join for discussion, balance feedback, and matchmaking! Check the Main Menu.",
+		["loading_misc_res_1"] = "This mod of a mod was made public on Jul 21, 2024.",
+		["loading_misc_res_2"] = "No, Restoration Mod doesn't have a wiki. Yet... Also please don't use FANDOM for it. That wiki hosting website sucks.",
+		["loading_misc_res_3"] = "If you are reading this, you are playing a mod of a mod. I know. A modception you can call it.",
 		--Trivia Hints
 		["loading_fluff_res_title"] = "Restoration Trivia",
-		["loading_fluff_res_1"] = "OMNIA spends a fortune reviving failed weapon projects.",
-		["loading_fluff_res_2"] = "The LPF is owed a lot of beers.",
+		["loading_fluff_res_1"] = "OMNIA spends a fortune reviving failed or dead weapon projects.",
+		["loading_fluff_res_2"] = "The LPF is owed a lot of beers. As of 2024, around 67 thousand.",
 		["loading_fluff_res_3"] = "The LPF and Titan Sniper are Australian.",
 		["loading_fluff_res_4"] = "The NYPD Bronco Cop loves donuts.",
 		["loading_fluff_res_5"] = "The ZEAL UMP Elite SWAT's name is Chad.",
 		["loading_fluff_res_6"] = "Titan Dozers have glowing eyes thanks to extensive genetic engineering, human experiments, and combat drugs.",
 		["loading_fluff_res_7"] = "Captain Spring is not human. He might have been, once upon a time.",
-		["loading_fluff_res_8"] = "Restoration Mod is often nicknamed 'resmod', 'SCmod', 'furry mod' and 'mememod', by various members of the community and the dev team.",
+		["loading_fluff_res_8"] = "Restoration Mod is often nicknamed 'resmod', 'SCmod', 'furry mod' 'mememod' and 'bloatmod', by various members of the community and the dev team.",
 		["loading_fluff_res_9"] = "OMNIA has been developing reinforced security doors to protect against dinosaur attacks.",
 		["loading_fluff_res_10"] = "The Grenadier used to work in pest control.",
-		["loading_fluff_res_11"] = "You have never seen a Titan Cloaker.",
+		["loading_fluff_res_11"] = "The Titan Cloakers are women.",
 		["loading_fluff_res_12"] = "Omnia is a self-described 'neoceltic pagan folk' band based in the Netherlands and whose members have had Irish, Dutch, Cornish, Belgian, Indonesian and Persian backgrounds. Connection to the organization OMNIA unconfirmed.",
 		["loading_fluff_res_13"] = "Whatever happened that caused Jackal to get involved with Crime.Net and leave GenSec, he refuses to talk about it. He seems to have been 'disturbed' by the event.",
 		["loading_fluff_res_14"] = "HAHAHAHAHA.",
@@ -5004,7 +5004,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills", function(loc)
 		["loading_fluff_res_22"] = "You may or may not have met Captain Summers before.",
 		["loading_fluff_res_23"] = "The Policía Federal has a special chupacabra hunting division.",
 		["loading_fluff_res_24"] = "Captains don't die, they go into custody.",
-		["loading_fluff_res_25"] = "AKAN offered a 'quick and brutal crackdown on cartels' at a price cheaper than OMNIA, which led to the Policía Federal adopting their version of DRAK's D-Series soldiers. This was a ploy to get their forces closer to OMNIA and Murky operations both in Mexico and the US.",
+		["loading_fluff_res_25"] = "In terms of the mod's development, the restoration crew either didn't bother or forgot Mexico's titans, yet they still bothered to make the veteran.",
 
 		["menu_button_deploy_bipod"] = "BIPOD/ALT-FIRE",
 		["hint_short_max_pagers"] = "Neglecting pagers will significantly increase guard suspicion.",

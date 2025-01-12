@@ -20901,6 +20901,47 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.holoar.timers.reload_exit_not_empty = 0.75
 			end
 
+		--	if self.toz81 then	-- fucking waste of time. ask dmc to support
+		--		self.toz81.categories = {
+		--			"shotgun",
+		--			"shotgun_pistol"
+		--		}
+		--		self.toz81.damage_type = "shotgun"
+		--		self.toz81.fire_mode_data.fire_rate = 0.4
+		--		self.toz81.rays = 8
+		--		self.toz81.kick = self.stat_info.kick_tables.left_kick
+		--		self.toz81.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps"
+		--		self.toz81.AMMO_MAX = 36
+		--		self.toz81.CLIP_AMMO_MAX = 5
+		--		self.toz81.supported = true
+		--		self.toz81.ads_speed = 0.200
+		--		self.toz81.damage_falloff = {
+		--			start_dist = 800,
+		--			end_dist = 1600,
+		--			min_mult = 0.2
+		--		}
+		--		self.toz81.stats = {
+		--			damage = 140,
+		--			spread = 63,
+		--			recoil = 67,
+		--			spread_moving = 5,
+		--			zoom = 1,
+		--			concealment = 24,
+		--			suppression = 7,
+		--			alert_size = 2,
+		--			extra_ammo = 101,
+		--			total_ammo_mod = 400,
+		--			value = 1,
+		--			reload = 20
+		--		}
+		--		self.toz81.stats_modifiers = nil
+		--		self.toz81.timers.reload_not_empty = 2.1
+		--		self.toz81.timers.reload_empty = 2.1
+		--		self.toz81.timers.reload_exit_empty = 0.6
+		--		self.toz81.timers.reload_exit_not_empty = 0.6
+		--		self.toz81.panic_suppression_chance = 0.05
+		--	end
+
 		--Predator Pack
 			if self.owlfbullpup then
 				self.owlfbullpup.categories = { 
