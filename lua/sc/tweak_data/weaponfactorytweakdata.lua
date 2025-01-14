@@ -19,6 +19,22 @@ end
 local IsCAPInstalled = BeardLib.Utils:FindMod("Custom Attachment Points") and true or nil
 
 --ATTACHMENT PRESETS
+local sight_1x_offset = {
+	sights = {
+		"wpn_fps_upg_o_docter",
+		"wpn_fps_upg_o_cmore",
+		"wpn_fps_upg_o_reflex",
+		"wpn_fps_upg_o_rx01",
+		"wpn_fps_upg_o_rx30",
+		"wpn_fps_upg_o_health",
+	},
+	offset = Vector3(0,-12,0),
+	exclude = {
+		""
+		--"wpn_fps_snp_mosin"
+	}
+}
+
 local sight_1_5x_offset = {
 	sights = {
 		"wpn_fps_upg_o_eotech",
@@ -2758,6 +2774,13 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_sights", "resmod_sights", function
 	}
 	self.parts.wpn_fps_upg_o_docter.perks = {"scope"}
 	self.parts.wpn_fps_upg_o_docter.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_specter.stance_mod)
+	for i, weap in pairs(self.parts.wpn_fps_upg_o_docter.stance_mod) do
+		for k, wep_id in pairs(sight_1x_offset.exclude) do
+			if weap and i ~= wep_id and weap.translation then
+				weap.translation = weap.translation + sight_1x_offset.offset
+			end
+		end
+	end
 
 	--Owl Glass/BelOMO PO4x24P
 	self.parts.wpn_fps_upg_o_poe.pcs = {
@@ -2834,7 +2857,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_sights", "resmod_sights", function
 		rotation = Rotation(-0.025, 0, 0)
 	}
 	self.parts.wpn_upg_o_marksmansight_rear_vanilla.stance_mod = deep_clone(self.parts.wpn_upg_o_marksmansight_rear.stance_mod)
-	self.parts.wpn_upg_o_marksmansight_rear_vanilla.type = "sight_vanilla" --fixes the "_steelsight" variants of sights parenting to this like on the RIS attachment on the Mac-10
+	--self.parts.wpn_upg_o_marksmansight_rear_vanilla.type = "sight_vanilla" --fixes the "_steelsight" variants of sights parenting to this like on the RIS attachment on the Mac-10
 
 	--Angled Sight
 	self.parts.wpn_fps_upg_o_45iron.pcs = {}
@@ -3062,7 +3085,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_content_dlc1", "resmod_content_dlc
 		zoom = 1
 	}
 	self.parts.wpn_fps_upg_o_cmore.perks = {"scope"}
-	self.parts.wpn_fps_upg_o_cmore.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_specter.stance_mod)
+	self.parts.wpn_fps_upg_o_cmore.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_docter.stance_mod)
 
 end)
 
@@ -4313,6 +4336,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_amcar", "resmod_amcar", function(s
 	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_m4_upper_reciever_edge")
 	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_upg_ass_m4_upper_reciever_ballos")
 	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_upg_ass_m4_upper_reciever_core")
+	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_m4_uupg_b_long")
 
 	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_upg_i_patriot")
 	table.insert(self.wpn_fps_ass_amcar.uses_parts, "wpn_fps_upg_i_og_rof")
@@ -4919,6 +4943,14 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_ak_parts", "resmod_ak_parts", func
 	self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_reflex.stance_mod = deep_clone(self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_rx01.stance_mod = deep_clone(self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_rx30.stance_mod = deep_clone(self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_docter.stance_mod)
+	self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_docter.stance_mod)
+	for i, part_id in ipairs(sight_1x_offset.sights) do
+		for i, weap in pairs(self.parts.wpn_upg_ak_fg_standard.override[ part_id ].stance_mod) do
+			if weap and weap.translation then
+				weap.translation = weap.translation + sight_1x_offset.offset
+			end
+		end
+	end
 
 	self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_t1micro.stance_mod = deep_clone(self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_specter.stance_mod)
 	self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_tf90.stance_mod = deep_clone(self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_t1micro.stance_mod)
@@ -4927,7 +4959,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_ak_parts", "resmod_ak_parts", func
 	self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_eotech_xps.stance_mod = deep_clone(self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_uh.stance_mod = deep_clone(self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_fc1.stance_mod = deep_clone(self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_eotech.stance_mod)
-	self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_upg_ak_fg_standard.override.wpn_fps_upg_o_eotech.stance_mod)
 	for i, part_id in ipairs(sight_1_5x_offset.sights) do
 		for i, weap in pairs(self.parts.wpn_upg_ak_fg_standard.override[ part_id ].stance_mod) do
 			if weap and weap.translation then
@@ -5417,6 +5448,14 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_akmsu", "resmod_akmsu", function(s
 	self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_reflex.stance_mod = deep_clone(self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_rx01.stance_mod = deep_clone(self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_rx30.stance_mod = deep_clone(self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_docter.stance_mod)
+	self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_docter.stance_mod)
+	for i, part_id in ipairs(sight_1x_offset.sights) do
+		for i, weap in pairs(self.parts.wpn_fps_smg_akmsu_fg_standard.override[ part_id ].stance_mod) do
+			if weap and weap.translation then
+				weap.translation = weap.translation + sight_1x_offset.offset
+			end
+		end
+	end
 
 	self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_t1micro.stance_mod = deep_clone(self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_specter.stance_mod)
 	self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_tf90.stance_mod = deep_clone(self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_t1micro.stance_mod)
@@ -5425,7 +5464,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_akmsu", "resmod_akmsu", function(s
 	self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_eotech_xps.stance_mod = deep_clone(self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_uh.stance_mod = deep_clone(self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_fc1.stance_mod = deep_clone(self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_eotech.stance_mod)
-	self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_smg_akmsu_fg_standard.override.wpn_fps_upg_o_eotech.stance_mod)
 	for i, part_id in ipairs(sight_1_5x_offset.sights) do
 		for i, weap in pairs(self.parts.wpn_fps_smg_akmsu_fg_standard.override[ part_id ].stance_mod) do
 			if weap and weap.translation then
@@ -5638,7 +5676,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_saiga", "resmod_saiga", function(s
 	self.wpn_fps_shot_saiga.override = {
 		wpn_upg_o_marksmansight_rear_vanilla = {
 			a_obj = "a_or",
-			forbids = table.list_add(self.parts.wpn_upg_o_marksmansight_rear_vanilla.forbids, {"wpn_fps_upg_o_ak_scopemount"})
+			--forbids = table.list_add(self.parts.wpn_upg_o_marksmansight_rear_vanilla.forbids, {"wpn_fps_upg_o_ak_scopemount"})
 		},
 		wpn_upg_o_marksmansight_front = {a_obj = "a_of"},
 		wpn_fps_upg_a_slug = deep_clone(shot_ammo.a_slug_semi_override),
@@ -6906,6 +6944,14 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_mac10", "resmod_mac10", function(s
 
 	self.wpn_fps_smg_mac10.override = self.wpn_fps_smg_mac10.override or {}
 
+	for i, part_id in pairs(self.wpn_fps_smg_mac10.uses_parts) do
+		if part_id ~= "wpn_upg_o_marksmansight_rear_vanilla" and self.parts[part_id] and self.parts[part_id].type and self.parts[part_id].type == "sight" then	
+			self.wpn_fps_smg_mac10.override[part_id] = { 
+				forbids = table.list_add(self.parts[part_id].forbids, {"wpn_upg_o_marksmansight_rear_vanilla"})
+			}	
+		end
+	end
+
 	self.wpn_fps_smg_mac10.override.wpn_fps_smg_schakal_vg_surefire = { stats = deep_clone(self.parts.wpn_fps_upg_vg_ass_smg_verticalgrip.stats) }
 
 	self.wpn_fps_smg_mac10.adds = self.wpn_fps_smg_mac10.adds or {}
@@ -7090,7 +7136,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_serbu", "resmod_serbu", function(s
 	self.parts.wpn_fps_shot_shorty_m_extended_short.supported = true
 	self.parts.wpn_fps_shot_shorty_m_extended_short.stats = {
 		value = 1, 
-		extra_ammo = 2, 
+		extra_ammo = 1, 
 		concealment = -1
 	}
 	self.parts.wpn_fps_shot_shorty_m_extended_short.custom_stats = {
@@ -9586,6 +9632,14 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_galil", "resmod_galil", function(s
 	self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_reflex.stance_mod = deep_clone(self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_rx01.stance_mod = deep_clone(self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_rx30.stance_mod = deep_clone(self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_docter.stance_mod)
+	self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_docter.stance_mod)
+	for i, part_id in ipairs(sight_1x_offset.sights) do
+		for i, weap in pairs(self.parts.wpn_fps_ass_galil_fg_fab.override[ part_id ].stance_mod) do
+			if weap and weap.translation then
+				weap.translation = weap.translation + sight_1x_offset.offset
+			end
+		end
+	end
 
 	self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_t1micro.stance_mod = deep_clone(self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_specter.stance_mod)
 	self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_tf90.stance_mod = deep_clone(self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_t1micro.stance_mod)
@@ -9594,7 +9648,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_galil", "resmod_galil", function(s
 	self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_eotech_xps.stance_mod = deep_clone(self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_uh.stance_mod = deep_clone(self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_fc1.stance_mod = deep_clone(self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_eotech.stance_mod)
-	self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_ass_galil_fg_fab.override.wpn_fps_upg_o_eotech.stance_mod)
 	for i, part_id in ipairs(sight_1_5x_offset.sights) do
 		for i, weap in pairs(self.parts.wpn_fps_ass_galil_fg_fab.override[ part_id ].stance_mod) do
 			if weap and weap.translation then
@@ -12379,6 +12432,14 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_modpack_m4_ak", "resmod_modpack_m4
 	self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_reflex.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_rx01.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_rx30.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_docter.stance_mod)
+	self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_docter.stance_mod)
+	for i, part_id in ipairs(sight_1x_offset.sights) do
+		for i, weap in pairs(self.parts.wpn_fps_upg_ak_fg_krebs.override[ part_id ].stance_mod) do
+			if weap and weap.translation then
+				weap.translation = weap.translation + sight_1x_offset.offset
+			end
+		end
+	end
 
 	self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_t1micro.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_specter.stance_mod)
 	self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_tf90.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_t1micro.stance_mod)
@@ -12387,7 +12448,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_modpack_m4_ak", "resmod_modpack_m4
 	self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_eotech_xps.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_uh.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_fc1.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_eotech.stance_mod)
-	self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_krebs.override.wpn_fps_upg_o_eotech.stance_mod)
 	for i, part_id in ipairs(sight_1_5x_offset.sights) do
 		for i, weap in pairs(self.parts.wpn_fps_upg_ak_fg_krebs.override[ part_id ].stance_mod) do
 			if weap and weap.translation then
@@ -12476,6 +12536,14 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_modpack_m4_ak", "resmod_modpack_m4
 	self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_reflex.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_rx01.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_rx30.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_docter.stance_mod)
+	self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_docter.stance_mod)
+	for i, part_id in ipairs(sight_1x_offset.sights) do
+		for i, weap in pairs(self.parts.wpn_fps_upg_ak_fg_trax.override[ part_id ].stance_mod) do
+			if weap and weap.translation then
+				weap.translation = weap.translation + sight_1x_offset.offset
+			end
+		end
+	end
 
 	self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_t1micro.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_specter.stance_mod)
 	self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_tf90.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_t1micro.stance_mod)
@@ -12484,7 +12552,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_modpack_m4_ak", "resmod_modpack_m4
 	self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_eotech_xps.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_uh.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_fc1.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_eotech.stance_mod)
-	self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_trax.override.wpn_fps_upg_o_eotech.stance_mod)
 	for i, part_id in ipairs(sight_1_5x_offset.sights) do
 		for i, weap in pairs(self.parts.wpn_fps_upg_ak_fg_trax.override[ part_id ].stance_mod) do
 			if weap and weap.translation then
@@ -12563,6 +12630,14 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_modpack_m4_ak", "resmod_modpack_m4
 	self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_reflex.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_rx01.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_rx30.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_docter.stance_mod)
+	self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_docter.stance_mod)
+	for i, part_id in ipairs(sight_1x_offset.sights) do
+		for i, weap in pairs(self.parts.wpn_fps_upg_ak_fg_zenit.override[ part_id ].stance_mod) do
+			if weap and weap.translation then
+				weap.translation = weap.translation + sight_1x_offset.offset
+			end
+		end
+	end
 
 	self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_t1micro.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_specter.stance_mod)
 	self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_tf90.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_t1micro.stance_mod)
@@ -12571,7 +12646,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_modpack_m4_ak", "resmod_modpack_m4
 	self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_eotech_xps.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_uh.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_fc1.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_eotech.stance_mod)
-	self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_upg_ak_fg_zenit.override.wpn_fps_upg_o_eotech.stance_mod)
 	for i, part_id in ipairs(sight_1_5x_offset.sights) do
 		for i, weap in pairs(self.parts.wpn_fps_upg_ak_fg_zenit.override[ part_id ].stance_mod) do
 			if weap and weap.translation then
@@ -12722,6 +12796,14 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_modpack_m4_ak", "resmod_modpack_m4
 	self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_reflex.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_rx01.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_rx30.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_docter.stance_mod)
+	self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_docter.stance_mod)
+	for i, part_id in ipairs(sight_1x_offset.sights) do
+		for i, weap in pairs(self.parts.wpn_fps_upg_o_ak_scopemount.override[ part_id ].stance_mod) do
+			if weap and weap.translation then
+				weap.translation = weap.translation + sight_1x_offset.offset
+			end
+		end
+	end
 
 	self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_t1micro.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_specter.stance_mod)
 	self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_tf90.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_t1micro.stance_mod)
@@ -12730,7 +12812,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_modpack_m4_ak", "resmod_modpack_m4
 	self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_eotech_xps.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_uh.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_fc1.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_eotech.stance_mod)
-	self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_eotech.stance_mod)
 	for i, part_id in ipairs(sight_1_5x_offset.sights) do
 		for i, weap in pairs(self.parts.wpn_fps_upg_o_ak_scopemount.override[ part_id ].stance_mod) do
 			if weap and weap.translation then
@@ -13314,6 +13395,14 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_butchermodpack", "resmod_butchermo
 	self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_reflex.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_rx01.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_rx30.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_docter.stance_mod)
+	self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_docter.stance_mod)
+	for i, part_id in ipairs(sight_1x_offset.sights) do
+		for i, weap in pairs(self.parts.wpn_fps_upg_o_m14_scopemount.override[ part_id ].stance_mod) do
+			if weap and weap.translation then
+				weap.translation = weap.translation + sight_1x_offset.offset
+			end
+		end
+	end
 
 	self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_t1micro.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_specter.stance_mod)
 	self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_tf90.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_t1micro.stance_mod)
@@ -13322,7 +13411,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_butchermodpack", "resmod_butchermo
 	self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_eotech_xps.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_uh.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_fc1.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_eotech.stance_mod)
-	self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_eotech.stance_mod)
 	for i, part_id in ipairs(sight_1_5x_offset.sights) do
 		for i, weap in pairs(self.parts.wpn_fps_upg_o_m14_scopemount.override[ part_id ].stance_mod) do
 			if weap and weap.translation then
@@ -19578,6 +19666,14 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_m590", "resmod_m590", function(sel
 	self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_reflex.stance_mod = deep_clone(self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_rx01.stance_mod = deep_clone(self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_docter.stance_mod)
 	self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_rx30.stance_mod = deep_clone(self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_docter.stance_mod)
+	self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_docter.stance_mod)
+	for i, part_id in ipairs(sight_1x_offset.sights) do
+		for i, weap in pairs(self.parts.wpn_fps_sho_m590_body_rail.override[ part_id ].stance_mod) do
+			if weap and weap.translation then
+				weap.translation = weap.translation + sight_1x_offset.offset
+			end
+		end
+	end
 
 	self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_t1micro.stance_mod = deep_clone(self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_specter.stance_mod)
 	self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_tf90.stance_mod = deep_clone(self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_t1micro.stance_mod)
@@ -19586,7 +19682,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_m590", "resmod_m590", function(sel
 	self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_eotech_xps.stance_mod = deep_clone(self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_uh.stance_mod = deep_clone(self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_eotech.stance_mod)
 	self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_fc1.stance_mod = deep_clone(self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_eotech.stance_mod)
-	self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_sho_m590_body_rail.override.wpn_fps_upg_o_eotech.stance_mod)
 	for i, part_id in ipairs(sight_1_5x_offset.sights) do
 		for i, weap in pairs(self.parts.wpn_fps_sho_m590_body_rail.override[ part_id ].stance_mod) do
 			if weap and weap.translation then
@@ -20092,6 +20187,14 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_shak12", "resmod_shak12", function
 	self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_reflex = deep_clone(self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_docter)
 	self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_rx01 = deep_clone(self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_docter)
 	self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_rx30 = deep_clone(self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_docter)
+	self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_health = deep_clone(self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_docter)
+	for i, part_id in ipairs(sight_1x_offset.sights) do
+		for i, weap in pairs(self.parts.wpn_fps_ass_shak12_o_carry_dummy.override[ part_id ]) do
+			if weap and weap.translation then
+				weap.translation = weap.translation + sight_1x_offset.offset
+			end
+		end
+	end
 
 	self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_t1micro = deep_clone(self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_specter)
 	self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_tf90 = deep_clone(self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_t1micro)
@@ -20100,7 +20203,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_shak12", "resmod_shak12", function
 	self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_eotech_xps = deep_clone(self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_eotech)
 	self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_uh = deep_clone(self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_eotech)
 	self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_fc1 = deep_clone(self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_eotech)
-	self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_health = deep_clone(self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_eotech)
 	for i, part_id in ipairs(sight_1_5x_offset.sights) do
 		for i, weap in pairs(self.parts.wpn_fps_ass_shak12_o_carry_dummy.override[ part_id ]) do
 			if weap and weap.translation then
@@ -21888,6 +21990,14 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_mxm_mods", "resmod_mxm_mods", func
 	self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_reflex = deep_clone(self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_docter)
 	self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_rx01 = deep_clone(self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_docter)
 	self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_rx30 = deep_clone(self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_docter)
+	self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_health = deep_clone(self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_docter)
+	for i, part_id in ipairs(sight_1x_offset.sights) do
+		for i, weap in pairs(self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override[ part_id ].stance_mod) do
+			if weap and weap.translation then
+				weap.translation = weap.translation + sight_1x_offset.offset
+			end
+		end
+	end
 
 	self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_t1micro = deep_clone(self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_specter)
 	self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_tf90 = deep_clone(self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_t1micro)
@@ -21896,7 +22006,6 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_mxm_mods", "resmod_mxm_mods", func
 	self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_eotech_xps = deep_clone(self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_eotech)
 	self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_uh = deep_clone(self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_eotech)
 	self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_fc1 = deep_clone(self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_eotech)
-	self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_health = deep_clone(self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_eotech)
 	for i, part_id in ipairs(sight_1_5x_offset.sights) do
 		for i, weap in pairs(self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override[ part_id ].stance_mod) do
 			if weap and weap.translation then
@@ -21998,7 +22107,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "_init_mxm_mods", "resmod_mxm_mods", func
 		"scope",
 		"display_unit_health"
 	}
-	self.parts.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_eotech.stance_mod)
+	self.parts.wpn_fps_upg_o_health.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_docter.stance_mod)
 
 	--CASSIAN Iron Sights
 	self.parts.wpn_fps_upg_o_mbus_pro.pcs = {
@@ -33003,6 +33112,8 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				self.parts.wpn_fps_ass_contraband_body_sayhello.override.wpn_fps_smg_car9_o_rail = {
 					parent = "exclusive_set_o"
 				}
+
+				self.parts.wpn_fps_ass_contraband_body_sayhello.override.wpn_fps_ass_contraband_o_standard.stance_mod = {}
 		
 				--G2 Kit
 				self.parts.wpn_fps_snp_contender_receiver_hunt.supported = true
@@ -35593,6 +35704,14 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_reflex = deep_clone(self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_docter)
 				self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_rx01 = deep_clone(self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_docter)
 				self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_rx30 = deep_clone(self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_docter)
+				self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_health = deep_clone(self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_docter)
+				for i, part_id in ipairs(sight_1x_offset.sights) do
+					for i, weap in pairs(self.parts.wpn_fps_ass_ak_body_creedmoor.override[ part_id ].stance_mod) do
+						if weap and weap.translation then
+							weap.translation = weap.translation + sight_1x_offset.offset
+						end
+					end
+				end
 
 				self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_t1micro = deep_clone(self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_specter)
 				self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_tf90 = deep_clone(self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_t1micro)
@@ -35601,7 +35720,6 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_eotech_xps = deep_clone(self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_eotech)
 				self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_uh = deep_clone(self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_eotech)
 				self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_fc1 = deep_clone(self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_eotech)
-				self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_health = deep_clone(self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_eotech)
 				for i, part_id in ipairs(sight_1_5x_offset.sights) do
 					for i, weap in pairs(self.parts.wpn_fps_ass_ak_body_creedmoor.override[ part_id ].stance_mod) do
 						if weap and weap.translation then
