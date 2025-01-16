@@ -27,8 +27,6 @@ Package data for Russia and Murkywater properlly load.
 
 Titan Cloakers spawn on mayhem and above.
 
-NewCopper's Assets somehow (Planned to remove on 2025)
-
 Zip .22 has a 1% chance to fail
 
 4 new mutators

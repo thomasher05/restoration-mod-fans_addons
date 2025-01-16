@@ -708,7 +708,7 @@ local weapons_map = {
 
 	--Giving vanilla units the right guns
 	[Idstring("units/pd2_dlc_mad/characters/ene_akan_medic_r870/ene_akan_medic_r870"):key()] = "fort_500",
-	[Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale_r870/ene_swat_medic_policia_federale_r870"):key()] = "m500",
+--	[Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale_r870/ene_swat_medic_policia_federale_r870"):key()] = "m500",
 }
 
 local default_weapon_name_orig = CopBase.default_weapon_name
@@ -870,7 +870,7 @@ local swat = {
 local fbi = {
 	pistol_agent = {
 		"c45",
-		"mp5"
+		"raging_bull"
 	},
 	rifle_agent = {
 		"mp5",
@@ -967,13 +967,14 @@ local federales = {
 		"ump"
 	},
 	rifle_heavy = {
-		"amcar",
-		"hk33",
-		"m249",
+		"m4",
+	--	"hk33",	-- fuck weapon doesn't exist
+		"ump",
 		"m249"
 	},
 	shotgun = {
-		"m500",
+	--	"m500",	-- fuck weapon doesn't exist
+		"r870",
 		"benelli",
 		"saiga"
 	}
