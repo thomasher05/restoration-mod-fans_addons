@@ -118,13 +118,13 @@ local crew_wep_preset = {
 	},
 	sniper_auto = {
 		mag_capacity = 8,
-		fire_rate = 2.5,
+		fire_rate = 3.75,
 		damage = 9.0
 	},
 	sniper_bolt = {	
 		mag_capacity = 5,
-		fire_rate = 5,
-		damage = 12.0
+		fire_rate = 7.5,
+		damage = 18.0
 	}
 }
 
@@ -1537,7 +1537,6 @@ local crew_wep_preset = {
 		self.deagle_npc = deep_clone(self.raging_bull_npc)
 		self.deagle_npc.CLIP_AMMO_MAX = 8
 		self.deagle_npc.DAMAGE = 8
-		self.deagle_npc.CLIP_AMMO_MAX = 8
 		self.deagle_npc.sounds.prefix = "deagle_npc"
 		self.deagle_npc.anim_usage = "is_pistol"
 		self.deagle_npc.hold = "pistol"
@@ -19743,14 +19742,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.ma40.damage_falloff = {
 					start_dist = 1200,
 					end_dist = 4000,
-					end_dist = 3400,
 					min_mult = 0.8
 				}	
 				self.ma40.stats = {
 					damage = 30,
 					spread = 71,
 					recoil = 81,
-					recoil = 91,
 					spread_moving = 5,
 					zoom = 1,
 					concealment = 22,
