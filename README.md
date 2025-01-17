@@ -83,7 +83,9 @@ Cop Female: Female Spy (Team Fortress 2)
 
 Grenadier: Annihilator (Typical Colors 2)
 
-Heavy Gunner: Alliance (Unit: Classified)
+Heavy SWAT: Alliance (Unit: Classified)
+
+Heavy SWAT Murky: SAS (Counter Strike)
 
 Spring: Robot Heavy (Team Fortress 2)
 

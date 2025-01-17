@@ -898,6 +898,8 @@ function CharacterTweakData:_init_heavy_swat(presets)
 		self.heavy_swat.custom_voicework = "heavygunner"
 	elseif self:get_ai_group_type() == "zombie" then
 		self.heavy_swat.custom_voicework = "heavygunner_hvh"
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.heavy_swat.custom_voicework = "murky_heavygunner"
 	else
 		self.heavy_swat.custom_voicework = nil
 	end
@@ -1110,6 +1112,8 @@ function CharacterTweakData:_init_fbi_heavy_swat(presets)
 		self.fbi_heavy_swat.custom_voicework = "heavygunner"
 	elseif self:get_ai_group_type() == "zombie" then
 		self.fbi_heavy_swat.custom_voicework = "heavygunner_hvh"
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.fbi_heavy_swat.custom_voicework = "murky_heavygunner"
 	else
 		self.fbi_heavy_swat.custom_voicework = nil
 	end
