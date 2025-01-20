@@ -20311,6 +20311,47 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.sierra458.timers.reload_not_empty = 2.35
 				self.sierra458.timers.reload_exit_not_empty = 0.8
 			end
+
+			if self.czshadow then
+				self.czshadow.recategorize = { "light_pis" }
+				self.czshadow.damage_type = "light_pistol"
+				self.czshadow.fire_mode_data.fire_rate =  0.08333
+				self.czshadow.AMMO_MAX = 75
+				self.czshadow.CLIP_AMMO_MAX = 17
+				self.czshadow.tactical_reload = 1
+				self.czshadow.lock_slide = true
+				self.czshadow.kick = self.stat_info.kick_tables.even_recoil
+				self.czshadow.kick_pattern = {
+					{0, self.stat_info.kick_tables.moderate_kick},
+					{3, self.stat_info.kick_tables.right_kick},
+					{8, self.stat_info.kick_tables.moderate_left_kick},
+					{14, self.stat_info.kick_tables.even_recoil}
+				}
+				self.czshadow.supported = true
+				self.czshadow.ads_speed = 0.140
+				self.czshadow.damage_falloff = {
+					start_dist = 1700,
+					end_dist = 3300,
+					min_mult = 0.25
+				}
+				self.czshadow.stats = {
+					damage = 24,
+					spread = 51,
+					recoil = 75,
+					spread_moving = 9,
+					zoom = 1,
+					concealment = 30,
+					suppression = 12,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 1,
+					reload = 20
+				}
+				self.czshadow.stats_modifiers = nil
+				self.czshadow.panic_suppression_chance = 0.05
+				self.czshadow.timers = deep_clone(self.b92fs.timers)
+			end
 		
 		--[[     HYLIE'S MODS     ]]--
 
@@ -20365,6 +20406,59 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.or12.tactical_reload = 1
 			end
 
+			if self.haymaker then
+				self.haymaker.recategorize = { "light_shot" }
+				self.haymaker.categories = { "shotgun" }
+				self.haymaker.damage_type = "shotgun"
+				self.haymaker.damage_type_single_ray = "sniper"
+				self.haymaker.tactical_reload = 1
+				self.haymaker.BURST_FIRE = false
+				self.haymaker.fire_mode_data.fire_rate = 0.24
+				self.haymaker.CLIP_AMMO_MAX = 20
+				self.haymaker.AMMO_MAX = 60
+				self.haymaker.kick = self.stat_info.kick_tables.vertical_kick
+				self.haymaker.kick_pattern = {
+					{0, self.stat_info.kick_tables.left_recoil},
+					{3, self.stat_info.kick_tables.right_recoil},
+					{8, self.stat_info.kick_tables.right_kick},
+					{12, self.stat_info.kick_tables.even_recoil}
+				}
+				self.haymaker.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
+				self.haymaker.FIRE_MODE = "single"				
+				self.haymaker.CAN_TOGGLE_FIREMODE = false
+				self.haymaker.rays = 9
+				self.haymaker.supported = true
+				self.haymaker.ads_speed = 0.380
+				self.haymaker.damage_falloff = {
+					start_dist = 600,
+					end_dist = 3400,
+					min_mult = 0.15
+				}
+				self.haymaker.stats = {
+					damage = 120,
+					spread = 33,
+					recoil = 55,
+					spread_moving = 7,
+					zoom = 1,
+					concealment = 19,
+					suppression = 8,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 1,
+					reload = 20
+				}
+				self.haymaker.stats_modifiers = nil
+				self.haymaker.lock_slide = true
+				self.haymaker.sounds.magazine_empty = "wp_rifle_slide_lock"
+				self.haymaker.panic_suppression_chance = 0.05
+				self.haymaker.panic_suppression_chance = 0.05
+				self.haymaker.timers.reload_empty = 4
+				self.haymaker.timers.reload_exit_empty = 0.9
+				self.haymaker.timers.reload_not_empty = 3
+				self.haymaker.timers.reload_exit_not_empty = 0.7
+			end
+			
 			if self.ntw20 then
 				self.ntw20.categories = {
 					"snp",
