@@ -15322,7 +15322,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.fmgnine and self.x_fmgnine then --Pawcio's Akimbo FMG-9
-				self.x_fmgnine.categories = {"pistol"}
+				self.x_fmgnine.categories = {"akimbo","pistol"}
 				self.x_fmgnine.recategorize = {"light_pis"}
 				self.x_fmgnine.damage_type = "light_pistol"
 				self.x_fmgnine.tactical_reload = 2
@@ -17778,6 +17778,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.mptango41.recategorize = { "antim_snp" }
 				self.mptango41.hs_mult = 2
 				self.mptango41.damage_type = "anti_materiel"
+				self.mptango41.warsaw = true
 				self.mptango41.upgrade_blocks = nil
 				self.mptango41.tactical_reload = 1
 				self.mptango41.AMMO_MAX = 12
@@ -17819,10 +17820,10 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.mptango41.panic_suppression_chance = 0.05
 				self.mptango41.lock_slide = true
 				self.mptango41.sounds.magazine_empty = "wp_pistol_slide_lock"
-				self.mptango41.timers.reload_empty = 4.8
-				self.mptango41.timers.reload_exit_empty = 1.15
-				self.mptango41.timers.reload_not_empty = 3.85
-				self.mptango41.timers.reload_exit_not_empty = 1.15
+				self.mptango41.timers.reload_empty = 5
+				self.mptango41.timers.reload_exit_empty = 1.2
+				self.mptango41.timers.reload_not_empty = 4
+				self.mptango41.timers.reload_exit_not_empty = 1.2
 			end
 			
 			if self.madsen_lar then
@@ -20317,7 +20318,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.czshadow.damage_type = "light_pistol"
 				self.czshadow.fire_mode_data.fire_rate =  0.08333
 				self.czshadow.AMMO_MAX = 75
-				self.czshadow.CLIP_AMMO_MAX = 17
+				self.czshadow.CLIP_AMMO_MAX = 15
 				self.czshadow.tactical_reload = 1
 				self.czshadow.lock_slide = true
 				self.czshadow.kick = self.stat_info.kick_tables.even_recoil
@@ -20351,6 +20352,47 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.czshadow.stats_modifiers = nil
 				self.czshadow.panic_suppression_chance = 0.05
 				self.czshadow.timers = deep_clone(self.b92fs.timers)
+				--Akimbo
+				self.x_czshadow.recategorize = { "light_pis" }
+				self.x_czshadow.damage_type = "light_pistol"
+				self.x_czshadow.fire_mode_data.fire_rate =  0.08333
+				self.x_czshadow.BURST_FIRE = 2
+				self.x_czshadow.BURST_FIRE_RATE_MULTIPLIER = 2
+				self.x_czshadow.AMMO_MAX = 150
+				self.x_czshadow.CLIP_AMMO_MAX = 30
+				self.x_czshadow.tactical_reload = 2
+				self.x_czshadow.lock_slide = true
+				self.x_czshadow.kick = self.stat_info.kick_tables.even_recoil
+				self.x_czshadow.kick_pattern = {
+					{0, self.stat_info.kick_tables.moderate_kick},
+					{3, self.stat_info.kick_tables.right_kick},
+					{8, self.stat_info.kick_tables.moderate_left_kick},
+					{14, self.stat_info.kick_tables.even_recoil}
+				}
+				self.x_czshadow.supported = true
+				self.x_czshadow.ads_speed = 0.140
+				self.x_czshadow.damage_falloff = {
+					start_dist = 1700,
+					end_dist = 3300,
+					min_mult = 0.25
+				}
+				self.x_czshadow.stats = {
+					damage = 24,
+					spread = 41,
+					recoil = 65,
+					spread_moving = 9,
+					zoom = 1,
+					concealment = 30,
+					suppression = 12,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 1,
+					reload = 20
+				}
+				self.x_czshadow.stats_modifiers = nil
+				self.x_czshadow.panic_suppression_chance = 0.05
+				self.x_czshadow.timers = deep_clone(self.x_b92fs.timers)
 			end
 		
 		--[[     HYLIE'S MODS     ]]--
@@ -21747,7 +21789,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.x_pm.warsaw = true
 				self.x_pm.lock_slide = true
 				self.x_pm.fire_mode_data.fire_rate = 0.0882352
-				self.x_pm.tactical_reload = 1
+				self.x_pm.BURST_FIRE = 2
+				self.x_pm.BURST_FIRE_RATE_MULTIPLIER = 2
+				self.x_pm.tactical_reload = 2
 				self.x_pm.CLIP_AMMO_MAX = 16
 				self.x_pm.AMMO_MAX = 150
 				self.x_pm.kick = self.stat_info.kick_tables.even_recoil
@@ -22876,6 +22920,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			if not weap.supported then
 				weap.always_play_anims = true
 				self:generate_custom_weapon_stats(weap)	
+			end
+			if weap.animations then
+				weap.animations.magazine_empty = nil 
 			end
 
 			if weap.fire_mode_data then
