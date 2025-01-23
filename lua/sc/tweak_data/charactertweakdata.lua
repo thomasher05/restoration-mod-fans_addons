@@ -3150,6 +3150,8 @@ function CharacterTweakData:_init_shield(presets)
 	self.shield.no_mutator_weapon_override = true
 	if self:get_ai_group_type() == "nypd" then
 		self.shield.custom_voicework = "shield_nypd"
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.shield.custom_voicework = "murky_shield"
 	else
 		self.shield.custom_voicework = nil
 	end

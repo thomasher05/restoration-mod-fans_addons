@@ -3277,6 +3277,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					--Joceline
 					["bm_w_b682"] = "Joceline O/U 12G",
 					--Custom Shotguns
+						--MW2022 Vepr
+						["bm_w_vecho"] = "KV Broadside",
+						--MW2023 Origin 12
+						["bm_w_haymaker"] = "Haymaker",
 						--Doomstick
 						["bm_w_quadbarrel"] = "Doomstick",
 						--Widowmaker TX
@@ -3368,6 +3372,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 						["bm_w_ar18"] = "CAR-18",
 						--FIK-22
 						["bm_w_fik22"] = "FIK-22 TLR", --why does this use the in-universe Sig name?
+						--ACR 2012
+						["bm_w_acr_2012"] = "MCW-R",
 				--[[ DMRs ]]
 					--Little Friend
 					["bm_w_contraband"] = "Bigger Friend 7.62",
@@ -3480,6 +3486,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 						["bm_wp_wpn_fps_snp_svd_pso"] = "SV7 Scope",
 						--L115
 						["bm_w_l115"] = "AIM 90M",
+						--"PTRS"
+						["bm_w_mptango41"] = "Gorenko Anti-Tank Rifle",
 				--[[ LAUNCHERS & BOWS ]]
 					--GL40
 					["bm_w_gre_m79"] = "GL-40",
@@ -3974,6 +3982,11 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					["bm_wp_boot_body_exotic"] = "Case Hardened 1887 Reciever",
 					--Claire 12G
 					["bm_w_coach"] = "Remington Model 1889",
+					--CUSTOM SHOTGUNS
+						--MW2022 Vepr
+						["bm_w_vecho"] = "Vepr-12",
+						--MW2023 Origin 12
+						["bm_w_haymaker"] = "Origin-12",
 
 				--[[ARs]]
 					--FAMAS
@@ -4067,7 +4080,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					["bm_w_groza"] = "TsKIB SOO Groza-1",
 					--Custom Rifles
 						["bm_w_fik22"] = "Ruger 10/22",
-
+						--ACR 2012
+						["bm_w_acr_2012"] = "Remington ACR",
 
 				--[[DMRs]]
 					--417
@@ -4228,6 +4242,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 						["bm_w_svd"] = "Kalashnikov Concern SVD",
 						--L115
 						["bm_w_l115"] = "Accuracy International L115",
+						--"PTRS"
+						["bm_w_mptango41"] = "\"PTRS-41\"",
 						--PD3 Lynx
 						["bm_w_pd3_lynx"] = "SERO Gepard M6",
 						--M107
@@ -5153,8 +5169,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills", function(loc)
 
 		["mutator_spawn_mult"] = "Amplified Response",
 		["menu_mutator_enemy_spawn"] = "ENEMY SPAWN MULTIPLIER",
-		["mutator_spawn_mult_desc"] = "Increased enemy spawns.",
-		["mutator_spawn_mult_longdesc"] = "More enemies will spawn during assault phases. The Overkill™ way!",
+		["mutator_spawn_mult_desc"] = "Modified enemy spawns.",
+		["mutator_spawn_mult_longdesc"] = "More (or less) enemies will spawn during assault phases. The Overkill™ way!",
 
 		["mutator_birthday"] = "Balloon Poppers",
 		["mutator_birthday_desc"] = "Special kills spawn balloons that provide buffs.",
@@ -5275,7 +5291,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills", function(loc)
 
 		["mutator_onlyspecials"] = "Oops All Specials!",
 		["mutator_onlyspecials_desc"] = "Only special units spawn.",
-		["mutator_onlyspecials_longdesc"] = "Only special units spawn. This makes the game significantly harder.",
+		["mutator_onlyspecials_longdesc"] = "Only special units spawn. This makes the game significantly harder.\n\nNote: Titan SWAT, Veteran Cops, and OMNIA ASUs do not spawn due to them being variants of standard units.",
 
 		["mutator_warthogs"] = "Warthogs",
 		["mutator_warthogs_desc"] = "Warthogs spawn in naturally.",

@@ -107,6 +107,8 @@ Warthog/Snowman: Understandable Pyro v2 (https://gamebanana.com/sounds/59101)
 
 Murkywater Cloaker: Myself
 
+Murkywater Shield: Seal Team 6 (Counter Strike)
+
 Marshal Marksman: Sniper (Team Fortress 2)
 
 Summers: Bill (Left 4 Dead Russian Dub)

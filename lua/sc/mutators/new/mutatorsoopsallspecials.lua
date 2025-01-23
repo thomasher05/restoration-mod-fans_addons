@@ -37,7 +37,33 @@ local access_type_all = {
 	walk = true
 }
 
-local ignored_groups = {}
+-- this might be the key
+local ignored_groups = {
+--	CS_cop_C45_R870,
+--	CS_cop_C45_MP5,
+--	CS_cop_R870,
+--	CS_cop_stealth_MP5,
+--	fbi_vet,
+--	CS_swat_MP5,
+--	CS_swat_R870,
+--	CS_swat_M4,
+--	CS_heavy_M4,
+--	CS_heavy_R870,
+--	CS_heavy_M4_w,
+--	FBI_suit_C45,
+--	FBI_suit_C45_M4,
+--	FBI_suit_M4_MP5,
+--	FBI_suit_stealth_MP5,
+--	FBI_swat_M4,
+--	GS_swat_M4,
+--	FBI_swat_R870,
+--	FBI_heavy_G36,
+--	FBI_heavy_R870,
+--	FBI_heavy_G36_w,
+--	GS_heavy_G36,
+--	GS_heavy_R870,
+--	GS_heavy_G36_w,
+}
 
 function MutatorOopsAllSpecials:modify_unit_categories(group_ai_tweak, difficulty_index)
 	group_ai_tweak.special_unit_spawn_limits = {
