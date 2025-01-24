@@ -119,12 +119,12 @@ local crew_wep_preset = {
 	sniper_auto = {
 		mag_capacity = 8,
 		fire_rate = 3.75,
-		damage = 9.0
+		damage = 9.0 / 1.25
 	},
 	sniper_bolt = {	
 		mag_capacity = 5,
 		fire_rate = 7.5,
-		damage = 18.0
+		damage = 18.0 / 1.25
 	}
 }
 
@@ -3735,6 +3735,7 @@ function WeaponTweakData:_init_stats()
 
 	--Weapon swap speed multiplier from concealment.
 	--Calculated using fancier math than just y = mx+b to give linear returns to players.
+	--[[
 	self.stats.mobility = {
 		0.400,
 		0.410,
@@ -3770,6 +3771,13 @@ function WeaponTweakData:_init_stats()
 		2.148,
 		2.500
 	}
+	--]]
+	--Attempted to redo the math on this to reduce the range of this stat; the math is not 100% exact but it's close enough for me
+	self.stats.mobility = {}
+	for i = 0, 1, 1/33 do
+		local k = math.lerp( 1.9, 0.8, i)
+		table.insert( self.stats.mobility, math.ceil(1/k*1000)/1000 )
+	end
 	
 	self.stats.extra_ammo = {}
 	for i = -100, 1500, 1 do
@@ -5473,16 +5481,16 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.x_stech.kick = self.stat_info.kick_tables.moderate_kick
 						self.x_stech.CLIP_AMMO_MAX = 40
 						self.x_stech.supported = true
-						self.x_stech.ads_speed = 0.140
+						self.x_stech.ads_speed = 0.160
 						self.x_stech.damage_falloff = {
-							start_dist = 1800,
-							end_dist = 3800,
+							start_dist = 1300,
+							end_dist = 3100,
 							min_mult = 0.2083
 						}
 						self.x_stech.stats = {
 							damage = 24,
 							spread = 50,
-							recoil = 69,
+							recoil = 63,
 							spread_moving = 9,
 							zoom = 1,
 							concealment = 30,
@@ -5706,6 +5714,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.fmg9.stats_modifiers = nil
 						self.fmg9.panic_suppression_chance = 0.05	
 						self.fmg9.swap_speed_multiplier = 0.45
+						self.fmg9.use_unequip_swap = true
 					
 					--Beretta Auto (93R)
 						self.beer.has_description = true
@@ -6017,7 +6026,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.glock_18c.timers.reload_exit_empty = 0.5
 						self.glock_18c.timers.reload_exit_not_empty = 0.65
 
-					--CZ 75
+					--CZ ACCUSHADOW BUT SOMEHOW FULL AUTO
 						self.czech.has_description = true
 						self.czech.desc_id = "bm_czech_sc_desc"				
 						self.czech.CLIP_AMMO_MAX = 18
@@ -6068,10 +6077,10 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.stech.kick = self.stat_info.kick_tables.moderate_kick
 						self.stech.CLIP_AMMO_MAX = 20
 						self.stech.supported = true
-						self.stech.ads_speed = 0.140
+						self.stech.ads_speed = 0.160
 						self.stech.damage_falloff = {
-							start_dist = 1800,
-							end_dist = 3800,
+							start_dist = 1300,
+							end_dist = 3100,
 							min_mult = 0.2083
 						}
 						self.stech.stats = {
@@ -6090,7 +6099,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						}
 						self.stech.stats_modifiers = nil
 						self.stech.panic_suppression_chance = 0.05
-						self.stech.reload_speed_multiplier = 1.3
+						self.stech.reload_speed_multiplier = 1.2
 						self.stech.timers.reload_exit_empty = 0.7
 						self.stech.timers.reload_not_empty = 1.89
 						self.stech.timers.reload_exit_not_empty = 0.7
@@ -6856,7 +6865,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						}
 						self.sub2000.panic_suppression_chance = 0.05
 						self.sub2000.stats_modifiers = nil
-						self.sub2000.swap_speed_multiplier = 0.5
+						self.sub2000.use_unequip_swap = true
+						self.sub2000.swap_speed_multiplier = 0.4
 						self.sub2000.timers.reload_exit_empty = 0.85
 						self.sub2000.timers.reload_exit_not_empty = 0.95
 
@@ -7641,6 +7651,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.peacemaker.timers.shotgun_reload_first_shell_offset = 0.5
 						self.peacemaker.timers.shotgun_reload_exit_empty = 0.7
 						self.peacemaker.timers.shotgun_reload_exit_not_empty = 0.7
+						self.peacemaker.use_unequip_swap = true
+						self.peacemaker.swap_speed_multiplier = 0.9
 
 		--[[     MGs     ]]--
 
@@ -15313,7 +15325,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.fmgnine.stats_modifiers = nil
 				self.fmgnine.panic_suppression_chance = 0.05
-				self.fmgnine.swap_speed_multiplier = 0.52
+				self.fmgnine.use_unequip_swap = true
+				self.fmgnine.swap_speed_multiplier = 0.5
 				self.fmgnine.timers.equip = 1.5
 				self.fmgnine.timers.reload_not_empty = 2.07
 				self.fmgnine.timers.reload_exit_not_empty = 0.8
@@ -15355,7 +15368,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.x_fmgnine.stats_modifiers = nil
 				self.x_fmgnine.panic_suppression_chance = 0.05
-				self.x_fmgnine.swap_speed_multiplier = 0.52
+				self.x_fmgnine.use_unequip_swap = true
+				self.x_fmgnine.swap_speed_multiplier = 0.5
 				self.x_fmgnine.timers.equip = 1.8
 				self.x_fmgnine.timers.reload_not_empty = 2.5
 				self.x_fmgnine.timers.reload_exit_not_empty = 0.8
@@ -19511,7 +19525,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			if self.vecho then
 				self.vecho.categories = { 
 					"shotgun",
-					"shotgun_auto" 
+					"shotgun_light" 
 				}
 				self.vecho.recategorize = { "light_shot" }
 				self.vecho.damage_type = "shotgun"
@@ -19531,19 +19545,19 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					{4, self.stat_info.kick_tables.right_kick}
 				}
 				self.vecho.supported = true
-				self.vecho.ads_speed = 0.340
+				self.vecho.ads_speed = 0.300
 				self.vecho.damage_falloff = {
-					start_dist = 300,
-					end_dist = 2500,
+					start_dist = 400,
+					end_dist = 2600,
 					min_mult = 0.15
 				}
 				self.vecho.stats = {
 					damage = 120,
-					spread = 21,
+					spread = 23,
 					recoil = 39,
 					spread_moving = 7,
 					zoom = 1,
-					concealment = 24,
+					concealment = 25,
 					suppression = 9,
 					alert_size = 2,
 					extra_ammo = 101,
@@ -20337,8 +20351,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.czshadow.stats = {
 					damage = 24,
-					spread = 51,
-					recoil = 75,
+					spread = 56,
+					recoil = 77,
 					spread_moving = 9,
 					zoom = 1,
 					concealment = 30,
@@ -20378,8 +20392,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.x_czshadow.stats = {
 					damage = 24,
-					spread = 41,
-					recoil = 65,
+					spread = 46,
+					recoil = 67,
 					spread_moving = 9,
 					zoom = 1,
 					concealment = 30,
@@ -20450,7 +20464,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 
 			if self.haymaker then
 				self.haymaker.recategorize = { "light_shot" }
-				self.haymaker.categories = { "shotgun" }
+				self.haymaker.categories = { "shotgun", "shotgun_light" }
 				self.haymaker.damage_type = "shotgun"
 				self.haymaker.damage_type_single_ray = "sniper"
 				self.haymaker.tactical_reload = 1
@@ -20472,13 +20486,13 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.haymaker.supported = true
 				self.haymaker.ads_speed = 0.380
 				self.haymaker.damage_falloff = {
-					start_dist = 600,
-					end_dist = 3400,
+					start_dist = 500,
+					end_dist = 2800,
 					min_mult = 0.15
 				}
 				self.haymaker.stats = {
 					damage = 120,
-					spread = 33,
+					spread = 27,
 					recoil = 55,
 					spread_moving = 7,
 					zoom = 1,
