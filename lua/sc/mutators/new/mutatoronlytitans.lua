@@ -18,6 +18,7 @@ MutatorOnlyTitans.icon_coords = {
 }	
 
 function MutatorOnlyTitans:setup(data)
+	local job = Global.level_data and Global.level_data.level_id
 	local difficulty = Global.game_settings and Global.game_settings.difficulty or "normal"
 	local difficulty_index = tweak_data:difficulty_to_index(difficulty)
 	local access_type_walk_only = {walk = true}
@@ -195,7 +196,7 @@ function MutatorOnlyTitans:setup(data)
 	tweak_data.group_ai.unit_categories.Tank_Ben = {
 		unit_types = {
 			america = {
-				Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_dlc_vip/characters/ene_vip_2_assault/ene_vip_2_assault")
 			},
 			russia = {
 				Idstring("units/pd2_mod_reapers/characters/ene_vip_2/ene_vip_2")
@@ -204,19 +205,19 @@ function MutatorOnlyTitans:setup(data)
 				Idstring("units/payday2/characters/ene_bulldozer_4/ene_bulldozer_4")
 			},				
 			murkywater = {
-				Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_dlc_vip/characters/ene_vip_2_assault/ene_vip_2_assault")
 			},
 			federales = {
 				Idstring("units/pd2_mod_reapers/characters/ene_vip_2/ene_vip_2")
 			},				
 			nypd = {
-				Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_dlc_vip/characters/ene_vip_2_assault/ene_vip_2_assault")
 			},
 			lapd = {
-				Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_dlc_vip/characters/ene_vip_2_assault/ene_vip_2_assault")
 			},
 			fbi = {
-				Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_dlc_vip/characters/ene_vip_2_assault/ene_vip_2_assault")
 			}			
 		},
 		access = access_type_all,
@@ -227,7 +228,7 @@ function MutatorOnlyTitans:setup(data)
 	tweak_data.group_ai.unit_categories.OMNIA_Tank = {
 		unit_types = {
 			america = {
-				Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_dlc_vip/characters/ene_vip_2_assault/ene_vip_2_assault")
 			},
 			russia = {
 				Idstring("units/pd2_mod_reapers/characters/ene_vip_2/ene_vip_2")
@@ -236,19 +237,19 @@ function MutatorOnlyTitans:setup(data)
 				Idstring("units/payday2/characters/ene_bulldozer_4/ene_bulldozer_4")
 			},				
 			murkywater = {
-				Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_dlc_vip/characters/ene_vip_2_assault/ene_vip_2_assault")
 			},
 			federales = {
 				Idstring("units/pd2_mod_reapers/characters/ene_vip_2/ene_vip_2")
 			},				
 			nypd = {
-				Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_dlc_vip/characters/ene_vip_2_assault/ene_vip_2_assault")
 			},
 			lapd = {
-				Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_dlc_vip/characters/ene_vip_2_assault/ene_vip_2_assault")
 			},
 			fbi = {
-				Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_dlc_vip/characters/ene_vip_2_assault/ene_vip_2_assault")
 			}			
 		},
 		access = access_type_all,
