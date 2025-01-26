@@ -2778,6 +2778,7 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_titan.ecm_hurts = {}
 	self.tank_titan.damage.explosion_damage_mul = 1.25
 	self.tank_titan.damage.rocket_damage_mul = 1.25
+	self.tank_titan.melee_push_multiplier = 2 --he punches you harder now
 	self.tank_titan.is_special = true
 	self.tank_titan.no_asu = true
 	self.tank_titan.heal_cooldown = 22.5
@@ -3357,6 +3358,12 @@ function CharacterTweakData:_init_spring(presets)
 	self.spring.damage.hurt_severity = presets.hurt_severities.captain
 	self.spring.melee_weapon = "fists_dozer"
 	self.spring.melee_weapon_dmg_multiplier = 1
+	--You better not get close to Spring or Hatman...
+	self.spring.ewgf = {
+		duration = 2.5,
+		power = 4
+	}
+	self.spring.melee_push_multiplier = 3
 	self.spring.speech_prefix_p1 = "cpa"
 	self.spring.speech_prefix_p2 = nil
 	self.spring.speech_prefix_count = nil
@@ -17877,6 +17884,24 @@ function CharacterTweakData:_set_sm_wish()
 	self.drug_lord_boss.move_speed = self.presets.move_speed.slow
 	self.triad_boss.move_speed = self.presets.move_speed.slow
 	self.deep_boss.move_speed = self.presets.move_speed.slow
+
+	--Harder Skulldozer/Titandozer's punches (but not as much as Spring/Hatman)
+	self.tank_skull.ewgf = {
+		duration = 1.5,
+		power = 2
+	}
+	self.tank_titan.ewgf = {
+		duration = 1.5,
+		power = 2
+	}
+	self.tank_titan_assault.ewgf = {
+		duration = 1.5,
+		power = 2
+	}
+	self.tank_hw.ewgf = {
+		duration = 1.5,
+		power = 2
+	}
 	
 	--Tankier Dozer Armor
 	self.tank_armor_damage_mul = 0.5
