@@ -1000,6 +1000,7 @@ function NewRaycastWeaponBase:_update_stats_values(disallow_replenish, ammo_data
 		self._movement_speed_add = 0
 
 		self._melee_speed_mult = 1
+		self._reload_anim_multiplier = 1
 
 		self._hipfire_mult = 1
 		self._ads_moving_mult = 1
@@ -1159,8 +1160,25 @@ function NewRaycastWeaponBase:_update_stats_values(disallow_replenish, ammo_data
 			if stats.beretta_burst then
 				self:weapon_tweak_data().BURST_FIRE = 3	
 				self:weapon_tweak_data().ADAPTIVE_BURST_SIZE = false
-				self:_set_burst_mode(true, true)
-				self:weapon_tweak_data().BURST_FIRE_RATE_MULTIPLIER = 1.57142857
+				local burst_mult = ((self:weapon_tweak_data().fire_mode_data and self:weapon_tweak_data().fire_mode_data.fire_rate) and self:weapon_tweak_data().fire_mode_data.fire_rate / 0.0545454) or 1
+				self:weapon_tweak_data().BURST_FIRE_RATE_MULTIPLIER = burst_mult
+			end
+
+			if stats.csglock_burst then
+				self:weapon_tweak_data().BURST_FIRE = 3	
+				self:weapon_tweak_data().BURST_DELAY = 0.2
+				self:weapon_tweak_data().ADAPTIVE_BURST_SIZE = false
+				self:weapon_tweak_data().BURST_FIRE_RATE_MULTIPLIER = 3
+				self:weapon_tweak_data().BURST_FIRE_SPREAD_MULTIPLIER = 1.5
+			end
+			
+			if stats.abakan then
+				self:weapon_tweak_data().BURST_FIRE = 2
+				self:weapon_tweak_data().BURST_FIRE_RATE_MULTIPLIER = 3
+				self:weapon_tweak_data().BURST_DELAY = 0.06
+				self:weapon_tweak_data().ADAPTIVE_BURST_SIZE = false
+				self:weapon_tweak_data().fire_rate_init_count = 2
+				self:weapon_tweak_data().fire_rate_init_mult = 3
 			end	
 			
 			if stats.bandana then
@@ -1188,7 +1206,7 @@ function NewRaycastWeaponBase:_update_stats_values(disallow_replenish, ammo_data
 			end	
 	
 			if stats.m16_burst then
-				local burst_mult = ((self:weapon_tweak_data().fire_mode_data and self:weapon_tweak_data().fire_mode_data.fire_rate) and self:weapon_tweak_data().fire_mode_data.fire_rate / 0.066666) or 1
+				local burst_mult = ((self:weapon_tweak_data().fire_mode_data and self:weapon_tweak_data().fire_mode_data.fire_rate) and self:weapon_tweak_data().fire_mode_data.fire_rate / 0.06315) or 1
 				self:weapon_tweak_data().CAN_TOGGLE_FIREMODE = false
 				self:weapon_tweak_data().FIRE_MODE = "single"	
 				self:weapon_tweak_data().BURST_FIRE = 3	
@@ -1364,6 +1382,9 @@ function NewRaycastWeaponBase:_update_stats_values(disallow_replenish, ammo_data
 			end
 			if stats.big_scope then
 				self._has_big_scope = true
+			end
+			if stats.reload_anim_mult then
+				self._reload_anim_multiplier = self._reload_anim_multiplier * stats.reload_anim_mult
 			end
 			if stats.movement_speed_add then
 				self._movement_speed_add = self._movement_speed_add + stats.movement_speed_add
@@ -1661,7 +1682,7 @@ function NewRaycastWeaponBase:precalculate_ammo_pickup()
 		self._ammo_pickup = {self:weapon_tweak_data().AMMO_PICKUP[1], self:weapon_tweak_data().AMMO_PICKUP[2]} --Get base gun ammo pickup.
 
 		--Pickup multiplier from skills.
-		local pickup_multiplier = managers.player:upgrade_value("player", "fully_loaded_pick_up_multiplier", 1)
+		local pickup_multiplier = managers.player:upgrade_value("player", "fully_loaded_pick_up_multiplier", 1)	
 		local is_solo = (Global.game_settings and Global.game_settings.single_player and 2) or 1
 		if not is_pro then
 			pickup_multiplier = pickup_multiplier * ( ((managers.player:upgrade_value("player", "passive_pick_up_multiplier", 1) - 1) * is_solo) + 1 )
@@ -2484,6 +2505,21 @@ function NewRaycastWeaponBase:_set_parts_visible(visible)
 	end
 
 	self:_chk_charm_upd_state()
+end
+
+if OWLFBullpupWeaponBase then
+	function OWLFBullpupWeaponBase:clbk_assembly_complete(...)
+		OWLFBullpupWeaponBase.super.clbk_assembly_complete(self, ...)
+		if table.contains(self._blueprint, "wpn_fps_upg_owlfbullpup_mag_drum") then
+			self:weapon_tweak_data().animations.reload_name_id = "owlfbullpup_drum"
+		else
+			self:weapon_tweak_data().animations.reload_name_id = "owlfbullpup"
+		--[[
+			self:weapon_tweak_data().timers.reload_empty = 4.8
+			self:weapon_tweak_data().timers.reload_not_empty = 3.0
+		--]]
+		end
+	end
 end
 
 --[[

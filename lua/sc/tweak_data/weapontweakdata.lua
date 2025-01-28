@@ -19645,7 +19645,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.vecho.ads_speed = 0.300
 				self.vecho.damage_falloff = {
 					start_dist = 400,
-					end_dist = 2600,
+					end_dist = 2500,
 					min_mult = 0.15
 				}
 				self.vecho.stats = {
@@ -19663,6 +19663,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					reload = 20
 				}
 				self.vecho.stats_modifiers = nil
+				self.vecho.sounds.use_fix = nil
+				self.vecho.sounds.stop_fire = "saiga_stop"
 				self.vecho.panic_suppression_chance = 0.05
 				self.vecho.timers.reload_empty = 2.85
 				self.vecho.timers.reload_exit_empty = 0.8
@@ -20583,8 +20585,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.haymaker.supported = true
 				self.haymaker.ads_speed = 0.380
 				self.haymaker.damage_falloff = {
-					start_dist = 500,
-					end_dist = 2800,
+					start_dist = 400,
+					end_dist = 2600,
 					min_mult = 0.15
 				}
 				self.haymaker.stats = {
@@ -20602,8 +20604,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					reload = 20
 				}
 				self.haymaker.stats_modifiers = nil
-				self.haymaker.lock_slide = true
-				self.haymaker.sounds.magazine_empty = "wp_rifle_slide_lock"
+				self.haymaker.sounds.use_fix = nil
+				self.haymaker.sounds.stop_fire = "saiga_stop"
 				self.haymaker.panic_suppression_chance = 0.05
 				self.haymaker.panic_suppression_chance = 0.05
 				self.haymaker.timers.reload_empty = 4

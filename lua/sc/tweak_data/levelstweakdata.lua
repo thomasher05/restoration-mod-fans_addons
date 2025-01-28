@@ -49,9 +49,6 @@ Hooks:PostHook( LevelsTweakData, "init", "SC_levels", function(self)
 	end
 	
 	--///MEXICAN LEVELS\\\--
-	self.mex_cooking.ai_group_type = federales 
-	self.mex_cooking.player_style = "suit_sunny"	
-	
 	self.pex.player_style = "slaughterhouse"
 	
 	self.fex.player_style = "suit_sunny"
@@ -96,6 +93,9 @@ Hooks:PostHook( LevelsTweakData, "init", "SC_levels", function(self)
 	self.kosugi.player_style = "sneak_suit"
 	
 	self.deep.ai_group_type = murkywater
+
+	self.mex_cooking.ai_group_type = murkywater -- it aint the same without murkys on cook off but bad
+	self.mex_cooking.player_style = "suit_sunny"
 	
 	--///FBI LEVELS\\\--
 	self.hox_2.player_style = "slaughterhouse"

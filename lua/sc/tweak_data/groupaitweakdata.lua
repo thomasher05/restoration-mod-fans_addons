@@ -334,7 +334,7 @@ function GroupAITweakData:_init_chatter_data()
 		radius = 700,
 		max_nr = 10,
 		duration = {2, 4},
-		interval = {1.5, 3.5},
+		interval = {3.5, 4.5},
 		group_min = 0,
 		queue = "heal"
 	}	
@@ -392,7 +392,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				murkywater = {
 					Idstring("units/pd2_dlc_bph/characters/ene_murkywater_cloaker/ene_murkywater_cloaker"),
 					Idstring("units/pd2_mod_sharks/characters/ene_murky_spook/ene_murky_spook")
-				},	
+				},
 				federales = {
 					Idstring("units/pd2_dlc_bex/characters/ene_swat_cloaker_policia_federale/ene_swat_cloaker_policia_federale"),
 					Idstring("units/pd2_dlc_bex/characters/ene_spook_1/ene_spook_1")
@@ -10201,15 +10201,17 @@ end
 						Idstring("units/payday2/characters/ene_bulldozer_4/ene_bulldozer_4")
 					},
 					murkywater = {
-						Idstring("units/pd2_mod_sharks/characters/ene_murky_fbi_tank_r870/ene_murky_fbi_tank_r870"),
-						Idstring("units/pd2_mod_sharks/characters/ene_murky_fbi_tank_saiga/ene_murky_fbi_tank_saiga"),
-						Idstring("units/pd2_mod_sharks/characters/ene_murky_fbi_tank_m249/ene_murky_fbi_tank_m249"),
+						Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_2/ene_murkywater_bulldozer_2"),
+						Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_3/ene_murkywater_bulldozer_3"),
+						Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_4/ene_murkywater_bulldozer_4"),
 						Idstring("units/pd2_mod_sharks/characters/ene_murky_fbi_tank_r870/ene_murky_fbi_tank_r870"),
 						Idstring("units/pd2_mod_sharks/characters/ene_murky_fbi_tank_saiga/ene_murky_fbi_tank_saiga"),
 						Idstring("units/pd2_mod_sharks/characters/ene_murky_fbi_tank_m249/ene_murky_fbi_tank_m249"),
 						Idstring("units/pd2_mod_omnia/characters/ene_bulldozer_minigun/ene_bulldozer_minigun"),
 						Idstring("units/pd2_mod_sharks/characters/ene_murky_fbi_tank_medic/ene_murky_fbi_tank_medic"),
 						Idstring("units/pd2_mod_sharks/characters/ene_murky_fbi_tank_benelli/ene_murky_fbi_tank_benelli"),
+						Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_medic/ene_murkywater_bulldozer_medic"),
+						Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_1/ene_murkywater_bulldozer_1"),
 						Idstring("units/pd2_dlc_vip/characters/ene_vip_2_assault/ene_vip_2_assault")
 					},
 					federales = {
@@ -19131,16 +19133,16 @@ end
 		}	
 	elseif difficulty_index == 7 then
 		self.enemy_spawn_groups.titan_snipers = {
-			spawn_cooldown = 50,
-			max_nr_simultaneous_groups = 2,
-			initial_spawn_delay = 35,
+			spawn_cooldown = 60,
+			max_nr_simultaneous_groups = 1,
+			initial_spawn_delay = 30,
 			amount = {
 				1,
 				1
 			},
 			spawn = {
 				{
-					respawn_cooldown = 50,
+					respawn_cooldown = 60,
 					amount_min = 1,
 					amount_max = 1,
 					rank = 1,
@@ -19178,7 +19180,7 @@ end
 	elseif difficulty_index == 8 then
 		self.enemy_spawn_groups.titan_snipers = {
 			spawn_cooldown = 45,
-			max_nr_simultaneous_groups = 3,
+			max_nr_simultaneous_groups = 2,
 			initial_spawn_delay = 30,
 			amount = {
 				1,

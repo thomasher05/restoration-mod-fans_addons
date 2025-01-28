@@ -1125,16 +1125,18 @@ function PlayerStandard:_check_action_primary_attack(t, input, params)
 
 					local fired = nil
 					local fired_func = self._primary_action_get_value.fired[fire_mode]
+					local spin_up_semi = weap_base:weapon_tweak_data().spin_up_semi
+					local spin_up_check = (not spin_up_semi and fire_mode ~= "single") or spin_up_semi
 
 					if fired_func then
 						fired = fired_func(self, t, input, params, weap_unit, weap_base, start_shooting, fire_on_release, dmg_mul, nil, spread_mul, autohit_mul, suppression_mul)
-						self._spin_up_shoot = not self._already_fired and weap_base:weapon_tweak_data().spin_up_shoot
+						self._spin_up_shoot = spin_up_check and not self._already_fired and weap_base:weapon_tweak_data().spin_up_shoot
 					else
 						fired_func = self._primary_action_get_value.fired.default
 
 						if fired_func then
 							fired = fired_func(self, t, input, params, weap_unit, weap_base, start_shooting, fire_on_release, dmg_mul, nil, spread_mul, autohit_mul, suppression_mul)
-							self._spin_up_shoot = not self._already_fired and weap_base:weapon_tweak_data().spin_up_shoot
+							self._spin_up_shoot = spin_up_check and not self._already_fired and weap_base:weapon_tweak_data().spin_up_shoot
 						end
 					end
 
@@ -3857,6 +3859,21 @@ function PlayerStandard:_do_melee_damage(t, bayonet_melee, melee_hit_ray, melee_
 			self:_check_melee_special_damage(col_ray, character_unit, defense_data, melee_entry)
 			self:_perform_sync_melee_damage(hit_unit, col_ray, action_data.damage, action_data.damage_effect)
 			
+			--[[ 
+			--WIP; makes use of Solo Queue Pixy's methods of applying push force on enemies killed through AdvMov 
+			if character_unit:character_damage()._health <= 0 then			
+				if not managers.groupai:state():whisper_mode() then
+					local hit_pos = mvector3.copy(character_unit:movement():m_pos())
+					local attack_dir = hit_pos - self._unit:movement():m_head_pos()
+						--trying to figure out how to make directional inputs affect push direction
+					local distance = mvector3.normalize(attack_dir)
+					local magnitude = 2
+					mvector3.multiply(attack_dir, magnitude)
+					managers.game_play_central:do_shotgun_push(character_unit, col_ray.hit_position, attack_dir, distance)
+				end
+			end
+			--]]
+			
 			return defense_data
 		else
 			self:_perform_sync_melee_damage(hit_unit, col_ray, damage, damage_effect)
@@ -4872,7 +4889,9 @@ if AdvMov then --Everything here was originally from Solo Queue Pixy and none of
 						magnitude = magnitude * AdvMov.settings.kickyeet
 					end
 					mvector3.multiply(attack_dir, magnitude)
-					managers.game_play_central:do_shotgun_push(finaltarget, target_ray_data.raydata.hit_position, attack_dir, distance)
+					if not managers.groupai:state():whisper_mode() then
+						managers.game_play_central:do_shotgun_push(finaltarget, target_ray_data.raydata.hit_position, attack_dir, distance)
+					end
 					kill = true
 				end
 				if self._last_movekick_shake_t and self._last_movekick_shake_t + 0.2 < self._last_t then
@@ -5087,8 +5106,33 @@ if AdvMov then --Everything here was originally from Solo Queue Pixy and none of
 
 	function PlayerStandard:_cancel_slide(timemult)
 		self._is_sliding = nil
+		self._slide_speed = nil
 		self._dash_slide = nil
 		self._slide_has_played_shaker = nil
+		self:_stance_entered(nil, timemult)
+	end
+
+	function PlayerStandard:_cancel_wallrun(t, kick_off_mode, timemult)
+		local exit_wallrun_vel = Vector3()
+		if self._unit:mover() and self._end_wallrun_kick_dir and kick_off_mode == "fall" then
+			mvector3.add(exit_wallrun_vel, self._end_wallrun_kick_dir)
+			self._unit:mover():set_velocity(exit_wallrun_vel)
+		end
+
+		if self._unit:mover() then
+			self._unit:mover():set_gravity(Vector3(0, 0, -982))
+		end
+
+		if kick_off_mode == "jump" then
+			self:_do_wallkick()
+		end
+
+		if self._state_data.in_air then
+			self._state_data.enter_air_pos_z = self._pos.z
+		end
+		self._is_wallrunning = nil
+		self._last_wallrun_t = t
+		self._last_wallkick_t = t
 		self:_stance_entered(nil, timemult)
 	end
 
@@ -5104,6 +5148,12 @@ if AdvMov then --Everything here was originally from Solo Queue Pixy and none of
 			self._last_movekick_shake_t = 0
 		end
 
+		if self._wallkick_is_clinging and self._wallkick_hold_start_t and ((t - self._wallkick_hold_start_t) < 4) then
+			if self._state_data.in_air then
+				self._state_data.enter_air_pos_z = self._pos.z
+			end
+		end
+
 		--SLIDING STUFF
 			self:_check_wallkick(t, dt)
 
@@ -5111,7 +5161,6 @@ if AdvMov then --Everything here was originally from Solo Queue Pixy and none of
 				if not self._state_data.in_air then
 					-- calculate stamina drain scaling based on current speed vs standard running speed
 					local drain_mult = self._slide_speed/self._sprinting_speed
-					log(tostring( self:_get_modified_move_speed("run") ))
 					-- drain stamina, prevent regen
 					self._unit:movement():subtract_stamina(tweak_data.player.movement_state.stamina.STAMINA_DRAIN_RATE * dt * drain_mult)
 					--if drain_mult > 0.50 then
@@ -5204,7 +5253,7 @@ if AdvMov then --Everything here was originally from Solo Queue Pixy and none of
 					end
 				end
 				-- transition to slide bby
-				if self._state_data.ducking then
+				if self._state_data.ducking and not self._is_dashing then
 					self:_check_slide()
 				end
 			elseif self._running and (AdvMov.settings.runkick == true or self._state_data.in_air) then
@@ -5374,7 +5423,7 @@ if AdvMov then --Everything here was originally from Solo Queue Pixy and none of
 		local nearest_ray2 = self:_get_nearest_wall_ray_dir(2, nil, nil, 40)
 		local nearest_wall_ray = nearest_ray1 or nearest_ray2
 		local speed = self:_get_modified_move_speed("run")
-		local kick_dir = Vector3(0, speed * 1.2, 0)
+		local kick_dir = Vector3(0, math.min(speed * 1.5, 950), 0)
 		local rotation = managers.player:equipped_weapon_unit():rotation()
 		local rotation_flat = self._ext_camera:rotation()
 		mvector3.set_x(rotation_flat, 0)
@@ -5415,6 +5464,9 @@ if AdvMov then --Everything here was originally from Solo Queue Pixy and none of
 					self._unit:mover():set_gravity(Vector3(0, 0, -982))
 				end
 
+				if self._state_data.in_air then
+					self._state_data.enter_air_pos_z = self._pos.z
+				end
 				self._last_zdiff = zdiff
 		end
 

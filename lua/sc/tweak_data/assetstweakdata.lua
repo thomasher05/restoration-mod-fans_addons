@@ -397,6 +397,7 @@ function AssetsTweakData:_init_risk_assets(tweak_data)
 		"arm_for",
 		"crojob2",
 		"mex",
+		"mex_cooking",
 		"deep",
 		"hwu",
 		"constantine_gunrunnerclubhouse_lvl",
@@ -424,7 +425,6 @@ function AssetsTweakData:_init_risk_assets(tweak_data)
 		"bex",
 		"pex",
 		"fex",
-		"mex_cooking",
 		"constantine_mex_level",
 		"junk"
 	}			
