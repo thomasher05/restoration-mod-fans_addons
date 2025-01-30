@@ -217,14 +217,14 @@ end
 
 function CopBase:enable_asu_laser(state)
 	local weapon = self._unit:inventory():equipped_unit()
-	if weapon then
+	if weapon and alive(weapon) then
 		weapon:base():set_asu_laser_enabled(state)
 	end
 end
 
 function CopBase:disable_asu_laser(state)
 	local weapon = self._unit:inventory():equipped_unit()
-	if weapon then
+	if weapon and alive(weapon) then
 		weapon:base():set_asu_laser_enabled(false)
 	end
 end
@@ -971,12 +971,12 @@ local federales = {
 	},
 	rifle_heavy = {
 		"m4",
-	--	"hk33",	-- fuck weapon doesn't exist
+	--	"hk33",	-- weapon doesn't exist
 		"ump",
 		"m249"
 	},
 	shotgun = {
-	--	"m500",	-- fuck weapon doesn't exist
+	--	"m500",	-- weapon doesn't exist
 		"r870",
 		"benelli",
 		"saiga"
