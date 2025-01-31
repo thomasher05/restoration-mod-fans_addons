@@ -39,9 +39,9 @@ Akan LPFs and Enforcers spawn on mexico heists
 
 1 new Crime Spree modifier
 
-A Blue Archive skin is disabled becaused I messed up the copy and paste.
-
 Marshal Shield has been buffed.
+
+Captains are a lot more meaner on Death Sentence Pro Job.
 
 # Mutators:
 
@@ -58,6 +58,18 @@ Sniper Hell: Most enemies spawn with Sniper Rifles.
 # Crime Spree Modifiers:
 
 The odds of titan bulldozers are increased by 20%
+
+# DSPJ Captain Changes:
+
+Spring spawns all of this spawn groups at once.
+
+Winters get's his LPFs back along with the titandozers.
+
+Summers get's another Nader, Taser, Medic, and Dozer.
+
+Autumn get's 6 titan SWATs of each type.
+
+Hatman has both cloakers and more Vet Cops.
 
 # Voicelines:
 

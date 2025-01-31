@@ -952,36 +952,36 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 		},
 		access = access_type_all
 	}
-	self.unit_categories.omnia_LPF = {
-		unit_types = {
-			america = {
-				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
-			},
-			russia = {
-				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
-			},
-			zombie = {
-				Idstring("units/pd2_mod_halloween/characters/ene_omnia_lpf/ene_omnia_lpf")
-			},
-			murkywater = {
-				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
-			},
-			federales = {
-				Idstring("units/pd2_mod_reapers/characters/ene_akan_lpf/ene_akan_lpf"),
-				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
-			},				
-			nypd = {
-				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
-			},		
-			lapd = {
-				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
-			},
-			fbi = {
-				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
-			}
-		},
-		access = access_type_all
-    }
+--	self.unit_categories.omnia_LPF = {	-- why do i have a dupe???
+--		unit_types = {
+--			america = {
+--				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
+--			},
+--			russia = {
+--				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
+--			},
+--			zombie = {
+--				Idstring("units/pd2_mod_halloween/characters/ene_omnia_lpf/ene_omnia_lpf")
+--			},
+--			murkywater = {
+--				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
+--			},
+--			federales = {
+--				Idstring("units/pd2_mod_reapers/characters/ene_akan_lpf/ene_akan_lpf"),
+--				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
+--			},				
+--			nypd = {
+--				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
+--			},		
+--			lapd = {
+--				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
+--			},
+--			fbi = {
+--				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
+--			}
+--		},
+--		access = access_type_all
+--  }
 	if difficulty_index <= 6 then
 		self.unit_categories.fbi_vet = {
 			unit_types = {
@@ -9361,33 +9361,64 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 	self.unit_categories.Phalanx_dozer = {
 		unit_types = {
 			america = {
-				Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_dlc_vip/characters/ene_vip_2_minion/ene_vip_2_minion")
 			},
 			russia = {
-				Idstring("units/pd2_mod_reapers/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_mod_reapers/characters/ene_vip_2_minion/ene_vip_2_minion")
 			},
 			zombie = {
-				Idstring("units/payday2/characters/ene_bulldozer_4/ene_bulldozer_4")
+				Idstring("units/payday2/characters/ene_bulldozer_4_minion/ene_bulldozer_4_minion")
 			},
 			murkywater = {
-				Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_dlc_vip/characters/ene_vip_2_minion/ene_vip_2_minion")
 			},
 			federales = {
-				Idstring("units/pd2_mod_reapers/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_mod_reapers/characters/ene_vip_2_minion/ene_vip_2_minion")
 			},				
 			nypd = {
-				Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_dlc_vip/characters/ene_vip_2_minion/ene_vip_2_minion")
 			},		
 			lapd = {
-				Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_dlc_vip/characters/ene_vip_2_minion/ene_vip_2_minion")
 			},
 			fbi = {
-				Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2")
+				Idstring("units/pd2_dlc_vip/characters/ene_vipene_vip_2_minion_2/ene_vip_2_minion")
 			}
 		},
 		access = access_type_all,
 		ignore_spawn_cap = true
 	}
+	 --OMNIA LPFs that spawn with Winters on DS (Pro Job only)
+	 self.unit_categories.omnia_LPF = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
+			},
+			russia = {
+				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
+			},
+			zombie = {
+				Idstring("units/pd2_mod_halloween/characters/ene_omnia_lpf/ene_omnia_lpf")
+			},
+			murkywater = {
+				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
+			},
+			federales = {
+				Idstring("units/pd2_mod_reapers/characters/ene_akan_lpf/ene_akan_lpf")
+			},				
+			nypd = {
+				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
+			},		
+			lapd = {
+				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
+			},
+			fbi = {
+				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
+			}
+		},
+		access = access_type_all,
+        ignore_spawn_cap = true
+    }
 	--Captain Autumn
 	self.unit_categories.Cap_Autumn = {
 		unit_types = {
@@ -9452,7 +9483,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 		special_type = "spooc",
 		ignore_spawn_cap = true
 	}
-	--Titan Cloakers that spawn with Autumn on Death Sentence, ignores spawncaps 
+	--Titan Cloakers that spawn with Autumn on Death Sentence, ignores spawncaps
 	self.unit_categories.Titan_Spooc = {
 		unit_types = {
 			america = {
@@ -9483,7 +9514,69 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 		access = access_type_all,
 		special_type = "spooc",
 		ignore_spawn_cap = true
-	}		
+	}
+	--Titan SWATs that spawn with Autumn on Death Sentence, ignores spawncaps 
+	self.unit_categories.Vip_Spooc_rifle = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_dlc_vip/characters/ene_titan_rifle/ene_titan_rifle")
+			},
+			russia = {
+				Idstring("units/pd2_mod_reapers/characters/ene_titan_rifle/ene_titan_rifle")
+			},
+			zombie = {
+				Idstring("units/pd2_mod_halloween/characters/ene_skele_swat/ene_skele_swat")
+			},
+			murkywater = {
+				Idstring("units/pd2_mod_sharks/characters/ene_titan_rifle/ene_titan_rifle")
+			},
+			federales = {
+				Idstring("units/pd2_mod_reapers/characters/ene_titan_rifle/ene_titan_rifle")
+			},
+			nypd = {
+				Idstring("units/pd2_dlc_vip/characters/ene_titan_rifle/ene_titan_rifle")
+			},
+			lapd = {
+				Idstring("units/pd2_dlc_vip/characters/ene_titan_rifle/ene_titan_rifle")
+			},
+			fbi = {
+				Idstring("units/pd2_dlc_vip/characters/ene_titan_rifle/ene_titan_rifle")
+			}
+		},
+		access = access_type_all,
+		ignore_spawn_cap = true
+	}
+	--Ditto but for shotguns
+	self.unit_categories.Vip_Spooc_shotgun = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_dlc_vip/characters/ene_titan_shotgun/ene_titan_shotgun")
+			},
+			russia = {
+				Idstring("units/pd2_mod_reapers/characters/ene_titan_shotgun/ene_titan_shotgun")
+			},
+			zombie = {
+				Idstring("units/pd2_mod_halloween/characters/ene_skele_swat_2/ene_skele_swat_2")
+			},
+			murkywater = {
+				Idstring("units/pd2_mod_sharks/characters/ene_titan_shotgun/ene_titan_shotgun")
+			},
+			federales = {
+				Idstring("units/pd2_mod_reapers/characters/ene_titan_shotgun/ene_titan_shotgun")
+			},
+			nypd = {
+				Idstring("units/pd2_dlc_vip/characters/ene_titan_shotgun/ene_titan_shotgun")
+			},	
+			lapd = {
+				Idstring("units/pd2_dlc_vip/characters/ene_titan_shotgun/ene_titan_shotgun")
+			},
+			fbi = {
+				Idstring("units/pd2_dlc_vip/characters/ene_titan_shotgun/ene_titan_shotgun")
+			}
+		},
+		access = access_type_all,
+		ignore_spawn_cap = true
+	}
 	--Captain Summers
 	self.unit_categories.Cap_Summers = {
 		unit_types = {
@@ -9606,8 +9699,20 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 		},
 		access = access_type_all
 	}
+	--Grenadiers, Medics, Dozers, Tasers and that spawn with Summers on DSPJ, clone the real ones but set the captain flag
+	self.unit_categories.summers_boomM4203 = deep_clone(self.unit_categories.boom_M4203)
+	self.unit_categories.summers_boomM4203.ignore_spawn_cap = true
+
+	self.unit_categories.summers_medic_M4 = deep_clone(self.unit_categories.medic_M4)
+	self.unit_categories.summers_medic_M4.ignore_spawn_cap = true
+
+	self.unit_categories.summers_FBI_Tank = deep_clone(self.unit_categories.FBI_tank)
+	self.unit_categories.summers_FBI_Tank.ignore_spawn_cap = true
+
+	self.unit_categories.summers_CS_Taser = deep_clone(self.unit_categories.CS_tazer)
+	self.unit_categories.summers_CS_Taser.ignore_spawn_cap = true
 	
-	--Captain Spring 
+	--Captain Spring
 	self.unit_categories.Cap_Spring = {
 		unit_types = {
 			america = {
@@ -9892,6 +9997,9 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 		special_type = "tank",
 		ignore_spawn_cap = true
 	}
+	--Vetcops that spawn with boss on DSPJ, clone the real one but set the captain flag
+	self.unit_categories.HVH_Vet = deep_clone(self.unit_categories.fbi_vet)
+	self.unit_categories.HVH_Vet.ignore_spawn_cap = true
 	
 	--Cloakers that spawn with boss on Death Wish
 	self.unit_categories.HVH_Boss_Spooc_Normal = {
@@ -15464,7 +15572,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 			"ranged_fire",
 			"provide_coverfire",
 			"shield_cover"
-		},			
+		},
 		--death wish tactics
 		DW_swat_rifle = {
 			"ranged_fire",
@@ -18104,7 +18212,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 	--Reserved for mutator
 	self.enemy_spawn_groups.Fake_Captain = {}
 	
-	--Captains are more mean on Pro Jobs
+	--Captains are very mean on Pro Jobs
 	if pro_job then
 	--New Winters
 	if difficulty_index <= 5 then
@@ -18194,7 +18302,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 		}
 	else
 		self.enemy_spawn_groups.Cap_Winters = {
-			amount = 13,
+			amount = 15,
 			force = true,
 			spawn = {
 				{
@@ -18219,6 +18327,14 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_min = 2,
 					amount_max = 2,
 					tactics = self._tactics.Cap_winters_minion,
+					rank = 2
+				},
+				{
+					unit = "omnia_LPF",	-- WELCOME TO HELL BITCH
+					freq = 1,
+					amount_min = 2,
+					amount_max = 2,
+					tactics = self._tactics.FBI_medic_flank,
 					rank = 2
 				},
 				{
@@ -18321,7 +18437,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 		}
 	else
 		self.enemy_spawn_groups.Cap_Spring = {
-			amount = 8,
+			amount = 9,
 			force = true,
 			spawn = {
 				{
@@ -18335,19 +18451,35 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				{
 					unit = "Tank_Ben",
 					freq = 1,
-					amount_min = 3,
-					amount_max = 3,
+					amount_min = 2,
+					amount_max = 2,
 					tactics = self._tactics.Cap_spring,
 					rank = 2
 				},
 				{
 					unit = "Taser_Titan",
 					freq = 1,
-					amount_min = 4,
-					amount_max = 4,
+					amount_min = 2,
+					amount_max = 2,
 					tactics = self._tactics.CS_Tazer,
 					rank = 2
-				}					
+				},
+				{
+					unit = "OMNIA_Tank",
+					freq = 1,
+					amount_min = 2,
+					amount_max = 2,
+					tactics = self._tactics.Cap_spring,
+					rank = 2
+				},
+				{
+					unit = "OMNIA_Taser",
+					freq = 1,
+					amount_min = 2,
+					amount_max = 2,
+					tactics = self._tactics.CS_Tazer,
+					rank = 2
+				}
 			}
 		}			
 	end
@@ -18440,7 +18572,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 		}	
 	else
 		self.enemy_spawn_groups.HVH_Boss = {
-			amount = 8,
+			amount = 12,
 			force = true,
 			spawn = {
 				{
@@ -18460,15 +18592,31 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 2
 				},
 				{
+					unit = "HVH_Vet",
+					freq = 1,
+					amount_min = 2,
+					amount_max = 2,
+					tactics = self._tactics.FBI_defend,
+					rank = 3
+				},
+				{
 					unit = "HVH_Boss_Spooc",
 					freq = 1,
-					amount_min = 4,
-					amount_max = 4,
+					amount_min = 2,
+					amount_max = 2,
 					tactics = self._tactics.HVH_boss,
-					rank = 2
-				}					
+					rank = 3
+				},
+				{
+					unit = "HVH_Boss_Spooc_Normal",
+					freq = 1,
+					amount_min = 2,
+					amount_max = 2,
+					tactics = self._tactics.HVH_boss,
+					rank = 3
+				}
 			}
-		}			
+		}
 	end	
 	
 	--Captain Autumn
@@ -18543,7 +18691,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 		}	
 	else
 		self.enemy_spawn_groups.Cap_Autumn = {
-			amount = 6,
+			amount = 18,
 			force = true,
 			spawn = {
 				{
@@ -18561,10 +18709,98 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 5,
 					tactics = self._tactics.Cap_autumn,
 					rank = 2
-				}				
+				},
+				{
+					unit = "Vip_Spooc_rifle",
+					freq = 1,
+					amount_min = 6,
+					amount_max = 6,
+					tactics = self._tactics.ELITE_swat_rifle,
+					rank = 2
+				},
+				{
+					unit = "Vip_Spooc_shotgun",
+					freq = 1,
+					amount_min = 6,
+					amount_max = 6,
+					tactics = self._tactics.ELITE_swat_shotgun,
+					rank = 2
+				}
 			}
 		}
-	end	
+	end
+
+	self.enemy_spawn_groups.Cap_Summers = {
+		amount = 12,
+		force = true,
+		spawn = {
+			{
+				unit = "Cap_Summers",
+				freq = 1,
+				amount_min = 1,
+				amount_max = 1,
+				tactics = self._tactics.Cap_summers,
+				rank = 4
+			},
+			{
+				unit = "medic_summers",
+				freq = 1,
+				amount_min = 1,
+				amount_max = 1,
+				tactics = self._tactics.Cap_summers_minion,
+				rank = 1
+			},
+			{
+				unit = "boom_summers",
+				freq = 1,
+				amount_min = 1,
+				amount_max = 1,
+				tactics = self._tactics.Cap_summers_minion,
+				rank = 1
+			},
+			{
+				unit = "taser_summers",
+				freq = 1,
+				amount_min = 1,
+				amount_max = 1,
+				tactics = self._tactics.Cap_summers_minion,
+				rank = 1
+			},
+			{
+				unit = "summers_FBI_Tank",
+				freq = 1,
+				amount_min = 2,
+				amount_max = 2,
+				tactics = self._tactics.GREEN_tank_DW,
+				rank = 2
+			},
+			{
+				unit = "summers_medic_M4",
+				freq = 1,
+				amount_min = 2,
+				amount_max = 2,
+				tactics = self._tactics.FBI_medic,
+				rank = 2
+			},
+			{
+				unit = "summers_boomM4203",
+				freq = 1,
+				amount_min = 2,
+				amount_max = 2,
+				tactics = self._tactics.ELITE_boom,
+				rank = 2
+			},
+			{
+				unit = "summers_CS_Taser",
+				freq = 1,
+				amount_min = 2,
+				amount_max = 2,
+				tactics = self._tactics.CS_tazer,
+				rank = 2
+			}
+		}
+	}
+
 else
 	--New Winters
 	if difficulty_index <= 5 then
@@ -18852,7 +19088,7 @@ else
 		}	
 	else
 		self.enemy_spawn_groups.HVH_Boss = {
-			amount = 5,
+			amount = 7,
 			force = true,
 			spawn = {
 				{

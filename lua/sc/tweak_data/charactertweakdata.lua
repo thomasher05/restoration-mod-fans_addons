@@ -2753,7 +2753,7 @@ function CharacterTweakData:_init_tank(presets)
 	table.insert(self.tank_medic.tags, "medic")
 	table.insert(self._enemy_list, "tank_medic")
 	
-	--Titandozer
+	--Titandozer, regular
 	self.tank_titan = deep_clone(self.tank)
 	self.tank_titan.weapon = deep_clone(presets.weapon.normal)
 	self.tank_titan.tags = {"law", "tank", "special", "tank_titan", "customvo"}	
@@ -2779,27 +2779,32 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_titan.damage.explosion_damage_mul = 1.25
 	self.tank_titan.damage.rocket_damage_mul = 1.25
 	self.tank_titan.melee_push_multiplier = 2 --he punches you harder now
-	--this is just for his LMG variant
-	self.tank_titan.dt_suppress = {
-		range = 600
-	}
 	self.tank_titan.is_special = true
 	self.tank_titan.no_asu = true
 	self.tank_titan.heal_cooldown = 22.5
 	table.insert(self._enemy_list, "tank_titan")
 	
-	--Titandozer, assault variant
+	--Titandozer, assault variant (used in assault groups)
 	self.tank_titan_assault = deep_clone(self.tank_titan)
 	self.tank_titan_assault.tags = {"law", "tank", "special", "tank_titan"}
 	self.tank_titan_assault.spawn_sound_event_2 = "cloaker_spawn"
 	if self:get_ai_group_type() == "federales" then
 		self.tank_titan_assault.dt_suppress = {
-			range = 600
+			range = 500
 	}
 	else
 		self.tank_titan_assault.dt_suppress = nil
 	end
 	table.insert(self._enemy_list, "tank_titan_assault")
+
+	--Titandozer, captain minion variant with LMG (Used only for Winters' Squad on DSPJ)
+	self.tank_titan_minion = deep_clone(self.tank_titan)
+	self.tank_titan_minion.tags = {"law", "tank", "special", "tank_titan"}
+	self.tank_titan_minion.no_omnia_heal = true
+	self.tank_titan_minion.dt_suppress = {
+		range = 500
+	}
+	table.insert(self._enemy_list, "tank_titan_minion")
 
 	--Halloween Bulldozer (Black)
 	self.tank_hw_black = deep_clone(self.tank_black)
@@ -2823,7 +2828,14 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_hw.weapon = deep_clone(presets.weapon.normal)
 	self.tank_hw.ignore_headshot = false
 	self.tank_hw.melee_anims = nil
-	table.insert(self._enemy_list, "tank_hw")	
+	table.insert(self._enemy_list, "tank_hw")
+	
+	--Halloween Bulldozer, captain minion variant with LMG (Used only for Winters' Squad on DSPJ)
+	self.tank_hw_minion = deep_clone(self.tank_titan_minion)
+	self.tank_hw_minion.weapon = deep_clone(presets.weapon.normal)
+	self.tank_hw_minion.ignore_headshot = false
+	self.tank_hw_minion.melee_anims = nil
+	table.insert(self._enemy_list, "tank_hw_minion")
 	
 	--Benelli (Bravo) Dozer
 	self.tank_mini = deep_clone(self.tank)
@@ -14871,11 +14883,11 @@ function CharacterTweakData:_presets(tweak_data)
 			r = 100,
 			acc = {0.8, 0.9},
 			dmg_mul = 1.25,
-			recoil = {0.35, 0.75},
+			recoil = {0.4, 0.7},
 			mode = {
 				0,
-				3,
-				3,
+				0,
+				0,
 				1
 			}
 		},
@@ -14883,180 +14895,180 @@ function CharacterTweakData:_presets(tweak_data)
 			r = 500,
 			acc = {0.7, 0.8},
 			dmg_mul = 1.25,
-			recoil = {0.35, 0.75},
+			recoil = {0.5, 0.8},
 			mode = {
 				0,
-				3,
-				3,
-				1
+				0,
+				0,
+				6
 			}
 		},
 		{
 			r = 1000,
 			acc = {0.6, 0.7},
 			dmg_mul = 1.25,
-			recoil = {0.35, 0.75},
+			recoil = {1, 1},
 			mode = {
-				1,
+				0,
+				0,
 				2,
-				2,
-				0
+				6
 			}
 		},
 		{
 			r = 1800,
 			acc = {0.5, 0.6},
 			dmg_mul = 1.25,
-			recoil = {0.35, 0.75},
+			recoil = {1, 1},
 			mode = {
-				1,
+				0,
+				0,
 				2,
-				2,
-				0
+				6
 			}
 		},
 		{
 			r = 2000,
 			acc = {0.4, 0.5},
 			dmg_mul = 1.25,
-			recoil = {0.4, 1.0},
+			recoil = {1, 1},
 			mode = {
-				3,
+				0,
+				0,
 				2,
-				2,
-				0
+				6
 			}
 		},
 		{
 			r = 2600,
 			acc = {0.3, 0.4},
 			dmg_mul = 1.25,
-			recoil = {1.5, 3},
+			recoil = {1, 2},
 			mode = {
-				3,
-				1,
-				1,
-				0
+				0,
+				0,
+				2,
+				6
 			}
 		},
 		{
 			r = 2700,
 			acc = {0.2, 0.3},
 			dmg_mul = 1.25,
-			recoil = {1.5, 3},
+			recoil = {1, 2},
 			mode = {
-				3,
-				1,
-				1,
-				0
+				0,
+				0,
+				2,
+				6
 			}
 		},	
 		{
 			r = 2800,
 			acc = {0.2, 0.3},
 			dmg_mul = 1.1875,
-			recoil = {1.5, 3},
+			recoil = {1, 2},
 			mode = {
-				3,
-				1,
-				1,
-				0
+				0,
+				0,
+				2,
+				6
 			}
 		},	
 		{
 			r = 2900,
 			acc = {0.2, 0.3},
 			dmg_mul = 1.125,
-			recoil = {1.5, 3},
+			recoil = {1, 2},
 			mode = {
-				3,
-				1,
-				1,
-				0
+				0,
+				0,
+				2,
+				6
 			}
 		},	
 		{
 			r = 3000,
 			acc = {0.2, 0.3},
 			dmg_mul = 1.0625,
-			recoil = {1.5, 3},
+			recoil = {1, 2},
 			mode = {
-				3,
-				1,
-				1,
-				0
+				0,
+				0,
+				2,
+				6
 			}
 		},	
 		{
 			r = 3100,
 			acc = {0.2, 0.3},
 			dmg_mul = 1,
-			recoil = {1.5, 3},
+			recoil = {1, 2},
 			mode = {
-				3,
-				1,
-				1,
-				0
+				0,
+				0,
+				2,
+				6
 			}
 		},	
 		{
 			r = 3200,
 			acc = {0.2, 0.3},
 			dmg_mul = 0.9375,
-			recoil = {1.5, 3},
+			recoil = {1, 2},
 			mode = {
-				3,
-				1,
-				1,
-				0
+				0,
+				0,
+				2,
+				6
 			}
 		},	
 		{
 			r = 3300,
 			acc = {0.2, 0.3},
 			dmg_mul = 0.875,
-			recoil = {1.5, 3},
+			recoil = {1, 2},
 			mode = {
-				3,
-				1,
-				1,
-				0
+				0,
+				0,
+				2,
+				6
 			}
 		},	
 		{
 			r = 3400,
 			acc = {0.2, 0.3},
 			dmg_mul = 0.8125,
-			recoil = {1.5, 3},
+			recoil = {1, 2},
 			mode = {
-				3,
-				1,
-				1,
-				0
+				0,
+				0,
+				2,
+				6
 			}
 		},	
 		{
 			r = 3500,
 			acc = {0.2, 0.3},
 			dmg_mul = 0.75,
-			recoil = {1.5, 3},
+			recoil = {1, 2},
 			mode = {
-				3,
-				1,
-				1,
-				0
+				0,
+				0,
+				2,
+				6
 			}
 		},	
 		{
 			r = 3600,
 			acc = {0.2, 0.3},
 			dmg_mul = 0.6875,
-			recoil = {1.5, 3},
+			recoil = {1, 2},
 			mode = {
-				3,
-				1,
-				1,
-				0
+				0,
+				0,
+				2,
+				6
 			}
 		},	
 		{
@@ -15065,9 +15077,9 @@ function CharacterTweakData:_presets(tweak_data)
 			dmg_mul = 0.625,
 			recoil = {1.5, 3},
 			mode = {
-				3,
-				1,
-				1,
+				0,
+				2,
+				6,
 				0
 			}
 		},		
@@ -15077,9 +15089,9 @@ function CharacterTweakData:_presets(tweak_data)
 			dmg_mul = 0.5625,
 			recoil = {1.5, 3},
 			mode = {
-				3,
-				1,
-				1,
+				0,
+				2,
+				6,
 				0
 			}
 		},	
@@ -15089,9 +15101,9 @@ function CharacterTweakData:_presets(tweak_data)
 			dmg_mul = 0.5,
 			recoil = {1.5, 3},
 			mode = {
-				3,
-				1,
-				1,
+				0,
+				2,
+				6,
 				0
 			}
 		},	
@@ -15101,9 +15113,9 @@ function CharacterTweakData:_presets(tweak_data)
 			dmg_mul = 0.4375,
 			recoil = {1.5, 3},
 			mode = {
-				3,
-				1,
-				1,
+				0,
+				2,
+				6,
 				0
 			}
 		},	
@@ -15113,9 +15125,9 @@ function CharacterTweakData:_presets(tweak_data)
 			dmg_mul = 0.375,
 			recoil = {1.5, 3},
 			mode = {
-				3,
-				1,
-				1,
+				0,
+				2,
+				6,
 				0
 			}
 		},	
@@ -15125,9 +15137,9 @@ function CharacterTweakData:_presets(tweak_data)
 			dmg_mul = 0.3125,
 			recoil = {1.5, 3},
 			mode = {
-				3,
-				1,
-				1,
+				0,
+				2,
+				6,
 				0
 			}
 		},	
@@ -15137,8 +15149,8 @@ function CharacterTweakData:_presets(tweak_data)
 			dmg_mul = 0.25,
 			recoil = {1.5, 3},
 			mode = {
-				3,
-				1,
+				2,
+				6,
 				1,
 				0
 			}
@@ -15149,8 +15161,8 @@ function CharacterTweakData:_presets(tweak_data)
 			dmg_mul = 0.1875,
 			recoil = {1.5, 3},
 			mode = {
-				3,
-				1,
+				2,
+				6,
 				1,
 				0
 			}
@@ -15161,8 +15173,8 @@ function CharacterTweakData:_presets(tweak_data)
 			dmg_mul = 0.125,
 			recoil = {1.5, 3},
 			mode = {
-				3,
-				1,
+				2,
+				6,
 				1,
 				0
 			}
@@ -15173,8 +15185,8 @@ function CharacterTweakData:_presets(tweak_data)
 			dmg_mul = 0.0625,
 			recoil = {1.5, 3},
 			mode = {
-				3,
-				1,
+				2,
+				6,
 				1,
 				0
 			}
@@ -15508,7 +15520,10 @@ function CharacterTweakData:_presets(tweak_data)
 	--This doesn't really matter since Semi-autos for bots just use is_shotgun_mag anyway, but just in case
 	presets.weapon.gang_member.is_shotgun_semi = deep_clone(presets.weapon.gang_member.is_shotgun_mag)
 	presets.weapon.gang_member.is_dmr = deep_clone(presets.weapon.gang_member.rifle)
+	presets.weapon.gang_member.is_dmr.spread = 8
+	presets.weapon.gang_member.is_dmr.RELOAD_SPEED = 0.9
 	presets.weapon.gang_member.is_sniper = deep_clone(presets.weapon.gang_member.rifle)
+	presets.weapon.gang_member.is_sniper.RELOAD_SPEED = 0.9
 	restoration.log_shit("SC: normal presets")
 	presets.weapon.normal.akimbo_pistol = deep_clone(presets.weapon.normal.is_pistol)
 	presets.weapon.normal.rifle = deep_clone(presets.weapon.normal.is_rifle)
