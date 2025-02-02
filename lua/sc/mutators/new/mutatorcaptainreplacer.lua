@@ -452,8 +452,8 @@ function MutatorCaptainReplacer:setup()
 				{
 					unit = "HVH_Vet",
 					freq = 1,
-					amount_min = 2,
-					amount_max = 2,
+					amount_min = 4,
+					amount_max = 4,
 					tactics = tweak_data.group_ai._tactics.FBI_defend,
 					rank = 3
 				},
