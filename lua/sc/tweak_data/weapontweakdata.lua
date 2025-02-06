@@ -5673,6 +5673,91 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.x_holt.timers.reload_exit_empty = 0.55
 						self.x_holt.timers.reload_exit_not_empty = 0.65
 
+					--CZ ACCUSHADOW BUT SOMEHOW FULL AUTO
+						--self.czech.use_data.selection_index = 2
+						self.czech.has_description = true
+						self.czech.desc_id = "bm_czech_sc_desc"				
+						self.czech.CLIP_AMMO_MAX = 18
+						self.czech.AMMO_MAX = 90
+						self.czech.fire_mode_data.fire_rate = 0.06
+						self.czech.kick = self.stat_info.kick_tables.even_recoil
+						self.czech.kick_pattern = {
+							{0, self.stat_info.kick_tables.moderate_kick},
+							{6, self.stat_info.kick_tables.left_kick},
+							{8, self.stat_info.kick_tables.moderate_kick},
+							{12, self.stat_info.kick_tables.right_recoil}
+						}
+						self.czech.supported = true
+						self.czech.ads_speed = 0.140
+						self.czech.damage_falloff = {
+							start_dist = 1700,
+							end_dist = 3300,
+							min_mult = 0.3
+						}
+						self.czech.stats = {
+							damage = 20,
+							spread = 59,
+							recoil = 79,
+							spread_moving = 9,
+							zoom = 1,
+							concealment = 29,
+							suppression = 12,
+							alert_size = 2,
+							extra_ammo = 101,
+							total_ammo_mod = 400,
+							value = 1,
+							reload = 20
+						}
+						self.czech.stats_modifiers = nil
+						self.czech.panic_suppression_chance = 0.05
+						self.czech.timers = {
+							reload_not_empty = 1.47,
+							reload_empty = 2.12,
+							unequip = 0.5,
+							equip = 0.5,
+							reload_exit_empty = 0.9,
+							reload_exit_not_empty = 0.65
+						}
+					--Akimbo
+						--self.x_czech.use_data.selection_index = 5
+						self.x_czech.has_description = true
+						self.x_czech.desc_id = "bm_x_czech_sc_desc"
+						self.x_czech.CLIP_AMMO_MAX = 36
+						self.x_czech.AMMO_MAX = 180
+						self.x_czech.fire_mode_data.fire_rate = 0.06
+						self.x_czech.kick = self.stat_info.kick_tables.moderate_kick
+						self.x_czech.kick_pattern = {
+							{0, self.stat_info.kick_tables.moderate_kick},
+							{6, self.stat_info.kick_tables.left_kick},
+							{8, self.stat_info.kick_tables.moderate_kick},
+							{12, self.stat_info.kick_tables.right_recoil}
+						}
+						self.x_czech.supported = true
+						self.x_czech.ads_speed = 0.140
+						self.x_czech.damage_falloff = {
+							start_dist = 1700,
+							end_dist = 3300,
+							min_mult = 0.3
+						}
+						self.x_czech.stats = {
+							damage = 20,
+							spread = 49,
+							recoil = 69,
+							spread_moving = 9,
+							zoom = 1,
+							concealment = 29,
+							suppression = 12,
+							alert_size = 2,
+							extra_ammo = 101,
+							total_ammo_mod = 400,
+							value = 1,
+							reload = 20
+						}
+						self.x_czech.stats_modifiers = nil
+						self.x_czech.panic_suppression_chance = 0.05
+						self.x_czech.timers.reload_exit_empty = 0.55
+						self.x_czech.timers.reload_exit_not_empty = 0.65
+
 					--Wasp-DS (FMG-9)
 						self.fmg9.has_description = true
 						self.fmg9.desc_id = "bm_fmg9_sc_desc"
@@ -5695,7 +5780,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.fmg9.damage_falloff = {
 							start_dist = 1800,
 							end_dist = 4100,
-							min_mult = 0.3
+							min_mult = 0.25
 						}
 						self.fmg9.stats = {
 							damage = 24,
@@ -6025,49 +6110,6 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.glock_18c.panic_suppression_chance = 0.05
 						self.glock_18c.timers.reload_exit_empty = 0.5
 						self.glock_18c.timers.reload_exit_not_empty = 0.65
-
-					--CZ ACCUSHADOW BUT SOMEHOW FULL AUTO
-						self.czech.has_description = true
-						self.czech.desc_id = "bm_czech_sc_desc"				
-						self.czech.CLIP_AMMO_MAX = 18
-						self.czech.AMMO_MAX = 90
-						self.czech.fire_mode_data.fire_rate = 0.06
-						self.czech.kick = self.stat_info.kick_tables.even_recoil
-						self.czech.shake = {
-							fire_multiplier = 0.65,
-							fire_steelsight_multiplier = 0.65
-						}
-						self.czech.supported = true
-						self.czech.ads_speed = 0.140
-						self.czech.damage_falloff = {
-							start_dist = 1700,
-							end_dist = 3300,
-							min_mult = 0.3
-						}
-						self.czech.stats = {
-							damage = 20,
-							spread = 59,
-							recoil = 79,
-							spread_moving = 9,
-							zoom = 1,
-							concealment = 29,
-							suppression = 12,
-							alert_size = 2,
-							extra_ammo = 101,
-							total_ammo_mod = 400,
-							value = 1,
-							reload = 20
-						}
-						self.czech.stats_modifiers = nil
-						self.czech.panic_suppression_chance = 0.05
-						self.czech.timers = {
-							reload_not_empty = 1.47,
-							reload_empty = 2.12,
-							unequip = 0.5,
-							equip = 0.5,
-							reload_exit_empty = 0.9,
-							reload_exit_not_empty = 0.65
-						}
 			
 					--Igor
 						self.stech.has_description = true
@@ -6738,6 +6780,10 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.x_type54.timers.reload_exit_empty = 0.55
 						self.x_type54.timers.reload_exit_not_empty = 0.65		
 					--Akimbo Model 54 Underbarrel
+						self.x_type54_underbarrel.categories = {
+							"shotgun",
+							"shotgun_pistol"
+						}
 						self.x_type54_underbarrel.rays = 9
 						self.x_type54_underbarrel.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
 						self.x_type54_underbarrel.AMMO_MAX = 20
@@ -7196,6 +7242,10 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.type54.timers.reload_exit_empty = 0.55
 						self.type54.timers.reload_exit_not_empty = 0.45
 					--Model 54 Underbarrel
+						self.type54_underbarrel.categories = {
+							"shotgun",
+							"shotgun_pistol"
+						}
 						self.type54_underbarrel.rays = 9
 						self.type54_underbarrel.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
 						self.type54_underbarrel.AMMO_MAX = 10
@@ -8127,7 +8177,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							reload = 20
 						}
 						self.mp7.stats_modifiers = nil
-						self.mp7.reload_speed_multiplier = 1.07
+						self.mp7.reload_speed_multiplier = 1.12
 						self.mp7.timers.reload_not_empty = 1.75
 						self.mp7.timers.reload_empty = 2.4	
 						self.mp7.timers.reload_exit_empty = 0.45
@@ -10938,6 +10988,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.ching.can_shoot_through_enemy_unlim = true
 						self.ching.can_shoot_through_wall = false
 						self.ching.panic_suppression_chance = 0.05
+						self.ching.timers.equip = 0.3
 						self.ching.timers.reload_exit_empty = 0.85
 						self.ching.timers.reload_not_empty = 2.2
 						self.ching.timers.reload_exit_not_empty = 1
@@ -19200,6 +19251,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.rmary2.recategorize = { "dmr_ar" }
 				self.rmary2.damage_type = "sniper"
 				self.rmary2.has_description = true
+				self.rmary2.nato = true
 				self.rmary2.is_bullpup = true
 				self.rmary2.upgrade_blocks = nil
 				self.rmary2.tactical_reload = 1
@@ -20534,12 +20586,80 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 		
 		--[[     HYLIE'S MODS     ]]--
 
-			if self.toz81 then
-				self.toz81.categories = {
-					"shotgun"
+			if self.sickle then
+				self.sickle.categories = { 
+					"assault_rifle",
+					"battery"
 				}
+				self.sickle.recategorize = {"heavy_ar"}
+				self.sickle.damage_type = "assault_rifle"
+				self.sickle.CLIP_AMMO_MAX = 80
+				self.sickle.AMMO_MAX = 240
+				self.sickle.sms = 0.8
+				self.sickle.fire_mode_data.fire_rate = 0.08
+				self.sickle.BURST_FIRE = false
+				self.sickle.CAN_TOGGLE_FIREMODE = false
+				self.sickle.FIRE_MODE = "auto"
+				self.sickle.kick = self.stat_info.kick_tables.even_recoil
+				self.sickle.supported = true
+				self.sickle.keep_ammo = 0
+				self.sickle.ads_speed = 0.300
+				self.sickle.damage_falloff = {
+					start_dist = 1000,
+					end_dist = 6000,
+					min_mult = 0.5
+				}
+				self.sickle.stats = {
+					damage = 30,
+					spread = 71,
+					recoil = 100,
+					spread_moving = 5,
+					zoom = 1,
+					concealment = 23,
+					suppression = 8,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 4,
+					reload = 20
+				}
+				self.sickle.stats_modifiers = nil
+				self.sickle.panic_suppression_chance = 0.05
+				self.sickle.nato = nil
+				self.sickle.use_sniper_trail = true
+				self.sickle.trail_effect = "_dmc/effects/sterwers_trail_m_small"
+				self.sickle.trail_effect_npc = "_dmc/effects/sterwers_trail_m_small_npc"
+				self.sickle.timers.equip = 0.3
+				self.sickle.timers.reload_not_empty = 1.52
+				self.sickle.timers.reload_exit_not_empty = 0.85
+				self.sickle.timers.reload_empty = 1.52
+				self.sickle.timers.reload_exit_empty = 0.85
+				--self.sickle.weapon_hold = "ching"
+				--self.sickle.no_auto_anims = true
+				self.sickle.spin_up_t = 0.5
+				self.sickle.spin_down_t = 0.0001
+				self.sickle.sounds.magazine_empty = "wp_sentrygun_swap_ammo"
+				self.sickle.sounds.spin_start = "hailstorm_shotgun_fire_charge"
+				self.sickle.sounds.spin_end = "swatturret_spin_stop"
+				self.sickle.recoil_values = {
+					{ 80, 60 },
+					7.5,
+					0.6,
+					srm = {
+						0.4,
+						{0.2, 1},
+						0
+					}
+				}
+			end
+
+			if self.toz81 then
+				self.toz81.recategorize = { "heavy_shot" }
+				self.toz81.categories = { "shotgun", "shotgun_pistol" }
+				self.toz81.damage_type = "shotgun"
+				self.toz81.damage_type_single_ray = "sniper"
 				self.toz81.fire_mode_data.fire_rate = 0.15
-				self.toz81.rays = 6 --Uses wrong weapon base, this does nothing
+				self.toz81.rays = 6
 				self.toz81.kick = self.stat_info.kick_tables.left_kick
 				self.toz81.kick_pattern = {
 					{0, self.stat_info.kick_tables.moderate_left_kick},
@@ -20573,7 +20693,53 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.toz81.stats_modifiers = nil
 				self.toz81.panic_suppression_chance = 0.05
+				self.toz81.reload_speed_multiplier = 1.2
 				self.toz81.timers = deep_clone(self.gre_m79.timers)
+
+				self.x_toz81.recategorize = { "heavy_shot" }
+				self.x_toz81.categories = { "akmibo", "shotgun", "shotgun_pistol" }
+				self.x_toz81.damage_type = "shotgun"
+				self.x_toz81.damage_type_single_ray = "sniper"
+				self.x_toz81.fire_mode_data.fire_rate = 0.15
+				self.x_toz81.rays = 6
+				self.x_toz81.kick = self.stat_info.kick_tables.left_kick
+				self.x_toz81.kick_pattern = {
+					{0, self.stat_info.kick_tables.moderate_left_kick},
+					{3, self.stat_info.kick_tables.right_recoil}
+				}
+				self.x_toz81.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
+				self.x_toz81.BURST_FIRE = 2
+				self.x_toz81.BURST_DELAY = 0.015
+				self.x_toz81.BURST_FIRE_RECOIL_MULTIPLIER = 0.5
+				self.x_toz81.BURST_FIRE_LAST_RECOIL_MULTIPLIER = 1.1
+				self.x_toz81.BURST_FIRE_RATE_MULTIPLIER = 4
+				self.x_toz81.CAN_TOGGLE_FIREMODE = false
+				self.x_toz81.FIRE_MODE = "single"				
+				self.x_toz81.AMMO_MAX = 40
+				self.x_toz81.supported = true
+				self.x_toz81.ads_speed = 0.260
+				self.x_toz81.damage_falloff = {
+					start_dist = 500,
+					end_dist = 2600,
+					min_mult = 0.1333
+				}
+				self.x_toz81.stats = {
+					damage = 180,
+					spread = 51,
+					recoil = 61,
+					spread_moving = 5,
+					zoom = 1,
+					concealment = 25,
+					suppression = 7,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 1,
+					reload = 20
+				}
+				self.x_toz81.stats_modifiers = nil
+				self.x_toz81.panic_suppression_chance = 0.05
+				self.x_toz81.timers = deep_clone(self.x_judge.timers)
 			end
 
 			if self.or12 then
@@ -23544,6 +23710,7 @@ function WeaponTweakData:calculate_ammo_pickup(weapon)
 		--Custom weapon pickup
 		raygun = 1.3,
 		sweet_liberty = 0.37037 / 2,
+		battery = 0
 	}
 
 	--Get weapon category specific pickup multipliers.

@@ -196,6 +196,8 @@
 	<mission			path="levels/instances/unique/shout_helicopter_swat/world/world" force="true"/>
 	
 	<mission			path="levels/narratives/e_welcome_to_the_jungle/stage_1/world/world" force="true" unload="true"/> <!--Adds female bikers, biker response and biker guard as the camera man-->
+
+	<continent			path="levels/narratives/e_election_day/stage_2/world/world" force="true" unload="true"/>
 	
 	<world_sounds		path="levels/narratives/mcshay/ranc/world_sounds" force="true" unload="true"/>
 	
@@ -229,6 +231,8 @@
 
 	<nav_data			path="levels/narratives/vlad/bex/nav_manager_data" force="true" unload="true"/>
 	<continent			path="levels/narratives/vlad/bex/world/world" force="true" unload="true"/>  <!--removes tons of objects underneath the map-->
+	<mission			path="levels/instances/unique/bex/bex_drill/world/world" force="true" />
+	<continent			path="levels/instances/unique/bex/bex_drill/world/world" force="true" />
 	<continent			path="levels/narratives/skm/skm_bex/world/world" force="true" unload="true"/> <!--ditto but for Holdout version-->
 
 	<!--I LOVE GOOOOOOOOOOOOOLD-->
@@ -1351,6 +1355,11 @@
     <effect				path="_dmc/effects/sterwers_trail_m_npc" force="false" load="true" unload="true" reload="true"/>
     <effect				path="_dmc/effects/parts/sw_mando_streak" force="false" load="true" unload="true" reload="true"/>
     <effect				path="_dmc/effects/parts/sw_mando_streak_round" force="false" load="true" unload="true" reload="true"/>
+
+	<effect				path="_dmc/effects/sterwers_trail_m_small" force="false" load="true" unload="true" reload="true"/>
+    <effect				path="_dmc/effects/sterwers_trail_m_small_npc" force="false" load="true" unload="true" reload="true"/>
+    <effect				path="_dmc/effects/parts/sw_mando_streak_small" force="false" load="true" unload="true" reload="true"/>
+    <effect				path="_dmc/effects/parts/sw_mando_streak_small_round" force="false" load="true" unload="true" reload="true"/>
 	<!--Large Tracer-->
     <effect				path="_dmc/effects/large_trail" force="false" load="true" unload="true" reload="true"/>
     <effect				path="_dmc/effects/parts/large_streak" force="false" load="true" unload="true" reload="true"/>

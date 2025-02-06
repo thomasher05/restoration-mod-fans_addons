@@ -2800,6 +2800,7 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_titan.is_special = true
 	self.tank_titan.no_asu = true
 	self.tank_titan.heal_cooldown = 22.5
+	self.tank_titan.chatter = presets.enemy_chatter.swat -- talk when you kill us
 	table.insert(self._enemy_list, "tank_titan")
 	
 	--Titandozer, assault variant (used in assault groups)

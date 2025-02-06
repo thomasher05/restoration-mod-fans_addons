@@ -19230,7 +19230,10 @@ end)
 						translation = Vector3(-0.022, 8.4, -0.738),
 						rotation = Rotation(-0.1, 0, 0)
 					}
-
+					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_pis_toz81 = {
+						translation = Vector3(-0.055, -23.2, -4.785),
+						rotation = Rotation(-0.08, -0.12, 0)
+					}
 				
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_shot_f500 = {
 						translation = Vector3(0, 8.6, -3.36)
@@ -19306,7 +19309,10 @@ end)
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_ass_tkb0146 = {
 						translation = Vector3(-0.015, 5.4, -1.206)
 					}
-
+					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_sickle = {
+						translation = Vector3(0.05, -18.5, -1.052),
+						rotation = Rotation(0.11, -0.08, 0.6)
+					}
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_ass_m2 = {
 						translation = Vector3(-0.008, 2.6, -0.12)
 					}
@@ -37038,6 +37044,105 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		end
 
 	--[[ HYLIE'S MODS ]]
+
+		if self.parts.wpn_fps_sickle_m_battery then
+			self.parts.wpn_fps_hailstorm_sound_switch = {
+				a_obj = "a_body",
+				type = "ammo",
+				name_id = "bm_wp_hailstorm_ck_switch",
+				unit = "units/pd2_dlc_pxp2/weapons/wpn_fps_hailstorm/wpn_fps_hailstorm",
+				no_cull = true,
+				internal_part = true,
+				stats = { value = 0 },
+				custom_stats = {} --Just to load into memory
+			}
+			self.parts.wpn_fps_sickle_optic.supported = true
+			self.parts.wpn_fps_sickle_optic.stats = { 
+				value = 0,
+				zoom = 5,
+				base_zoom_off = 2
+			}
+			self.parts.wpn_fps_sickle_optic.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_specter.stance_mod)
+			for i, weap in pairs(self.parts.wpn_fps_sickle_optic.stance_mod) do
+				if weap and i ~= wep_id and weap.translation then
+					weap.translation = weap.translation + Vector3(0.01,-2,0.96)
+				end
+			end
+			self.parts.wpn_fps_sickle_m_battery.supported = true
+			self.parts.wpn_fps_sickle_m_battery.adds = { "wpn_fps_hailstorm_sound_switch" }
+			self.parts.wpn_fps_sickle_m_battery.stats = { value = 10 }
+			self.parts.wpn_fps_sickle_m_battery.custom_stats = {
+				starwars = {
+					no_tracers = true,
+					regen_ammo_time = 2,
+					regen_rate = 3.48,
+					can_reload = true,
+					mag_regen = true,
+					empty_no_regen = true
+				}
+			}
+		end
+
+		if self.parts.wpn_fps_pis_toz81_bayonet_unfolded then
+			self.parts.wpn_fps_pis_toz81_bayonet.supported = true
+			self.parts.wpn_fps_pis_toz81_bayonet.stats = {
+				value = 0,
+				ignore_stats = 1,
+				max_damage = 4.5,
+				min_damage = 4.5,
+				max_damage_effect = 1,
+				min_damage_effect = 1,
+			}
+			self.parts.wpn_fps_pis_toz81_bayonet.custom_stats = {}
+
+			self.parts.wpn_fps_pis_toz81_bayonet_unfolded.supported = true
+			self.parts.wpn_fps_pis_toz81_bayonet_unfolded.stats = {
+				value = 0,
+				concealment = -3,
+				spread = -2,
+				max_damage = 6,
+				min_damage = 6,
+				max_damage_effect = 1,
+				min_damage_effect = 1,
+				bayonet_range = 20
+			}
+			self.parts.wpn_fps_pis_toz81_bayonet_unfolded.custom_stats = {
+				melee_speed_mult = 0.8,
+				alt_melee_sounds = {
+					"knife_hit_body",
+					"knife_hit_gen"
+				}
+			}
+			self.parts.wpn_fps_pis_toz81_stock.supported = true
+			self.parts.wpn_fps_pis_toz81_stock.stats = deep_clone(stocks.add_folder_stats)
+			self.parts.wpn_fps_pis_toz81_stock.custom_stats = deep_clone(stocks.add_folder_stats)
+			self.wpn_fps_pis_toz81.override.wpn_fps_upg_a_slug = deep_clone(shot_ammo.a_slug_pump_override)
+			self.wpn_fps_pis_toz81.override.wpn_fps_upg_a_custom = deep_clone(shot_ammo.a_custom_pump_override)
+			self.wpn_fps_pis_toz81.override.wpn_fps_upg_a_custom.desc_id = "bm_wp_upg_a_custom_4_desc"
+			self.wpn_fps_pis_toz81.override.wpn_fps_upg_a_custom.custom_stats.rays = 4
+			self.wpn_fps_pis_toz81.override.wpn_fps_upg_a_custom_free = deep_clone(shot_ammo.a_custom_pump_override)
+			self.wpn_fps_pis_toz81.override.wpn_fps_upg_a_custom_free.desc_id = "bm_wp_upg_a_custom_4_desc"
+			self.wpn_fps_pis_toz81.override.wpn_fps_upg_a_custom_free.custom_stats.rays = 4
+			self.wpn_fps_pis_toz81.override.wpn_fps_upg_a_explosive = deep_clone(shot_ammo.a_explosive_pump_override)
+			self.wpn_fps_pis_toz81.override.wpn_fps_upg_a_rip = deep_clone(shot_ammo.a_rip_pump_override)
+			self.wpn_fps_pis_toz81.override.wpn_fps_upg_a_piercing = deep_clone(shot_ammo.a_piercing_pump_override)
+			self.wpn_fps_pis_toz81.override.wpn_fps_upg_a_piercing.desc_id = "bm_wp_upg_a_piercing_9_auto_desc_per_pellet"
+			self.wpn_fps_pis_toz81.override.wpn_fps_upg_a_piercing.custom_stats.rays = 9
+			self.wpn_fps_pis_toz81.override.wpn_fps_upg_a_dragons_breath = deep_clone(shot_ammo.a_dragons_breath_pump_override)
+			self.wpn_fps_pis_x_toz81.override.wpn_fps_upg_a_slug = deep_clone(shot_ammo.a_slug_pump_override)
+			self.wpn_fps_pis_x_toz81.override.wpn_fps_upg_a_custom = deep_clone(shot_ammo.a_custom_pump_override)
+			self.wpn_fps_pis_x_toz81.override.wpn_fps_upg_a_custom.desc_id = "bm_wp_upg_a_custom_4_desc"
+			self.wpn_fps_pis_x_toz81.override.wpn_fps_upg_a_custom.custom_stats.rays = 4
+			self.wpn_fps_pis_x_toz81.override.wpn_fps_upg_a_custom_free = deep_clone(shot_ammo.a_custom_pump_override)
+			self.wpn_fps_pis_x_toz81.override.wpn_fps_upg_a_custom_free.desc_id = "bm_wp_upg_a_custom_4_desc"
+			self.wpn_fps_pis_x_toz81.override.wpn_fps_upg_a_custom_free.custom_stats.rays = 4
+			self.wpn_fps_pis_x_toz81.override.wpn_fps_upg_a_explosive = deep_clone(shot_ammo.a_explosive_pump_override)
+			self.wpn_fps_pis_x_toz81.override.wpn_fps_upg_a_rip = deep_clone(shot_ammo.a_rip_pump_override)
+			self.wpn_fps_pis_x_toz81.override.wpn_fps_upg_a_piercing = deep_clone(shot_ammo.a_piercing_pump_override)
+			self.wpn_fps_pis_x_toz81.override.wpn_fps_upg_a_piercing.desc_id = "bm_wp_upg_a_piercing_9_auto_desc_per_pellet"
+			self.wpn_fps_pis_x_toz81.override.wpn_fps_upg_a_piercing.custom_stats.rays = 9
+			self.wpn_fps_pis_x_toz81.override.wpn_fps_upg_a_dragons_breath = deep_clone(shot_ammo.a_dragons_breath_pump_override)
+		end
 
 		if self.parts.wpn_fps_shot_or12_vg then
 			self.parts.wpn_fps_shot_or12_vg.stats = { value = 0 }
